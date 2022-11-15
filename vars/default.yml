@@ -1,0 +1,5 @@
+---
+region: 'eu-west-1'
+aws_afm_policy: 'policy_01'
+hosted_zone_name: ''
+default_cache_policy: 'CachingOptimized'

@@ -1,0 +1,127 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: Email signature generator site infrastructure stack
+
+Parameters:
+  ContentBucketName:
+    Type: String
+    Description: The name of the site content bucket
+
+  SiteURL:
+    Type: String
+    Description: The URL of the site
+
+  AWSAFMPolicy:
+    Type: String
+    Description: Indicates which AFM policy to associate with ALB/CDN/API
+
+  HostedZoneName:
+    Type: String
+    Description: The DNS zone where the site URL will be added
+
+  CertificateARN:
+    Type: String
+    Description: The ARN of the ACM certificate
+
+  DefaultCachePolicy:
+    Type: String
+    Description: The managed cache policy to use for the default behaviour
+
+Mappings:
+  ManagedCachePolicyMap:
+    CachePolicyId:
+      'CachingDisabled': '4135ea2d-6df8-44a3-9df3-4b5a84be39ad'
+      'CachingOptimized': '658327ea-f89d-4fab-a63d-7e88639e58f6'
+      'CachingOptimizedForUncompressedObjects': 'CachingOptimizedForUncompressedObjects'
+
+Resources:
+  SiteContentS3Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketName: !Ref ContentBucketName
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      Tags:
+        - Key: URL
+          Value: !Ref SiteURL
+
+  CloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Sub 'CloudFront OAI for ${SiteURL}'
+
+  CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - !Ref SiteURL
+        CacheBehaviors:
+          - PathPattern: '*.js'
+            CachePolicyId: !FindInMap [ ManagedCachePolicyMap, CachePolicyId, CachingDisabled ]
+            TargetOriginId: site-s3-bucket
+            ViewerProtocolPolicy: redirect-to-https
+          - PathPattern: '*.css'
+            CachePolicyId: !FindInMap [ ManagedCachePolicyMap, CachePolicyId, CachingDisabled ]
+            TargetOriginId: site-s3-bucket
+            ViewerProtocolPolicy: redirect-to-https
+        DefaultCacheBehavior:
+          Compress: true
+          CachePolicyId: !FindInMap [ ManagedCachePolicyMap, CachePolicyId, !Ref DefaultCachePolicy ]
+          TargetOriginId: site-s3-bucket
+          ViewerProtocolPolicy: redirect-to-https
+        DefaultRootObject: index.html
+        CustomErrorResponses:
+          - ErrorCachingMinTTL: 300
+            ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+          - ErrorCachingMinTTL: 300
+            ErrorCode: 404
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+        Enabled: true
+        HttpVersion: http2
+        Origins:
+          - DomainName: !Sub '${SiteContentS3Bucket}.s3.${AWS::Region}.amazonaws.com'
+            Id: site-s3-bucket
+            S3OriginConfig:
+              OriginAccessIdentity:
+                !Join ['', ['origin-access-identity/cloudfront/', !Ref CloudFrontOriginAccessIdentity]]
+        PriceClass: PriceClass_All
+        ViewerCertificate:
+          AcmCertificateArn: !Ref CertificateARN
+          MinimumProtocolVersion: TLSv1.2_2021
+          SslSupportMethod: sni-only
+      Tags:
+        - Key: URL
+          Value: !Ref SiteURL
+        - Key: afm_waf_policy
+          Value: !Ref AWSAFMPolicy
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SiteContentS3Bucket
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource: !Join ['', ['arn:aws:s3:::', !Ref SiteContentS3Bucket, '/*']]
+            Principal:
+              CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
+
+  R53RecordSet:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Type: CNAME
+      Name: !Ref SiteURL
+      HostedZoneName: !Join [ '', [ !Ref HostedZoneName, '.' ] ]
+      ResourceRecords: [ !GetAtt [ CloudFrontDistribution, DomainName ] ]
+      TTL: '300'

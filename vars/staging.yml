@@ -1,0 +1,4 @@
+---
+site_url: 'email-signature-generator.staging.getsmarter.com'
+hosted_zone_name: 'staging.getsmarter.com'
+certificate_arn: 'arn:aws:acm:us-east-1:417728287678:certificate/48aa4f03-5ac4-47eb-90b6-78970cf48410'

@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  roles:
+    - config
+    - cloudformation
+    - s3_sync

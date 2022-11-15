@@ -1,0 +1,19 @@
+---
+- name: Deploy email-signature-generator-{{ system_environment }}
+  cloudformation:
+    stack_name: 'email-signature-generator-{{ system_environment }}'
+    state: 'present'
+    region: '{{ region }}'
+    disable_rollback: true
+    template: 'roles/cloudformation/templates/cloudformation.yml'
+    template_parameters:
+      CertificateARN: '{{ certificate_arn }}'
+      ContentBucketName: 'email-signature-generator-{{ system_environment }}'
+      SiteURL: '{{ site_url }}'
+      AWSAFMPolicy: '{{ aws_afm_policy }}'
+      HostedZoneName: '{{ hosted_zone_name }}'
+      DefaultCachePolicy: '{{ default_cache_policy }}'
+    tags:
+      Name: 'email-signature-generator-{{ system_environment }}'
+      Application: 'email-signature-generator-site'
+      Environment: '{{ system_environment }}'

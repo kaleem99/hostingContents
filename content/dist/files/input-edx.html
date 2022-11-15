@@ -1,0 +1,51 @@
+<h3 tabindex="0">Enter your details</h3>
+
+<form class="inputs-inner">
+  <label for="fname">First Name</label>
+
+  <input type="text" class="data" name="fname" id="fname" data-radius="top" />
+  <label for="lname">Last Name</label>
+
+  <input type="text" class="data" name="lname" id="lname" />
+  <label for="pronoun">Pronoun/Pronoun/Pronoun</label>
+
+  <input
+    type="text"
+    class="data change"
+    name="pronoun"
+    id="pronoun"
+    data-sig="twoPronoun"
+    data-radius="top"
+  />
+
+  <label for="jobtitle">Job Title</label>
+
+  <input
+    type="text"
+    class="data"
+    name="jobtitle"
+    id="jobtitle"
+    data-radius="bottom"
+  />
+  <label for="pOfficeAddress">Select Office Address<br><p>(Navigate with arrow keys. Press enter to select.)</p></label>
+
+  <select class="data" name="pOfficeAddress" data-radius="top" id="pOfficeAddress">
+    <!-- <option value="" disabled="disabled" selected="selected">
+      Select address
+    </option> -->
+    <option value="None">None</option>
+    <option value="7900 Harkins Road, Lanham, MD 20706">Lanham</option>
+    <option value="358 Victoria Road, Salt River, 7925">Cape Town</option>
+    <option value="Remote">Remote (specify)</option>
+  </select>
+  <div id="remote-address">
+    <label for="address">City, State Abbr.</label>
+    <input type="text" class="data" name="address" id="address" />
+  </div>
+  <br />
+  <label for="pnumber">Phone Number</label>
+  <input type="number" class="data" name="number" data-radius="bottom" />
+</form>
+<button class="btn edx" id="create-signature" tabindex="0">
+  Create Signature
+</button>

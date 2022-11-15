@@ -1,0 +1,64 @@
+<h3>Enter your details</h3>
+
+<div class="inputs-inner">
+  <label for="pfirstName">First Name</label>
+  <input
+    type="text"
+    class="data"
+    name="pfirstName"
+    id="pfirstName"
+    data-radius="top"
+  />
+  <label for="pLastName">Last Name</label>
+  <input type="text" class="data" name="pLastName" id="pLastName" />
+  <label for="pJobTitle">Job Title (Title Case)</label>
+  <input
+    type="text"
+    class="data"
+    name="pJobTitle"
+    id="pJobTitle"
+    data-radius="bottom"
+  />
+  <hr />
+  <label for="selectNumber"
+    >Select Office contact number. <br />
+    <p>(Navigate with arrow keys. Press enter to select.)</p></label
+  >
+  <select
+    onselect=""
+    class="data"
+    name="selectNumber"
+    data-radius="all"
+    id="selectNumber"
+  >
+    <!-- <option value="" disabled="disabled" selected="selected">
+      Select number (optional)
+    </option> -->
+    <option value="None" name="None">None</option>
+    <option
+      value="ZA: +27 87 550 6966 | UK: +44 20 3823 6998 | US: +1 617-977-6889"
+    >
+      Enrolments
+    </option>
+    <option
+      value="ZA: +27 21 830 9200 | UK: +44 20 3887 8107 | US: +1 339 215 1707"
+    >
+      Global Success Team
+    </option>
+    <option
+      value="ZA: +27 21 447 7565 | UK: +44 20 3457 5774 | US: +1 224 249 3522"
+    >
+      Finance, Certificates, Enterprise Sales & Academic Staff
+    </option>
+    <option value="Remote">Custom (specify)</option>
+  </select>
+  <div id="remote-address">
+    <label for="ZAnumber">ZA number</label>
+    <input id="ZAnumber" type="text" class="data" name="number-za" />
+    <label for="UKnumber">UK number</label>
+    <input id="UKnumber" type="text" class="data" name="number-uk" />
+    <label for="USnumber">US number</label>
+    <input id="USnumber" type="text" class="data" name="number-us" />
+  </div>
+</div>
+<button class="btn gs" id="create-signature">Create Signature</button>

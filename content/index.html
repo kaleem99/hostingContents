@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Signature Generator</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800"rel="stylesheet">
+    <link rel="stylesheet" href="./dist/css/app.css">
+</head>
+<body>
+
+   <div id="popup">
+        <div id="popup-inner">
+            <img id="popup-loader" class="show" src="./dist/img/loader.svg" />
+            <div id="popup-content"></div>
+            <div id="popup-btns">
+                <div class="btn" id="copy-signature">Copy signature</div>
+                <div class="btn cancel" id="cancel-popup">Cancel</div>
+            </div>
+        </div>
+   </div>
+
+    <div id="nav">
+        <button tabIndex="0" class="nav-btn tab" data-brand="2u" title="Generate 2U Signature">
+            <img src="./dist/img/2.jpg" />
+        </button>
+        <button tabIndex="0" class="nav-btn tab" data-brand="gs" title="Generate Get smarter Signature">
+            <img src="./dist/img/g.jpg" />
+        </button>
+        <button tabIndex="0" class="nav-btn tab" data-brand="edx" title="Generate Edx Signature">
+            <img src="./dist/img/edx.png" class="edx" />
+        </button>
+        <a href="https://2universe.2u.com/brandportal/email_signature/email_signature_toolkitpdf" target="_blank" class="nav-btn pdf" title="PDF Guide">
+            <img src="./dist/img/pdf.svg" />
+            <p>PDF guide</p>
+        </a>
+    </div>
+
+    <div id="content">
+        <img id="loader" class="show" src="./dist/img/loader.svg" />
+        <div id="inputs"></div>
+    </div>
+
+    <script type="module" src="./dist/js/index.js"></script>
+
+</body>
+</html>

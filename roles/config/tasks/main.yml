@@ -1,0 +1,6 @@
+---
+- name: Load global defaults
+  include_vars: 'vars/default.yml'
+
+- name: Load environment settings
+  include_vars: 'vars/{{ system_environment }}.yml'
