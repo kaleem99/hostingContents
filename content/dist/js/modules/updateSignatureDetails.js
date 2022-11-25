@@ -53,8 +53,6 @@ function updateSignatureDetailsGS(userObj) {
   const title = signature.querySelector("#pJobTitle");
   const number = signature.querySelector("#selectNumber");
   let customNumber = "";
-  console.log(userObj);
-  console.log(getUser);
   name.innerText = getUser.pfirstName;
   lastname.innerText = getUser.pLastName;
   title.innerText = getUser.pJobTitle;
@@ -88,19 +86,23 @@ function updateSignatureDetailsEdx(userObj) {
   const address = signature.querySelector("#pOfficeAddress");
   const number = signature.querySelector("#number");
   const pronounNode = signature.querySelector("#pronoun");
-  let customNumber = "";
   name.innerText = getUser.fname;
   lastname.innerText = getUser.lname;
   title.innerText = getUser.jobtitle;
   pronounNode.innerText = userObj.pronoun;
   number.innerText = getUser.number;
-  console.log(getUser);
+  if (pronounNode.innerText === "undefined") {
+    pronounNode.innerText = "";
+  }
+  if (number.innerText === "undefined") {
+    number.remove();
+  }
   if (getUser.pOfficeAddress === "Remote") {
-    address.innerHTML = getUser.address;
-  } else if (getUser.pOfficeAddress === "None" || !getUser.pOfficeAddress) {
+    address.innerText = getUser.address;
+  } else if (!getUser.pOfficeAddress || getUser.pOfficeAddress === "None") {
     address.remove();
   } else {
-    address.innerHTML = getUser.pOfficeAddress;
+    address.innerText = getUser.pOfficeAddress;
   }
 }
 export {

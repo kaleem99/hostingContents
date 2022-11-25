@@ -46,9 +46,9 @@ a {
   background-color: #f42684;
 }
 .btn.edx {
-    background-color: #00262b;
-    width: 100%;
-  }
+  background-color: #00262b;
+  width: 100%;
+}
 .btn.gs:hover {
   background-color: #f657a0;
 }
@@ -130,11 +130,12 @@ a {
   border-radius: 3px;
   color: #ccc;
   font-size: 12px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: hidden;
+  /* display: -webkit-box;
+  display: -ms-flexbox; */
+  display: block;
+  overflow-x: scroll;
 }
+
 #popup #popup-inner p {
   margin-bottom: 0;
   text-align: center;
@@ -192,7 +193,7 @@ a {
   border: 2px solid #f42684;
 }
 #nav .nav-btn[data-brand="edx"].selected {
-  border: 2px solid #0C262B;
+  border: 2px solid #0c262b;
 }
 #nav .nav-btn.pdf {
   border-color: #ff4635;
@@ -214,7 +215,7 @@ h3 {
   width: 400px;
   margin: auto;
 }
-p{
+p {
   font-size: small;
 }
 #content #loader {
