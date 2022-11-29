@@ -15,6 +15,10 @@ function validateUserDetails(userObj) {
       alert("Please use an actual NameCoach link.");
       return false;
     }
+    if (userObj.pOfficeAddress === "Remote" && !userObj.address) {
+      alert("Please complete the mandatory remote address field");
+      return false;
+    }
   }
   if (userObj.signature === "gs") {
     if (!userObj.pfirstName || !userObj.pLastName || !userObj.pJobTitle) {

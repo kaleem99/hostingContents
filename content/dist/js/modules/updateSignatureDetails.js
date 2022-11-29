@@ -36,14 +36,6 @@ function updateSignatureDetails2U(userObj) {
   } else {
     namecoachNode.remove();
   }
-
-  // if (getUser.selectNumber === "Remote") {
-  //   number.innerHTML = customNumber;
-  // } else if (getUser.selectNumber === "None" || !getUser.selectNumber) {
-  //   number.remove();
-  // } else {
-  //   number.innerHTML = getUser.selectNumber;
-  // }
 }
 
 function updateSignatureDetailsGS(userObj) {

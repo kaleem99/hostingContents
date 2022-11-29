@@ -39,8 +39,7 @@ function mountCode(element) {
   const code = document.createElement("code");
   const hr = document.createElement("hr");
   const p = document.createElement("p");
-  const copyBtn = document.querySelector("#copy-signature");
-
+  const copyBtn = document.querySelector("#copy-HTML");
   const minHtml = element.innerHTML
     .replace(/\r|\n|\r\n|\t|\s\s|(["])[\s]([a-z])/g, "$1$2")
     .replace(/id="lastname"|id="firstname"|id="title"|id="number"/g, "");

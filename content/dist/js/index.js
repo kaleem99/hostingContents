@@ -1,57 +1,66 @@
 // Modules
-import { togglePopup } from "./modules/utils.js"
-import switchTabs from './modules/switchTabs.js'
-import toggleSalesforce from "./modules/toggleSalesforce.js"
-import validateUserDetails from './modules/validateUserDetails.js'
-import { mountSignature } from "./modules/mountSignature.js"
-import { copyElement, initCopyNotification } from "./modules/copyToClipboard.js"
-import initApp from './modules/initApp.js'
+import { togglePopup } from "./modules/utils.js";
+import switchTabs from "./modules/switchTabs.js";
+import toggleSalesforce from "./modules/toggleSalesforce.js";
+import validateUserDetails from "./modules/validateUserDetails.js";
+import { mountSignature } from "./modules/mountSignature.js";
+import {
+  copyElement,
+  initCopyNotification,
+} from "./modules/copyToClipboard.js";
+import initApp from "./modules/initApp.js";
 
 // State
-import { getUser, updateUser } from './state/user.js'
+import { getUser, updateUser } from "./state/user.js";
 
 // Interaction
-document.addEventListener('click', (event) => {
-	
-	// Clicked element
-	const elem = event.target
+document.addEventListener("click", (event) => {
+  // Clicked element
+  const elem = event.target;
+  // Tab Navigation (mounts input file with "mountInputs()" )
+  if (elem.classList.contains("tab")) {
+    const brand = elem.getAttribute("data-brand");
+    switchTabs(elem, brand);
+    updateUser("signature", brand);
+  }
 
-	// Tab Navigation (mounts input file with "mountInputs()" )
-	if (elem.classList.contains('tab')) {
-		const brand = elem.getAttribute('data-brand')
-		switchTabs(elem, brand)
-		updateUser('signature', brand)
-	}
+  // Make it Salesforce compatible
+  if (elem.id === "salesforce-btn") {
+    toggleSalesforce(elem);
+    document.querySelector("#copy-HTML").style.display = "inline";
+  }
+  if (getUser.salesforce === true) {
+    document.querySelector("#copy-HTML").style.display = "inline";
+  } else {
+    document.querySelector("#copy-HTML").style.display = "none";
+  }
+  // Gen Signature
+  if (elem.id === "create-signature") {
+    const isValid = validateUserDetails(getUser);
+    if (isValid) {
+      mountSignature(getUser.signature);
+      togglePopup("show");
+    }
+  }
 
-	// Make it Salesforce compatible
-	if (elem.id === 'salesforce-btn') {
-		toggleSalesforce(elem)
-	}
+  // Copy signature / signature HTML
+  if (elem.id === "copy-HTML") {
+    let popupContent = document.querySelector("#popup-content");
+    if (getUser.salesforce) {
+      popupContent = popupContent.querySelector("code");
+    }
+    copyElement(popupContent, getUser);
+    initCopyNotification(elem);
+  }
+  if (elem.id === "copy-signature") {
+    let popupContent = document.querySelector("#popup-content");
+    copyElement(popupContent, getUser);
+    initCopyNotification(elem);
+  }
+  // Close Popup
+  if (elem.id === "cancel-popup") {
+    togglePopup("hide");
+  }
+});
 
-	// Gen Signature
-	if (elem.id === 'create-signature') {
-		const isValid = validateUserDetails(getUser)
-		if (isValid) {
-			mountSignature(getUser.signature)
-			togglePopup('show')
-		}
-	}
-
-	// Copy signature / signature HTML
-	if (elem.id === 'copy-signature') {
-		let popupContent = document.querySelector('#popup-content')
-		if (getUser.salesforce) {
-			popupContent = popupContent.querySelector('code')
-		}
-		copyElement(popupContent)
-		initCopyNotification(elem)
-	}
-
-	// Close Popup
-	if (elem.id === 'cancel-popup') {
-		togglePopup('hide')
-	}
-
-})
-
-initApp()
+initApp();

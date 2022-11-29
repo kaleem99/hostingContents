@@ -23,6 +23,7 @@ a {
   color: #fff;
   width: 100%;
   font-size: 16px;
+  margin-top: 10px;
   text-align: center;
   display: block;
   cursor: pointer;
@@ -36,11 +37,11 @@ a {
 .btn.cancel {
   margin-top: 10px;
   background-color: #eee;
-  color: #606060;
+  color: black;
 }
 .btn.cancel:hover {
   background-color: #d5d5d5;
-  color: #676767;
+  color: black;
 }
 .btn.gs {
   background-color: #f42684;
@@ -145,7 +146,8 @@ a {
   margin-top: 30px;
 }
 #popup #popup-inner #popup-btns .btn.copied {
-  background-color: #2fdb9f;
+  background-color: #00d6cb;
+  color: black;
 }
 #popup.show {
   opacity: 1;
@@ -281,9 +283,9 @@ p {
 }
 #content #inputs .inputs-inner #salesforce-btn.active {
   padding: 9px 13px;
-  background-color: #2fdb9f;
-  border: 2px solid #2fdb9f;
-  color: #fff;
+  background-color: #00d6cb;
+  border: 2px solid #00d6cb;
+  color: black;
 }
 #content #inputs .inputs-inner [data-radius="top"] {
   border-radius: 3px 3px 0 0;
