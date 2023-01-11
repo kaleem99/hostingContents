@@ -42,6 +42,9 @@ section {
   margin-right: auto;
   display: block;
   text-align: center;
+  background: lightgray;
+  width: 450px;
+  border-radius: 20px;
 }
 
 .option:hover {
