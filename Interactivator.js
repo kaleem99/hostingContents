@@ -9,13 +9,21 @@ videoId = videoId.slice(videoId.lastIndexOf("/") + 1, videoId.length);
 
 function quizComplete(arr, QuestionsArr) {
   isQuizComplete = arr;
-  ArrayOfQuestions = QuestionsArr;
+  if (QuestionsArr !== undefined) {
+    ArrayOfQuestions = QuestionsArr;
+  }
+  // if (ArrayOfQuestions === []) {
+  console.log(true);
+  let x = document.getElementsByClassName("button").children;
+  console.log(x);
+  // }
 }
 function generateQuestionsAndOptions() {
   let question = document.getElementById("Question");
   question.innerHTML = ArrayOfQuestions[quizIndex].Question;
   let QuestionsfromArr = Object.keys(ArrayOfQuestions[quizIndex]).length;
   let divInputs = document.getElementById("InputSection");
+
   for (let i = 0; i < QuestionsfromArr - 2; i++) {
     divInputs.innerHTML += ` <button class="buttonQuiz option ${
       ArrayOfQuestions[quizIndex]["Option" + (i + 1)] ===
@@ -40,7 +48,11 @@ function changeAnswer(option) {
   }
   elementOptions[num - 1].style.backgroundColor = "#035dae";
 }
-function checkAnswer() {
+function checkAnswer(type) {
+  if (type) {
+    isQuizComplete[quizIndex] = true;
+    return true;
+  }
   let inputs = document.getElementById("InputSection").children;
   for (let i = 0; i < inputs.length; i++) {
     if (inputs[i].className.includes("correct")) {
@@ -60,13 +72,16 @@ _wq.push({
   id: videoId,
   onReady: function (video) {
     function stop() {
-      video.pause();
-      generateQuestionsAndOptions();
+      video.pause();    
+      if (ArrayOfQuestions.length > 0) {
+        console.log(100);
+        generateQuestionsAndOptions();
+      }
       document.getElementById("section").style.display = "inline";
       document.getElementById("OverlayDiv").style.display = "block";
     }
     function play() {
-      if (isQuizComplete[quizIndex] === true) {
+      if (isQuizComplete[quizIndex] === true || ArrayOfQuestions === []) {
         video.play();
         document.getElementById("section").style.display = "none";
         document.getElementById("OverlayDiv").style.display = "none";
