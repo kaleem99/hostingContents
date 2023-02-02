@@ -6,16 +6,14 @@ let countButtons = 0;
 let ArrayOfQuestions = [];
 videoId = videoId.slice(0, videoId.indexOf("?"));
 videoId = videoId.slice(videoId.lastIndexOf("/") + 1, videoId.length);
-
+document.querySelector("iframe").allowFullscreen = false;
 function quizComplete(arr, QuestionsArr) {
   isQuizComplete = arr;
   if (QuestionsArr !== undefined) {
     ArrayOfQuestions = QuestionsArr;
   }
   // if (ArrayOfQuestions === []) {
-  console.log(true);
-  let x = document.getElementsByClassName("button").children;
-  console.log(x);
+
   // }
 }
 function generateQuestionsAndOptions() {
@@ -72,7 +70,7 @@ _wq.push({
   id: videoId,
   onReady: function (video) {
     function stop() {
-      video.pause();    
+      video.pause();
       if (ArrayOfQuestions.length > 0) {
         console.log(100);
         generateQuestionsAndOptions();
