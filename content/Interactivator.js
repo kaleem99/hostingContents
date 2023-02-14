@@ -610,19 +610,14 @@ Wistia.plugin("interactivator", function (video, options) {
 		console.log(endTime);
 		console.log(enterTime * 1000);
 		let milliSec = enterTime * 1000;
-		video.bind(
-		      "betweentimes",
-		      parseFloat(enterTime),
-		      endTime,
-		      function (withinInterval) {
-			if (withinInterval && video.state() == "playing") {
-			  video.pause();
+		let timer = setInterval(() => {
+			console.log(video.time());
+			console.log(enterTime);
+			if(parseInt(video.time()) === parseInt(enterTime) ){
+				video.pause();
+				console.log(stopped);
 			}
-		      }
-		);
-		  let timer = setInterval(() => {
-    console.log(video.time());
-			  console.log(enterTime);
+		}, 1000);
  	 }
 
 	function chapter(enterTime, text) {
