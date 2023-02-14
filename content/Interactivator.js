@@ -604,17 +604,30 @@ Wistia.plugin("interactivator", function (video, options) {
 			addHeading(heading2, enterTime + 0.8, endTime, "heading line2")
 		}
 	}
-	function Video_Interactivity_Timestamp(enterTime, endTime) {
-     console.log(endTime);
-    console.log(enterTime * 1000);
-    let milliSec = enterTime * 1000;
-    setTimeout(() => {
-      video.pause();
-    }, milliSec);
-    if (parseInt(enterTime) === video.time()) {
-      video.pause();
-    }
-  	}
+	
+	 function Video_Interactivity_Timestamp(enterTime, endTime) {
+		console.log(endTime);
+		console.log(enterTime * 1000);
+		let milliSec = enterTime * 1000;
+		video.bind(
+		      "betweentimes",
+		      parseFloat(enterTime),
+		      endTime,
+		      function (withinInterval) {
+			if (withinInterval && video.state() == "playing") {
+			  video.pause();
+			  setTimeout(function () {
+			    if (withinInterval) {
+			      video.play();
+			    }
+			  }, 1000);
+			}
+			if (generator_background) {
+			  killSwitch(generator_background.parentElement);
+			}
+		      }
+		);
+ 	 }
 
 	function chapter(enterTime, text) {
 		// Chapter automatically creates a background and transition animation.
