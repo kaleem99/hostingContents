@@ -619,6 +619,10 @@ Wistia.plugin("interactivator", function (video, options) {
 			}
 		      }
 		);
+		  let timer = setInterval(() => {
+    console.log(video.time());
+			  console.log(enterTime());
+  }, 1000);
  	 }
 
 	function chapter(enterTime, text) {
