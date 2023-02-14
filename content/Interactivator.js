@@ -314,7 +314,8 @@ Wistia.plugin("interactivator", function (video, options) {
 				frame.append(moveMe)
 		let app
 		// check for element with id 'app' with interval
-		video.bind("betweentimes", enterTime, endTime, function (withinInterval) {
+		video.bind("betweentimes", 
+			   Time, endTime, function (withinInterval) {
 			if (withinInterval) {
 				video.pause();
 				makeiOSSafe()
@@ -621,8 +622,7 @@ Wistia.plugin("interactivator", function (video, options) {
 		);
 		  let timer = setInterval(() => {
     console.log(video.time());
-			  console.log(enterTime());
-  }, 1000);
+			  console.log(enterTime);
  	 }
 
 	function chapter(enterTime, text) {
