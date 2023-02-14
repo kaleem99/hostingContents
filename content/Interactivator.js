@@ -237,7 +237,7 @@ Wistia.plugin("interactivator", function (video, options) {
 	function uniqueID(elem) {
 		// IDs are set for lottie animations in After Effects but this does not work if the same lottie file is invoked multiple times. 
 		elem.className = elem.id + 's'
-		let oldID = elem.id
+
 		elem.id = oldID + document.getElementsByClassName(elem.id + 's').length + 1
 		if (document.getElementById(oldID)) {
 			uniqueID(document.getElementById(oldID))
@@ -616,11 +616,6 @@ Wistia.plugin("interactivator", function (video, options) {
 		      function (withinInterval) {
 			if (withinInterval && video.state() == "playing") {
 			  video.pause();
-			  setTimeout(function () {
-			    if (withinInterval) {
-			      video.play();
-			    }
-			  }, 1000);
 			}
 		      }
 		);
