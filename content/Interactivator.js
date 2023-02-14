@@ -605,11 +605,15 @@ Wistia.plugin("interactivator", function (video, options) {
 		}
 	}
 	function Video_Interactivity_Timestamp(enterTime, endTime) {
-    console.log(endTime);
-    console.log(enterTime);
-		if (parseInt(enterTime) === video.time()) {
-		video.pause();
-		}
+     console.log(endTime);
+    console.log(enterTime * 1000);
+    let milliSec = enterTime * 1000;
+    setTimeout(() => {
+      video.pause();
+    }, milliSec);
+    if (parseInt(enterTime) === video.time()) {
+      video.pause();
+    }
   	}
 
 	function chapter(enterTime, text) {
