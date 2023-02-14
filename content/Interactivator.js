@@ -611,9 +611,10 @@ Wistia.plugin("interactivator", function (video, options) {
 		console.log(enterTime * 1000);
 		let milliSec = enterTime * 1000;
 		let timer = setInterval(() => {
-			console.log(video.time());
-			console.log(enterTime);
-			if(parseInt(video.time()) === parseInt(enterTime) ){
+			console.log(parseInt(video.time()));
+			console.log(parseInt(enterTime));
+			parseInt(video.time() == parseInt(enterTime))
+			if(parseInt(video.time()) >= parseInt(enterTime) ){
 				video.pause();
 				console.log(stopped);
 			}
