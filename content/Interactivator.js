@@ -622,9 +622,6 @@ Wistia.plugin("interactivator", function (video, options) {
 			    }
 			  }, 1000);
 			}
-			if (generator_background) {
-			  killSwitch(generator_background.parentElement);
-			}
 		      }
 		);
  	 }
