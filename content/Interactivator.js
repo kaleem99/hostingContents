@@ -1,3 +1,4 @@
+console.log("document been read");
 Wistia.plugin("interactivator", function (video, options) {
 	var courseCode = options.courseCode
 	var chapters = options.chapters
@@ -13,7 +14,7 @@ Wistia.plugin("interactivator", function (video, options) {
 	
 	let iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 	let iOSSafe = false;
-
+	console.log(video);
 	// If the iFrame is for a different video than the WistiaId argument passed to the Interactivator function, 
 	// we assume that this video is an intro, and we need to add the main video to the playlist.
 	if (video.hashedId() != WistiaId) {
