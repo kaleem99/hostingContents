@@ -305,7 +305,7 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log(document.body);
     document.body.appendChild("<h1>New World</h1>");
     console.log(document.querySelectorAll("div"));
-    document.getElementsByClassName("Testing").innerHTML += "<h1>Hello World 2.0</h1>";
+    // document.getElementsByClassName("Testing").innerHTML += "<h1>Hello World 2.0</h1>";
 
     let enterTime = args[0];
     let QuestionOption2 = args.slice(2);
