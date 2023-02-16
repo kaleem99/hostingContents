@@ -1,4 +1,4 @@
-console.log(1000, "Working");
+console.log(99, "Working");
 Wistia.plugin("interactivator", function (video, options) {
 	var courseCode = options.courseCode
 	var chapters = options.chapters
@@ -261,6 +261,7 @@ Wistia.plugin("interactivator", function (video, options) {
 
 	function Add_Quiz(...args) {
     console.log(...args);
+    console.log('Add_Quiz', 100)
     let enterTime = args[0];
     let QuestionOption2 = args.slice(2);
     window._wq = window._wq || [];
