@@ -302,10 +302,10 @@ Wistia.plugin("interactivator", function (video, options) {
   function Add_Quiz(...args) {
     console.log(...args);
     console.log("Name:", 47);
-    console.log(document.getElementsByClassName("Testing"));
+    console.log(document.body);
+    document.body.innerHTML += '<h1>New World</h1>'
     console.log(document.querySelectorAll("div"));
-    document.getElementsByClassName("Testing").innerHTML +=
-      "&lt;h1&gt;Hello World&lt;/h1&gt;";
+    document.getElementsByClassName("Testing").innerHTML += "&lt;h1&gt;Hello World&lt;/h1&gt;";
     let enterTime = args[0];
     let QuestionOption2 = args.slice(2);
     let timer = setInterval(() => {
