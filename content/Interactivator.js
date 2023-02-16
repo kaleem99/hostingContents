@@ -1,4 +1,4 @@
-console.log(99, "Testing");
+console.log(1, "Testing", 0);
 Wistia.plugin("interactivator", function (video, options) {
   var courseCode = options.courseCode;
   var chapters = options.chapters;
@@ -300,7 +300,7 @@ Wistia.plugin("interactivator", function (video, options) {
   }
   function Add_Quiz(...args) {
     console.log(...args);
-    console.log("Add_Quiz", 100);
+    console.log("Name:", 47);
     let enterTime = args[0];
     let QuestionOption2 = args.slice(2);
     window._wq = window._wq || [];
@@ -308,7 +308,7 @@ Wistia.plugin("interactivator", function (video, options) {
       id: "{{Wistia_URL}}",
       onReady: function (video) {
         let timer = setInterval(() => {
-          console.log(parseInt(video.time), parseInt(enterTime));
+          console.log(parseInt(video.time()), parseInt(enterTime));
           if (parseInt(video.time()) == parseInt(enterTime)) {
             video.pause();
             console.log("stopped");
@@ -326,15 +326,15 @@ Wistia.plugin("interactivator", function (video, options) {
               para.style.margin = "auto";
               let videoColumn = document.body;
               videoColumn.appendChild(para);
-            //   let body = "";
-            //   for (let i = 0; i < QuestionOption2.length; i++) {
-            //     body += ` <button class="" id='Option ${
-            //       i + 1
-            //     }' onclick="changeAnswer(\`Option ${i + 1}\`)" tabindex="0"> ${
-            //       QuestionOption2[i]
-            //     }</button><br /><br />`;
-            //   }
-            //   videoColumn.innerHTML += `<h1 id="Question">${args[2]}</h1><br /><div id="InputOptions">${body}</div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div>`;
+              //   let body = "";
+              //   for (let i = 0; i < QuestionOption2.length; i++) {
+              //     body += ` <button class="" id='Option ${
+              //       i + 1
+              //     }' onclick="changeAnswer(\`Option ${i + 1}\`)" tabindex="0"> ${
+              //       QuestionOption2[i]
+              //     }</button><br /><br />`;
+              //   }
+              //   videoColumn.innerHTML += `<h1 id="Question">${args[2]}</h1><br /><div id="InputOptions">${body}</div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div>`;
             }
             clearInterval(timer);
             AddQuizChecker = true;
