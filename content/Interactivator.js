@@ -298,6 +298,7 @@ Wistia.plugin("interactivator", function (video, options) {
       }
     }, 1000);
   }
+  let AddQuizChecker = false;
   function Add_Quiz(...args) {
     console.log(...args);
     console.log("Name:", 47);
