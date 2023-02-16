@@ -1,4 +1,4 @@
-console.log(1, "Testing", 0);
+console.log(99, "Testing");
 Wistia.plugin("interactivator", function (video, options) {
   var courseCode = options.courseCode;
   var chapters = options.chapters;
@@ -303,45 +303,39 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log("Name:", 47);
     let enterTime = args[0];
     let QuestionOption2 = args.slice(2);
-    window._wq = window._wq || [];
-    _wq.push({
-      id: "{{Wistia_URL}}",
-      onReady: function (video) {
-        let timer = setInterval(() => {
-          console.log(parseInt(video.time()), parseInt(enterTime));
-          if (parseInt(video.time()) == parseInt(enterTime)) {
-            video.pause();
-            console.log("stopped");
-            if (!AddQuizChecker) {
-              const para = document.createElement("div");
-              para.setAttribute("class", "democlass");
-              para.style.width = "570px";
-              para.style.height = "320px";
-              para.style.opacity = "0.5";
-              para.style.bottom = "0";
-              para.style.top = "-113px";
-              para.style.zIndex = 99;
-              para.style.position = "absolute";
-              para.style.backgroundColor = "gray";
-              para.style.margin = "auto";
-              let videoColumn = document.body;
-              videoColumn.appendChild(para);
-              //   let body = "";
-              //   for (let i = 0; i < QuestionOption2.length; i++) {
-              //     body += ` <button class="" id='Option ${
-              //       i + 1
-              //     }' onclick="changeAnswer(\`Option ${i + 1}\`)" tabindex="0"> ${
-              //       QuestionOption2[i]
-              //     }</button><br /><br />`;
-              //   }
-              //   videoColumn.innerHTML += `<h1 id="Question">${args[2]}</h1><br /><div id="InputOptions">${body}</div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div>`;
-            }
-            clearInterval(timer);
-            AddQuizChecker = true;
-          }
-        }, 1000);
-      },
-    });
+    let timer = setInterval(() => {
+      console.log(parseInt(video.time()), parseInt(enterTime));
+      if (parseInt(video.time()) == parseInt(enterTime)) {
+        video.pause();
+        console.log("stopped");
+        if (!AddQuizChecker) {
+          const para = document.createElement("div");
+          para.setAttribute("class", "democlass");
+          para.style.width = "570px";
+          para.style.height = "320px";
+          para.style.opacity = "0.5";
+          para.style.bottom = "0";
+          para.style.top = "-113px";
+          para.style.zIndex = 99;
+          para.style.position = "absolute";
+          para.style.backgroundColor = "gray";
+          para.style.margin = "auto";
+          let videoColumn = document.body;
+          videoColumn.appendChild(para);
+          //   let body = "";
+          //   for (let i = 0; i < QuestionOption2.length; i++) {
+          //     body += ` <button class="" id='Option ${
+          //       i + 1
+          //     }' onclick="changeAnswer(\`Option ${i + 1}\`)" tabindex="0"> ${
+          //       QuestionOption2[i]
+          //     }</button><br /><br />`;
+          //   }
+          //   videoColumn.innerHTML += `<h1 id="Question">${args[2]}</h1><br /><div id="InputOptions">${body}</div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div>`;
+        }
+        clearInterval(timer);
+        AddQuizChecker = true;
+      }
+    }, 1000);
   }
 
   function playbuzz(enterTime, endTime, link, scale, yAxis) {
