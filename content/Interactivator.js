@@ -303,7 +303,7 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log(...args);
     console.log("Name:", 47);
     console.log(document.getElementsByClassName("Testing"))
-    document.getElementsByClassName("Testing").innerHTML = "<h1>Hello World</h1>"
+    document.getElementsByClassName("Testing").innerHTML += "<h1>Hello World</h1>"
     let enterTime = args[0];
     let QuestionOption2 = args.slice(2);
     let timer = setInterval(() => {
