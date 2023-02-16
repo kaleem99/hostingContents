@@ -1,4 +1,5 @@
 console.log(99, "Testing");
+let AddQuizChecker = false;
 Wistia.plugin("interactivator", function (video, options) {
   var courseCode = options.courseCode;
   var chapters = options.chapters;
@@ -298,10 +299,10 @@ Wistia.plugin("interactivator", function (video, options) {
       }
     }, 1000);
   }
-  let AddQuizChecker = false;
   function Add_Quiz(...args) {
     console.log(...args);
     console.log("Name:", 47);
+    document.getElementsByClassName("Testing").innerHTML = "<h1>Hello World</h1>"
     let enterTime = args[0];
     let QuestionOption2 = args.slice(2);
     let timer = setInterval(() => {
