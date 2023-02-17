@@ -320,7 +320,7 @@ Wistia.plugin("interactivator", function (video, options) {
         if (!AddQuizChecker) {
           const para = document.createElement("div");
           const btn = document.createElement("button");
-          btn.value = "Click Me!";
+          btn.innerText = "Click Me!";
           para.setAttribute("class", "democlass");
           para.style.width = "570px";
           para.style.height = "320px";
