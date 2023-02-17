@@ -322,14 +322,17 @@ Wistia.plugin("interactivator", function (video, options) {
           para.setAttribute("class", "democlass");
           para.style.width = "570px";
           para.style.height = "320px";
-          para.style.opacity = "0.5";
+          // para.style.opacity = "0.5";
           para.style.bottom = "0";
-          para.style.top = "-113px";
+          para.style.top = "0";
+          para.style.left = "0";
+          para.style.right = "0";
           para.style.zIndex = 99;
           para.style.position = "absolute";
-          para.style.backgroundColor = "gray";
+          para.style.backgroundColor = "red";
           para.style.margin = "auto";
           let videoColumn = document.body;
+          para.appendChild("<button>Click Me!</button");
           videoColumn.appendChild(para);
           //   let body = "";
           //   for (let i = 0; i < QuestionOption2.length; i++) {
