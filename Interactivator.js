@@ -9,10 +9,12 @@ videoId = videoId.slice(0, videoId.indexOf("?"));
 videoId = videoId.slice(videoId.lastIndexOf("/") + 1, videoId.length);
 document.querySelector("iframe").allowFullscreen = false;
 function quizComplete(arr, QuestionsArr) {
+  console.log(arr, QuestionsArr);
   isQuizComplete = arr;
   if (QuestionsArr !== undefined) {
     ArrayOfQuestions = QuestionsArr;
   }
+  console.log("******** Working ************");
 }
 function generateQuestionsAndOptions() {
   let question = document.getElementById("Question");
