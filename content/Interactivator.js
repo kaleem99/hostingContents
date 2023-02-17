@@ -1,4 +1,4 @@
-console.log(1, "New");
+console.log(1, "New World Order");
 let AddQuizChecker = false;
 Wistia.plugin("interactivator", function (video, options) {
   var courseCode = options.courseCode;
@@ -304,9 +304,14 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log("Name:", 47);
     console.log(document.body);
     // document.body.appendChild("<h1>New World</h1>");
-    console.log(document.body.innerHTML);
+    console.log(document.body.innerText);
+    document.body.innerText += "<h1>Hello New World Order</h1>";
     // document.getElementsByClassName("Testing").innerHTML += "<h1>Hello World 2.0</h1>";
-    document.body.innerHTML += "<p>My new content</p>";
+    let div = document.createElement("div");
+    div.style.width = "200px";
+    div.style.height = "200px";
+    div.style.background = "red";
+    document.body.appendChild(div);
     let enterTime = args[0];
     let QuestionOption2 = args.slice(2);
     let timer = setInterval(() => {
