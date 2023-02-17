@@ -319,6 +319,8 @@ Wistia.plugin("interactivator", function (video, options) {
         console.log("stopped");
         if (!AddQuizChecker) {
           const para = document.createElement("div");
+          const btn = document.createElement("button");
+          btn.value = "Click Me!";
           para.setAttribute("class", "democlass");
           para.style.width = "570px";
           para.style.height = "320px";
@@ -332,7 +334,7 @@ Wistia.plugin("interactivator", function (video, options) {
           para.style.backgroundColor = "red";
           para.style.margin = "auto";
           let videoColumn = document.body;
-          para.appendChild("<button>Click Me!</button");
+          para.appendChild(btn);
           videoColumn.appendChild(para);
           //   let body = "";
           //   for (let i = 0; i < QuestionOption2.length; i++) {
