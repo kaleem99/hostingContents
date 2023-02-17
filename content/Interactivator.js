@@ -1,4 +1,4 @@
-console.log(0, "Testing 2.0");
+console.log(1, "New");
 let AddQuizChecker = false;
 Wistia.plugin("interactivator", function (video, options) {
   var courseCode = options.courseCode;
@@ -304,9 +304,9 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log("Name:", 47);
     console.log(document.body);
     // document.body.appendChild("<h1>New World</h1>");
-    console.log(document.getElementById("UniqueEmbedDiv"));
+    console.log(document.body.innerHTML);
     // document.getElementsByClassName("Testing").innerHTML += "<h1>Hello World 2.0</h1>";
-
+    document.body.innerHTML += "<p>My new content</p>";
     let enterTime = args[0];
     let QuestionOption2 = args.slice(2);
     let timer = setInterval(() => {
