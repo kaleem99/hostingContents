@@ -1,4 +1,4 @@
-console.log(99, "Testing");
+console.log(10000, "Testing");
 let AddQuizChecker = false;
 Wistia.plugin("interactivator", function (video, options) {
   var courseCode = options.courseCode;
