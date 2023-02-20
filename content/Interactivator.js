@@ -335,7 +335,7 @@ Wistia.plugin("interactivator", function (video, options) {
       eval(iframeSrc[i].replace(/%22/gi, "'").replace(/%20/gi, " "));
     }
   }
-  }
+ 
 
   function playbuzz(enterTime, endTime, link, scale, yAxis) {
     // Legacy function, needs some work. Haven't got this to work properly in the new Interactivator yet
