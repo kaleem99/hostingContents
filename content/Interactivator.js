@@ -324,9 +324,10 @@ Wistia.plugin("interactivator", function (video, options) {
         correct: correctOption,
       },
     ];
-    quizComplete(timeArr, objectArr);
-
-    console.log(timeArr);
+//     quizComplete(timeArr, objectArr);
+	console.log(document.getElementById("InputSection"));
+    	console.log(timeArr);
+	console.log(objectArr);
 
     // let enterTime = args[0];
     // let QuestionOption2 = args.slice(2);
