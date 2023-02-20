@@ -96,11 +96,17 @@ _wq.push({
       console.log("vide playing.")
       document.getElementById("section").style.display = "none";
     });
-    video.bind("secondchange", function () {
+//     video.bind("secondchange", function () {
+//       if (Math.floor(video.time()) === isQuizComplete[quizIndex]) {
+//         stop();
+//       }
+//     });
+      let timer = setInterval(() => {
+      console.log(video.time(), isQuizComplete[quizIndex]);
       if (Math.floor(video.time()) === isQuizComplete[quizIndex]) {
         stop();
       }
-    });
+  }, 1000)
     window.setInterval(play, 1000);
   },
 });
