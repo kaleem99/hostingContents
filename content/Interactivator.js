@@ -300,7 +300,10 @@ Wistia.plugin("interactivator", function (video, options) {
     }, 1000);
   }
   function Add_Quiz(...args) {
-	  let newArgs = args.filter((data) => data !== "" && data);
+    console.log(args);
+    let newArgs = args.filter((data) => data !== "" && data);
+    console.log("********");
+    console.log(newArgs);
     timeStop = parseInt(newArgs[0]);
     optionQuestions = newArgs.slice(2, newArgs.length - 1);
     correctOption = newArgs.pop();
@@ -324,18 +327,48 @@ Wistia.plugin("interactivator", function (video, options) {
     quizComplete(timeArr, objectArr);
 
     console.log(timeArr);
+
+    // let enterTime = args[0];
+    // let QuestionOption2 = args.slice(2);
+    // let timer = setInterval(() => {
+    //   console.log(parseInt(video.time()), parseInt(enterTime));
+    //   if (parseInt(video.time()) == parseInt(enterTime)) {
+    //     video.pause();
+    //     console.log("stopped");
+    //     // if (!AddQuizChecker) {
+    //     //   const para = document.createElement("div");
+    //     //   const btn = document.createElement("button");
+    //     //   btn.innerText = "Click Me!";
+    //     //   para.setAttribute("class", "democlass");
+    //     //   para.style.width = "570px";
+    //     //   para.style.height = "320px";
+    //     //   para.style.opacity = "0.5";
+    //     //   para.style.bottom = "0";
+    //     //   para.style.top = "0";
+    //     //   para.style.left = "0";
+    //     //   para.style.right = "0";
+    //     //   para.style.zIndex = 99;
+    //     //   para.style.position = "absolute";
+    //     //   para.style.backgroundColor = "red";
+    //     //   para.style.margin = "auto";
+    //     //   let videoColumn = document.body;
+    //     //   para.appendChild(btn);
+    //     //   videoColumn.appendChild(para);
+    //     //     let body = "";
+    //     //     for (let i = 0; i < QuestionOption2.length; i++) {
+    //     //       body += ` <button class="" id='Option ${
+    //     //         i + 1
+    //     //       }' onclick="changeAnswer(\`Option ${i + 1}\`)" tabindex="0"> ${
+    //     //         QuestionOption2[i]
+    //     //       }</button><br /><br />`;
+    //     //     }
+    //     //     videoColumn.innerHTML += `<h1 id="Question">${args[2]}</h1><br /><div id="InputOptions">${body}</div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div>`;
+    //     // }
+    //     clearInterval(timer);
+    //     AddQuizChecker = true;
+    //   }
+    // }, 1000);
   }
-  let iframeSrc = document.querySelector("iframe").src.toString().split(";");
-  for (let i = 0; i < iframeSrc.length; i++) {
-    if (
-      iframeSrc[i][0] === "A" &&
-      iframeSrc[i][1] === "d" &&
-      iframeSrc[i][2] === "d"
-    ) {
-      eval(iframeSrc[i].replace(/%22/gi, "'").replace(/%20/gi, " "));
-    }
-  }
- 
 
   function playbuzz(enterTime, endTime, link, scale, yAxis) {
     // Legacy function, needs some work. Haven't got this to work properly in the new Interactivator yet
