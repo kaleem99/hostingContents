@@ -70,10 +70,13 @@ window._wq = window._wq || [];
 _wq.push({
   id: videoId,
   onReady: function (video) {
+    console.log(video);
+    console.log(videoId);
     function stop() {
       video.pause();
+      console.log(200, 200)
       if (ArrayOfQuestions.length > 0) {
-        console.log(100);
+        console.log(111);
         generateQuestionsAndOptions();
       }
       document.getElementById("section").style.display = "inline";
