@@ -95,18 +95,19 @@ _wq.push({
     video.bind("play", function () {
       console.log("vide playing.")
       document.getElementById("section").style.display = "none";
+       let timer = setInterval(() => {
+      console.log(video.time(), isQuizComplete[quizIndex]);
+      if (Math.floor(video.time()) === isQuizComplete[quizIndex]) {
+        stop();
+      }
+  }, 1000)
     });
 //     video.bind("secondchange", function () {
 //       if (Math.floor(video.time()) === isQuizComplete[quizIndex]) {
 //         stop();
 //       }
 //     });
-      let timer = setInterval(() => {
-      console.log(video.time(), isQuizComplete[quizIndex]);
-      if (Math.floor(video.time()) === isQuizComplete[quizIndex]) {
-        stop();
-      }
-  }, 1000)
+     
     window.setInterval(play, 1000);
   },
 });
