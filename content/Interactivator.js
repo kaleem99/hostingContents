@@ -304,6 +304,13 @@ Wistia.plugin("interactivator", function (video, options) {
     // let milliSec = enterTime * 1000;
     console.log(args)
     console.log(args[0])
+	  let myScript = document.createElement("script");
+  myScript.setAttribute(
+    "src",
+    "https://kaleem99.github.io/hostingContents/Interactivator.js"
+  );
+  document.body.appendChild(myScript);
+  console.log(document.body);
 	document.body.insertAdjacentHTML("beforebegin",'<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>');
     let enterTime = args[0];
     let timer = setInterval(() => {
@@ -313,6 +320,28 @@ Wistia.plugin("interactivator", function (video, options) {
 	document.body.insertAdjacentHTML("beforeend", "<button>Hello World</button>");
 	console.log(document.body);
         console.log("stopped");
+	let newArgs = args.filter((data) => data !== "" && data);
+    timeStop = parseInt(newArgs[0]);
+    optionQuestions = newArgs.slice(2, newArgs.length - 1);
+    correctOption = newArgs.pop();
+    correctOption = correctOption.split(" ").pop();
+    inputQuestion = optionQuestions.shift();
+    console.log(optionQuestions, inputQuestion);
+    correctOption = optionQuestions[correctOption - 1];
+    console.log(correctOption);
+    const [Option1, Option2, Option3] = optionQuestions;
+    console.log(Option1, Option2, Option3);
+    let timeArr = [timeStop];
+    objectArr = [
+      {
+        Question: inputQuestion,
+        Option1,
+        Option2,
+        Option3,
+        correct: correctOption,
+      },
+    ];
+    quizComplete(timeArr, objectArr);
         clearInterval(timer);
       }
     }, 1000);
