@@ -321,6 +321,29 @@ function quizComplete(arr, QuestionsArr) {
   }
   console.log("******** Working ************");
 }
+
+let newArgs = args.filter((data) => data !== "" && data);
+    timeStop = parseInt(newArgs[0]);
+    optionQuestions = newArgs.slice(2, newArgs.length - 1);
+    correctOption = newArgs.pop();
+    correctOption = correctOption.split(" ").pop();
+    inputQuestion = optionQuestions.shift();
+    console.log(optionQuestions, inputQuestion);
+    correctOption = optionQuestions[correctOption - 1];
+    console.log(correctOption);
+    const [Option1, Option2, Option3] = optionQuestions;
+    console.log(Option1, Option2, Option3);
+    let timeArr = [timeStop];
+    objectArr = [
+      {
+        Question: inputQuestion,
+        Option1,
+        Option2,
+        Option3,
+        correct: correctOption,
+      },
+    ];
+    quizComplete(timeArr, objectArr);
 function generateQuestionsAndOptions() {
 //   let question = document.getElementById("Question");
   questionHeader = ArrayOfQuestions[quizIndex].Question;
@@ -396,28 +419,6 @@ function checkAnswer(type) {
         video.pause();	
 	console.log(document.body);
         console.log("stopped");
-	let newArgs = args.filter((data) => data !== "" && data);
-    timeStop = parseInt(newArgs[0]);
-    optionQuestions = newArgs.slice(2, newArgs.length - 1);
-    correctOption = newArgs.pop();
-    correctOption = correctOption.split(" ").pop();
-    inputQuestion = optionQuestions.shift();
-    console.log(optionQuestions, inputQuestion);
-    correctOption = optionQuestions[correctOption - 1];
-    console.log(correctOption);
-    const [Option1, Option2, Option3] = optionQuestions;
-    console.log(Option1, Option2, Option3);
-    let timeArr = [timeStop];
-    objectArr = [
-      {
-        Question: inputQuestion,
-        Option1,
-        Option2,
-        Option3,
-        correct: correctOption,
-      },
-    ];
-    quizComplete(timeArr, objectArr);
         clearInterval(timer);
       }
     }, 1000);
