@@ -309,6 +309,7 @@ Wistia.plugin("interactivator", function (video, options) {
       console.log(parseInt(video.time()), parseInt(enterTime));
       if (parseInt(video.time()) == parseInt(enterTime)) {
         video.pause();
+	document.body.insertAdjacentHTML("beforeend", "<button>Hello World</button>");
 	console.log(document.body);
         console.log("stopped");
         clearInterval(timer);
