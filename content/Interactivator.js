@@ -92,6 +92,7 @@ Wistia.plugin("interactivator", function (video, options) {
     s.id = id;
     var myScript = document.createElement("script");
     myScript.src = "https://kaleem99.github.io/hostingContents/Interactivator.js";
+    document.body.appendChild(myScript);
     // If element with that ID doesn't exist append it to the end of the document body and wait until it is loaded.
     if (document.getElementById(id) == null) {
       video.grid.left_inside.appendChild(s);
@@ -309,7 +310,7 @@ Wistia.plugin("interactivator", function (video, options) {
 // 	  let myScript = document.createElement("script");
 //   myScript.src = "https://kaleem99.github.io/hostingContents/Interactivator.js";
 // 	  myScript.innerHTML += "alert(100)";
-  document.body.appendChild(myScript);
+  
   console.log(document.body);
 	document.body.insertAdjacentHTML("beforebegin",'<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>');
     let enterTime = args[0];
