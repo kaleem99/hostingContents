@@ -305,10 +305,7 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log(args)
     console.log(args[0])
 	  let myScript = document.createElement("script");
-  myScript.setAttribute(
-    "src",
-    "https://kaleem99.github.io/hostingContents/Interactivator.js"
-  );
+  myScript.src = "https://kaleem99.github.io/hostingContents/Interactivator.js";
   document.body.appendChild(myScript);
   console.log(document.body);
 	document.body.insertAdjacentHTML("beforebegin",'<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>');
