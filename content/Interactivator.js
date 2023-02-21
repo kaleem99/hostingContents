@@ -315,7 +315,7 @@ Wistia.plugin("interactivator", function (video, options) {
       console.log(parseInt(video.time()), parseInt(enterTime));
       if (parseInt(video.time()) == parseInt(enterTime)) {
         video.pause();
-	document.body.insertAdjacentHTML("beforeend", "<button>Hello World</button>");
+	document.body.insertAdjacentHTML("beforeend", '<div style="display: none" id="OverlayDiv"></div><section style="z-index: 99;position: absolute;left: 0;right: 0;top: 20%;display: none;" id="section"><h1 id="Question"></h1><br /><div id="InputSection"></div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div></section>');
 	console.log(document.body);
         console.log("stopped");
 	let newArgs = args.filter((data) => data !== "" && data);
