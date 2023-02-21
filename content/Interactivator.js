@@ -344,6 +344,7 @@ let newArgs = args.filter((data) => data !== "" && data);
       },
     ];
     quizComplete(timeArr, objectArr);
+	  console.log(document.body.parentElement);
 function generateQuestionsAndOptions() {
 //   let question = document.getElementById("Question");
   questionHeader = ArrayOfQuestions[quizIndex].Question;
