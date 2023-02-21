@@ -306,7 +306,7 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log(args[0])
     let enterTime = args[0];
     let timer = setInterval(() => {
-      console.log(parseInt(video.time(), parseInt(enterTime)));
+      console.log(parseInt(video.time()), parseInt(enterTime));
       if (parseInt(video.time()) == parseInt(enterTime)) {
         video.pause();
         console.log("stopped");
