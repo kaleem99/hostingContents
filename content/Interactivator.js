@@ -302,6 +302,8 @@ Wistia.plugin("interactivator", function (video, options) {
   }
   function Add_Quiz(...args) {
     // let milliSec = enterTime * 1000;
+    console.log(args)
+    console.log(args[0])
     let enterTime = args[0];
     let timer = setInterval(() => {
       console.log(parseInt(video.time(), parseInt(enterTime)));
