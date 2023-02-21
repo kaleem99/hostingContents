@@ -307,13 +307,10 @@ Wistia.plugin("interactivator", function (video, options) {
 // 	  Testing Interactivator.js
 	  let quizIndex = 0;
 let optionChosen = "";
-let videoId = document.querySelector("iframe").src;
 let isQuizComplete = "";
 let countButtons = 0;
 let ArrayOfQuestions = [];
 let idElementName = "OverlayDiv";
-videoId = videoId.slice(0, videoId.indexOf("?"));
-videoId = videoId.slice(videoId.lastIndexOf("/") + 1, videoId.length);
 document.querySelector("iframe").allowFullscreen = false;
 function quizComplete(arr, QuestionsArr) {
   console.log(arr, QuestionsArr);
