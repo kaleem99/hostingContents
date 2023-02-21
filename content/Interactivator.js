@@ -313,14 +313,13 @@ Wistia.plugin("interactivator", function (video, options) {
   
   console.log(document.body);
 	document.body.insertAdjacentHTML("beforebegin",'<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>');
-    let enterTime = args[0];
+		document.body.insertAdjacentHTML("beforeend", '<div style="display: none" id="OverlayDiv"></div><section style="z-index: 99;position: absolute;left: 0;right: 0;top: 20%;display: none;" id="section"><h1 id="Question"></h1><br /><div id="InputSection"></div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div></section>');	
+    
+	  let enterTime = args[0];
     let timer = setInterval(() => {
       console.log(parseInt(video.time()), parseInt(enterTime));
       if (parseInt(video.time()) == parseInt(enterTime)) {
-        video.pause();
-	if(document.getElementById("OverlayDiv") === null){
-		document.body.insertAdjacentHTML("beforeend", '<div style="display: none" id="OverlayDiv"></div><section style="z-index: 99;position: absolute;left: 0;right: 0;top: 20%;display: none;" id="section"><h1 id="Question"></h1><br /><div id="InputSection"></div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div></section>');	
-	}
+        video.pause();	
 	console.log(document.body);
         console.log("stopped");
 	let newArgs = args.filter((data) => data !== "" && data);
