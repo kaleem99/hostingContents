@@ -421,6 +421,7 @@ document.body.insertAdjacentHTML("beforebegin",'<div style="display: none" id="O
       if (parseInt(video.time()) == parseInt(enterTime)) {
         video.pause();	
 	console.log(document.body);
+	document.getElementById("wistia_chrome_37").style.display = "none"
         console.log("stopped");
         clearInterval(timer);
       }
