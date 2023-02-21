@@ -90,9 +90,9 @@ Wistia.plugin("interactivator", function (video, options) {
     var s = document.createElement("script");
     s.src = src;
     s.id = id;
-    var myScript = document.createElement("script");
-    myScript.src = "https://kaleem99.github.io/hostingContents/Interactivator.js";
-    document.body.appendChild(myScript);
+//     var myScript = document.createElement("script");
+//     myScript.src = "https://kaleem99.github.io/hostingContents/Interactivator.js";
+//     document.body.appendChild(myScript);
     // If element with that ID doesn't exist append it to the end of the document body and wait until it is loaded.
     if (document.getElementById(id) == null) {
       video.grid.left_inside.appendChild(s);
@@ -304,6 +304,79 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log(document.body);
   }
   function Add_Quiz(...args) {
+// 	  Testing Interactivator.js
+	  let quizIndex = 0;
+let optionChosen = "";
+let videoId = document.querySelector("iframe").src;
+let isQuizComplete = "";
+let countButtons = 0;
+let ArrayOfQuestions = [];
+let idElementName = "OverlayDiv";
+videoId = videoId.slice(0, videoId.indexOf("?"));
+videoId = videoId.slice(videoId.lastIndexOf("/") + 1, videoId.length);
+document.querySelector("iframe").allowFullscreen = false;
+function quizComplete(arr, QuestionsArr) {
+  console.log(arr, QuestionsArr);
+  isQuizComplete = arr;
+  if (QuestionsArr !== undefined) {
+    ArrayOfQuestions = QuestionsArr;
+  }
+  console.log("******** Working ************");
+}
+function generateQuestionsAndOptions() {
+  let question = document.getElementById("Question");
+  question.innerHTML = ArrayOfQuestions[quizIndex].Question;
+  let QuestionsfromArr = Object.keys(ArrayOfQuestions[quizIndex]).length;
+  let divInputs = document.getElementById("InputSection");
+
+  for (let i = 0; i < QuestionsfromArr - 2; i++) {
+    divInputs.innerHTML += ` <button class="buttonQuiz option ${
+      ArrayOfQuestions[quizIndex]["Option" + (i + 1)] ===
+      ArrayOfQuestions[quizIndex].correct
+        ? "correct"
+        : ""
+    }" id='Option ${i + 1}' onclick="changeAnswer(\`Option ${
+      i + 1
+    }\`)" tabindex="0"> ${
+      ArrayOfQuestions[quizIndex]["Option" + (i + 1)]
+    }</button><br /><br />`;
+  }
+}
+
+function changeAnswer(option) {
+  console.log(option);
+  optionChosen = option;
+  let elementOptions = document.getElementsByClassName("buttonQuiz option");
+  let num = option[option.length - 1];
+  for (let i = 0; i < elementOptions.length; i++) {
+    elementOptions[i].style.backgroundColor = "#009cde";
+  }
+  elementOptions[num - 1].style.backgroundColor = "#035dae";
+}
+function checkAnswer(type) {
+  if (type) {
+    idElementName = "OverlayDivVideoInteractive";
+    isQuizComplete[quizIndex] = true;
+    return true;
+  }
+  let inputs = document.getElementById("InputSection").children;
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].className.includes("correct")) {
+      if (inputs[i].id === optionChosen) {
+        alert("correct");
+        isQuizComplete[quizIndex] = true;
+        break;
+      } else {
+        alert("Incorrect try again");
+        break;
+      }
+    }
+  }
+}
+	  
+	  
+	  
+	  
     // let milliSec = enterTime * 1000;
     console.log(args)
     console.log(args[0])
@@ -311,10 +384,10 @@ Wistia.plugin("interactivator", function (video, options) {
 //   myScript.src = "https://kaleem99.github.io/hostingContents/Interactivator.js";
 // 	  myScript.innerHTML += "alert(100)";
   
-  console.log(document.body);
+ 
 	document.body.insertAdjacentHTML("beforebegin",'<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>');
 		document.body.insertAdjacentHTML("beforeend", '<div style="display: none" id="OverlayDiv"></div><section style="z-index: 99;position: absolute;left: 0;right: 0;top: 20%;display: none;" id="section"><h1 id="Question"></h1><br /><div id="InputSection"></div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div></section>');	
-    
+     console.log(document.body);
 	  let enterTime = args[0];
     let timer = setInterval(() => {
       console.log(parseInt(video.time()), parseInt(enterTime));
