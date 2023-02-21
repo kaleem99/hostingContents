@@ -304,6 +304,7 @@ Wistia.plugin("interactivator", function (video, options) {
     // let milliSec = enterTime * 1000;
     console.log(args)
     console.log(args[0])
+	document.body.insertAdjacentHTML("beforebegin",'<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>');
     let enterTime = args[0];
     let timer = setInterval(() => {
       console.log(parseInt(video.time()), parseInt(enterTime));
