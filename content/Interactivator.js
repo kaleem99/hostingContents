@@ -410,8 +410,8 @@ function checkAnswer(type) {
   
 
 document.body.insertAdjacentHTML("beforebegin",'<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>');
-document.body.insertAdjacentHTML("beforebegin",'<div style="display: none" id="OverlayDiv"></div><section style="z-index: 99;position: absolute;left: 0;right: 0;top: 20%;display: none;" id="section"><h1 id="Question"></h1><br /><div id="InputSection"></div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div></section>');
-	
+document.body.insertAdjacentHTML("beforebegin",`<div style="display: none" id="OverlayDiv"></div><section style="z-index: 99;position: absolute;left: 0;right: 0;top: 20%;display: none;" id="section"><h1 id="Question">${questionHeader}</h1><br /><div id="InputSection">${OptionsDivInputs}</div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div></section>`);
+	console.log(document)
 	  generateQuestionsAndOptions();
 	  console.log(document.body);
 	  
