@@ -298,19 +298,18 @@ Wistia.plugin("interactivator", function (video, options) {
         clearInterval(timer);
       }
     }, 1000);
-	console.log(document.body)
+    console.log(document.body);
   }
   function Add_Quiz(...args) {
-  	 let milliSec = enterTime * 1000;
+    let milliSec = enterTime * 1000;
     let timer = setInterval(() => {
-      console.log(parseInt(video.time(), parseInt(enterTime));
+      console.log(parseInt(video.time(), parseInt(enterTime)));
       if (parseInt(video.time()) == parseInt(enterTime)) {
         video.pause();
         console.log("stopped");
         clearInterval(timer);
       }
     }, 1000);
-	  
   }
 
   function playbuzz(enterTime, endTime, link, scale, yAxis) {
