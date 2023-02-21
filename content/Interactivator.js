@@ -311,7 +311,6 @@ let isQuizComplete = "";
 let countButtons = 0;
 let ArrayOfQuestions = [];
 let idElementName = "OverlayDiv";
-document.querySelector("iframe").allowFullscreen = false;
 function quizComplete(arr, QuestionsArr) {
   console.log(arr, QuestionsArr);
   isQuizComplete = arr;
