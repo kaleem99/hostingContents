@@ -301,9 +301,10 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log(document.body);
   }
   function Add_Quiz(...args) {
+    // let milliSec = enterTime * 1000;
+    let enterTime = args[0];
     let timer = setInterval(() => {
-	   console.log(args);
-      console.log(parseInt(video.time());
+      console.log(parseInt(video.time(), parseInt(enterTime)));
       if (parseInt(video.time()) == parseInt(enterTime)) {
         video.pause();
         console.log("stopped");
