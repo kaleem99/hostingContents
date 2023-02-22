@@ -18,8 +18,8 @@ let iframeSrcArr = document.querySelector("iframe").src.toString().split(";");
     optionsObj.Question = inputQuestion;
     optionsObj.correct = correctOption;
 
-    for (let i = 0; i < arr.length; i++) {
-      optionsObj["Option" + (i + 1)] = arr[i];
+    for (let i = 0; i < optionQuestions.length; i++) {
+      optionsObj["Option" + (i + 1)] = optionQuestions[i];
     }
     OptionsArr.push(optionsObj);
   }
