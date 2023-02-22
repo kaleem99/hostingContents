@@ -2,6 +2,7 @@ let iframeSrcArr = document.querySelector("iframe").src.toString().split(";");
   console.log(iframeSrcArr);
   let funcArr = [];
   let timeArr = [];
+  let optionsObj = {};
   let OptionsArr = [];
   function Add_Quiz(...args) {
     let newArgs = args.filter((data) => data !== "" && data);
@@ -13,16 +14,14 @@ let iframeSrcArr = document.querySelector("iframe").src.toString().split(";");
     console.log(optionQuestions, inputQuestion);
     correctOption = optionQuestions[correctOption - 1];
     console.log(correctOption);
-    const [Option1, Option2, Option3] = optionQuestions;
-    console.log(Option1, Option2, Option3);
     timeArr.push(parseInt(timeStop));
-    OptionsArr.push({
-      Question: inputQuestion,
-      Option1,
-      Option2,
-      Option3,
-      correct: correctOption,
-    });
+    optionsObj.Question = inputQuestion;
+    optionsObj.correct = correctOption;
+
+    for (let i = 0; i < arr.length; i++) {
+      optionsObj["Option" + (i + 1)] = arr[i];
+    }
+    OptionsArr.push(optionsObj);
   }
   for (let i = 0; i < iframeSrcArr.length; i++) {
     if (
