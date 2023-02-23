@@ -10,7 +10,10 @@ Wistia.plugin("interactivator", function (video, options) {
   // Top and bottom (outside of 'cut here') are only used outisde of Interactivator tool, i.e. Review page and in embed code on OLC.
   // Middle part used in Interactivator tool from Flask server, with different arguments passed in.
   // -- cut here --
-
+	function changeAnswer(option) {
+		console.log(option);
+		console.log("*".repeat(100));
+	}
   if (options.bypassLowerThird == true) {
     let lwrThirdData = true;
   }
