@@ -307,7 +307,6 @@ Wistia.plugin("interactivator", function (video, options) {
       startPlay = false;
     }
     endTime = parseFloat(enterTime) + 0.625;
-
     var generator_background = backgroundAndTrans(startChap, endTime);
     generator_background.style.display = "none";
     generator_background.classList.add("chapter_background");
@@ -322,11 +321,11 @@ Wistia.plugin("interactivator", function (video, options) {
       // const button = document.createElement("button");
       // button.innerHTML = optionQuestions[i];
       // document.getElementById("QuizValue").appendChild(button)
-      chapterText.innerHTML += `<button class="buttonQuiz option ${
+      chapterText.innerHTML += `<br><button class="buttonQuiz option ${
         i + 1 == CorrectOption[CorrectOption.length - 1] ? "correct" : ""
-      }" onClick="console.log(${i})">${optionQuestions[i]}</button><br>`;
+      }" onClick="console.log(${i})">${optionQuestions[i]}</button>`;
     }
-
+    document.querySelector("iframe").insertAdjacentHTML("beforebegin", '<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>')
     chapterText.style.pointerEvents = "all";
     chapterText.classList.add("chapterText");
 
@@ -397,11 +396,11 @@ Wistia.plugin("interactivator", function (video, options) {
       function (withinInterval) {
         if (withinInterval && video.state() == "playing") {
           video.pause();
-          setTimeout(function () {
-            if (withinInterval) {
-              video.play();
-            }
-          }, 10000);
+          // setTimeout(function () {
+          //   if (withinInterval) {
+          //     video.play();
+          //   }
+          // }, 10000);
         }
         if (generator_background) {
           killSwitch(generator_background.parentElement);
