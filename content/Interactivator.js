@@ -289,9 +289,9 @@ Wistia.plugin("interactivator", function (video, options) {
 
   // Interactive Functions start here
   function Video_Interactivity_Timestamp(enterTime, endTime) {
-    let milliSec = enterTime * 1000;
     let timer = setInterval(() => {
       parseInt(video.time() == parseInt(enterTime));
+	    console.log(parseInt(video.time()), parseInt(enterTime));
       if (parseInt(video.time()) == parseInt(enterTime)) {
         video.pause();
         console.log("stopped");
@@ -301,7 +301,9 @@ Wistia.plugin("interactivator", function (video, options) {
   }
   function Add_Quiz(...args) {
     // Chapter automatically creates a background and transition animation.
+	  console.log(args);
     let enterTime = args[0];
+	  console.log(enterTime);
     var startChap = parseFloat(enterTime) - 0.625;
     // Make sure it doesn't try to start before the video starts
     if (startChap < 0) {
