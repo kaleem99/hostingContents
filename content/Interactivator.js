@@ -1,5 +1,3 @@
-console.log(1, "Testing");
-let AddQuizChecker = false;
 Wistia.plugin("interactivator", function (video, options) {
   var courseCode = options.courseCode;
   var chapters = options.chapters;
@@ -11,6 +9,10 @@ Wistia.plugin("interactivator", function (video, options) {
   // Top and bottom (outside of 'cut here') are only used outisde of Interactivator tool, i.e. Review page and in embed code on OLC.
   // Middle part used in Interactivator tool from Flask server, with different arguments passed in.
   // -- cut here --
+
+  if (options.bypassLowerThird == true) {
+    let lwrThirdData = true;
+  }
 
   let iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   let iOSSafe = false;
@@ -277,6 +279,17 @@ Wistia.plugin("interactivator", function (video, options) {
     }
   }
 
+  function Video_Interactivity_Timestamp(enterTime, endTime) {
+    let timer = setInterval(() => {
+      console.log(parseInt(video.time() == parseInt(enterTime)));
+      if (parseInt(video.time()) == parseInt(enterTime)) {
+        video.pause();
+        console.log("stopped");
+        clearInterval(timer);
+      }
+    }, 1000);
+  }
+
   function addClassToFillPath(id) {
     // Adds a class to the fill path of a lottie animation so that it can be styled in CSS
     var elem = document.getElementById(id);
@@ -288,115 +301,6 @@ Wistia.plugin("interactivator", function (video, options) {
   }
 
   // Interactive Functions start here
-  function Video_Interactivity_Timestamp(enterTime, endTime) {
-    let timer = setInterval(() => {
-      parseInt(video.time() == parseInt(enterTime));
-	    console.log(parseInt(video.time()), parseInt(enterTime));
-      if (parseInt(video.time()) == parseInt(enterTime)) {
-        video.pause();
-        console.log("stopped");
-        clearInterval(timer);
-      }
-    }, 1000);
-  }
-  function Add_Quiz(...args) {
-    // Chapter automatically creates a background and transition animation.
-	  console.log(args);
-    let enterTime = args[0];
-	  console.log(enterTime);
-    var startChap = parseFloat(enterTime) - 0.625;
-    // Make sure it doesn't try to start before the video starts
-    if (startChap < 0) {
-      startChap = 0;
-    }
-    if (startChap == 0) {
-      startPlay = false;
-    }
-    endTime = parseFloat(enterTime) + 0.625;
-
-    var generator_background = backgroundAndTrans(startChap, endTime);
-    generator_background.style.display = "none";
-    generator_background.classList.add("chapter_background");
-    generator_background.style.pointerEvents = "none";
-    generator_background.id = "chapter_background/" + enterTime;
-    chapterText = document.createElement("div");
-    generator_background.appendChild(chapterText);
-    chapterText.innerHTML = "Quiz Generator Text";
-    chapterText.style.pointerEvents = "all";
-    chapterText.classList.add("chapterText");
-    chapterLine = document.createElement("div");
-    chapterLine.classList.add("chapterLine");
-
-    // Line must be slightly longer than the text
-    function addLine(chapterText) {
-      if (chapterText.offsetWidth > 0) {
-        chapterLine.style.width = chapterText.offsetWidth + 100 + "px";
-        chapterText.appendChild(chapterLine);
-      } else {
-        setTimeout(function () {
-          addLine(chapterText);
-        }, 500);
-      }
-    }
-    addLine(chapterText);
-
-    // Bind the chapter animation to the video
-    video.bind("betweentimes", startChap, endTime, function (withinInterval) {
-      if (withinInterval) {
-        makeiOSSafe();
-        generator_background = document.getElementById(
-          "chapter_background/" + enterTime
-        );
-        generator_background.style.display = "flex";
-        // hide all other generator_backgrounds
-        for (
-          var i = 0;
-          i < document.getElementsByClassName("generator_background").length;
-          i++
-        ) {
-          if (
-            document.getElementsByClassName("generator_background")[i] !=
-            generator_background
-          ) {
-            document.getElementsByClassName("generator_background")[
-              i
-            ].style.display = "none";
-          }
-        }
-      } else {
-        generator_background = document.getElementById(
-          "chapter_background/" + enterTime
-        );
-        if (generator_background) {
-          generator_background.style.display = "none";
-        }
-      }
-      if (generator_background) {
-        killSwitch(generator_background.parentElement);
-      }
-    });
-
-    // The chapter takes up no real time in the video, so we have to pause and play again after a few seconds
-    // Note, this is a little buggy
-    video.bind(
-      "betweentimes",
-      parseFloat(enterTime),
-      endTime,
-      function (withinInterval) {
-        if (withinInterval && video.state() == "playing") {
-          video.pause();
-          setTimeout(function () {
-            if (withinInterval) {
-              video.play();
-            }
-          }, 10000);
-        }
-        if (generator_background) {
-          killSwitch(generator_background.parentElement);
-        }
-      }
-    );
-  }
 
   function playbuzz(enterTime, endTime, link, scale, yAxis) {
     // Legacy function, needs some work. Haven't got this to work properly in the new Interactivator yet
@@ -412,6 +316,10 @@ Wistia.plugin("interactivator", function (video, options) {
 
     if (scale == "") {
       scale = 1;
+    }
+    // if link ends with 'edit' remove it
+    if (link.split("/")[link.split("/").length - 1] == "edit") {
+      link = link.split("/").slice(0, -1).join("/");
     }
     var id = link.split("/")[link.split("/").length - 1];
     if (id == "") {
