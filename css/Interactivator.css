@@ -61,11 +61,15 @@ section {
 }
 
 #submit {
-  background-color: #003865;
-  border-radius: 24px;
-  padding: 15px 24px;
-  transition-duration: 0.2s;
-  height: auto;
+    background-color: #003865;
+    border-radius: 10px;
+    /* padding: 15px 24px; */
+    width: 330px;
+    margin-top: 40px;
+    color: white;
+    height: 16px;
+    transition-duration: 0.2s;
+    height: auto;
 }
 
 #submit:hover,
