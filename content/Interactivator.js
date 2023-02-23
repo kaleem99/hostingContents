@@ -333,7 +333,7 @@ Wistia.plugin("interactivator", function (video, options) {
       '<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>'
     );
     document.body.insertAdjacentHTML(
-      "beforeend",
+      "beforebegin",
       `<script>let optionChosen = ""; function changeAnswer(option) { console.log(option); optionChosen = option; let elementOptions = document.getElementsByClassName("buttonQuiz option"); let num = option[option.length - 1]; for (let i = 0; i < elementOptions.length; i++) { elementOptions[i].style.backgroundColor = "#009cde"; } elementOptions[num - 1].style.backgroundColor = "#035dae"; } function checkAnswer(type) { if (type) {  return true; } let inputs = document.querySelectorAll(".buttonQuiz"); for (let i = 0; i < inputs.length; i++) { if (inputs[i].className.includes("correct")) { if (inputs[i].id === optionChosen) { alert("correct"); break; } else { alert("Incorrect try again"); break; } } } }</script>`
     );
     chapterText.style.pointerEvents = "all";
