@@ -418,6 +418,7 @@ Wistia.plugin("interactivator", function (video, options) {
         }
       }
     );
+     console.log(document.querySelectorAll(".buttonQuiz"));
   }
 
   function addClassToFillPath(id) {
