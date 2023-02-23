@@ -316,20 +316,23 @@ Wistia.plugin("interactivator", function (video, options) {
     chapterText = document.createElement("div");
 
     generator_background.appendChild(chapterText);
+   
+
+    chapterText.innerHTML = textQuestion;
+    chapterText.innerHTML += "<button>Click Me</button>"
+    chapterText.style.pointerEvents = "all";
+    chapterText.classList.add("chapterText");
+
+    chapterText.setAttribute("id", "QuizValue")
+    chapterLine = document.createElement("div");
+    chapterLine.classList.add("chapterLine");
+   
+    // Line must be slightly longer than the text
     for (let i = 0; i < optionQuestions.length; i++) {
       const button = document.createElement("button");
       button.innerHTML = optionQuestions[i];
-      generator_background.appendChild(button);
+      document.getElementById("QuizValue").appendChild(button)
     }
-
-    chapterText.innerHTML = textQuestion;
-    chapterText.insertAdjacentHTML("<button>Press Me!</button>")
-    chapterText.style.pointerEvents = "all";
-    chapterText.classList.add("chapterText");
-    chapterLine = document.createElement("div");
-    chapterLine.classList.add("chapterLine");
-
-    // Line must be slightly longer than the text
     function addLine(chapterText) {
       if (chapterText.offsetWidth > 0) {
         chapterLine.style.width = chapterText.offsetWidth + 100 + "px";
