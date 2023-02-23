@@ -323,6 +323,7 @@ Wistia.plugin("interactivator", function (video, options) {
     }
 
     chapterText.innerHTML = textQuestion;
+    chapterText.insertAdjacentHTML("<button>Press Me!</button>")
     chapterText.style.pointerEvents = "all";
     chapterText.classList.add("chapterText");
     chapterLine = document.createElement("div");
