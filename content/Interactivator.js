@@ -1,4 +1,4 @@
-console.log(10000, "Testing");
+console.log(1, "Testing");
 let AddQuizChecker = false;
 Wistia.plugin("interactivator", function (video, options) {
   var courseCode = options.courseCode;
@@ -90,9 +90,6 @@ Wistia.plugin("interactivator", function (video, options) {
     var s = document.createElement("script");
     s.src = src;
     s.id = id;
-//     var myScript = document.createElement("script");
-//     myScript.src = "https://kaleem99.github.io/hostingContents/Interactivator.js";
-//     document.body.appendChild(myScript);
     // If element with that ID doesn't exist append it to the end of the document body and wait until it is loaded.
     if (document.getElementById(id) == null) {
       video.grid.left_inside.appendChild(s);
@@ -301,137 +298,102 @@ Wistia.plugin("interactivator", function (video, options) {
         clearInterval(timer);
       }
     }, 1000);
-    console.log(document.body);
   }
   function Add_Quiz(...args) {
-// 	  Testing Interactivator.js
-	  let quizIndex = 0;
-let optionChosen = "";
-let isQuizComplete = "";
-let countButtons = 0;
-let ArrayOfQuestions = [];
-let idElementName = "OverlayDiv";
-let questionHeader = "";
-let OptionsDivInputs = "";
-function quizComplete(arr, QuestionsArr) {
-  console.log(arr, QuestionsArr);
-  isQuizComplete = arr;
-  if (QuestionsArr !== undefined) {
-    ArrayOfQuestions = QuestionsArr;
-  }
-  console.log("******** Working ************");
-}
+    // Chapter automatically creates a background and transition animation.
+    let enterTime = args[0];
+    var startChap = parseFloat(enterTime) - 0.625;
+    // Make sure it doesn't try to start before the video starts
+    if (startChap < 0) {
+      startChap = 0;
+    }
+    if (startChap == 0) {
+      startPlay = false;
+    }
+    endTime = parseFloat(enterTime) + 0.625;
 
-let newArgs = args.filter((data) => data !== "" && data);
-    timeStop = parseInt(newArgs[0]);
-    optionQuestions = newArgs.slice(2, newArgs.length - 1);
-    correctOption = newArgs.pop();
-    correctOption = correctOption.split(" ").pop();
-    inputQuestion = optionQuestions.shift();
-    console.log(optionQuestions, inputQuestion);
-    correctOption = optionQuestions[correctOption - 1];
-    console.log(correctOption);
-    const [Option1, Option2, Option3] = optionQuestions;
-    console.log(Option1, Option2, Option3);
-    let timeArr = [timeStop];
-    objectArr = [
-      {
-        Question: inputQuestion,
-        Option1,
-        Option2,
-        Option3,
-        correct: correctOption,
-      },
-    ];
-    quizComplete(timeArr, objectArr);
-    console.log(document.body.parentElement);
-	console.log(document.parentElement);
-	  console.log(document.querySelector("iframe"))
-function generateQuestionsAndOptions() {
-//   let question = document.getElementById("Question");
-  questionHeader = ArrayOfQuestions[quizIndex].Question;
-  let QuestionsfromArr = Object.keys(ArrayOfQuestions[quizIndex]).length;
-//   let divInputs = document.getElementById("InputSection");
+    var generator_background = backgroundAndTrans(startChap, endTime);
+    generator_background.style.display = "none";
+    generator_background.classList.add("chapter_background");
+    generator_background.style.pointerEvents = "none";
+    generator_background.id = "chapter_background/" + enterTime;
+    chapterText = document.createElement("div");
+    generator_background.appendChild(chapterText);
+    chapterText.innerHTML = "Quiz Generator Text";
+    chapterText.style.pointerEvents = "all";
+    chapterText.classList.add("chapterText");
+    chapterLine = document.createElement("div");
+    chapterLine.classList.add("chapterLine");
 
-  for (let i = 0; i < QuestionsfromArr - 2; i++) {
-    OptionsDivInputs += ` <button class="buttonQuiz option ${
-      ArrayOfQuestions[quizIndex]["Option" + (i + 1)] ===
-      ArrayOfQuestions[quizIndex].correct
-        ? "correct"
-        : ""
-    }" id='Option ${i + 1}' onclick="changeAnswer(\`Option ${
-      i + 1
-    }\`)" tabindex="0"> ${
-      ArrayOfQuestions[quizIndex]["Option" + (i + 1)]
-    }</button><br /><br />`;
-  }
-}
-
-function changeAnswer(option) {
-  console.log(option);
-  optionChosen = option;
-  let elementOptions = document.getElementsByClassName("buttonQuiz option");
-  let num = option[option.length - 1];
-  for (let i = 0; i < elementOptions.length; i++) {
-    elementOptions[i].style.backgroundColor = "#009cde";
-  }
-  elementOptions[num - 1].style.backgroundColor = "#035dae";
-}
-function checkAnswer(type) {
-  if (type) {
-    idElementName = "OverlayDivVideoInteractive";
-    isQuizComplete[quizIndex] = true;
-    return true;
-  }
-  let inputs = document.getElementById("InputSection").children;
-  for (let i = 0; i < inputs.length; i++) {
-    if (inputs[i].className.includes("correct")) {
-      if (inputs[i].id === optionChosen) {
-        alert("correct");
-        isQuizComplete[quizIndex] = true;
-        break;
+    // Line must be slightly longer than the text
+    function addLine(chapterText) {
+      if (chapterText.offsetWidth > 0) {
+        chapterLine.style.width = chapterText.offsetWidth + 100 + "px";
+        chapterText.appendChild(chapterLine);
       } else {
-        alert("Incorrect try again");
-        break;
+        setTimeout(function () {
+          addLine(chapterText);
+        }, 500);
       }
     }
-  }
-}
-	  
-	  
-	  
-	  generateQuestionsAndOptions();
-    // let milliSec = enterTime * 1000;
-    console.log(args)
-    console.log(args[0])
-// 	  let myScript = document.createElement("script");
-//   myScript.src = "https://kaleem99.github.io/hostingContents/Interactivator.js";
-// 	  myScript.innerHTML += "alert(100)";
-  
+    addLine(chapterText);
 
-document.body.insertAdjacentHTML("beforebegin",'<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>');
-document.body.insertAdjacentHTML("beforebegin",`<div style="display: none" id="OverlayDiv"></div><section style="z-index: 99;position: absolute;left: 0;right: 0;top: 20%;display: none;" id="section"><h1 id="Question">${questionHeader}</h1><br /><div id="InputSection">${OptionsDivInputs}</div><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"><strong>Submit</strong></button><br /><br /><div id="results"></div></section>`);
-	console.log(document)
-	  
-	  console.log(document.body);
-	  
-	  let enterTime = args[0];
-    let timer = setInterval(() => {
-      console.log(parseInt(video.time()), parseInt(enterTime));
-      if (parseInt(video.time()) == parseInt(enterTime)) {
-        video.pause();	
-	console.log(document.body);
-// 	document.getElementById("wistia_chrome_37").style.display = "none";
-	document.getElementById("OverlayDiv").style.display = "block"
-	document.getElementById("section").style.display = "block"
-        console.log("stopped");
-        clearInterval(timer);
+    // Bind the chapter animation to the video
+    video.bind("betweentimes", startChap, endTime, function (withinInterval) {
+      if (withinInterval) {
+        makeiOSSafe();
+        generator_background = document.getElementById(
+          "chapter_background/" + enterTime
+        );
+        generator_background.style.display = "flex";
+        // hide all other generator_backgrounds
+        for (
+          var i = 0;
+          i < document.getElementsByClassName("generator_background").length;
+          i++
+        ) {
+          if (
+            document.getElementsByClassName("generator_background")[i] !=
+            generator_background
+          ) {
+            document.getElementsByClassName("generator_background")[
+              i
+            ].style.display = "none";
+          }
+        }
+      } else {
+        generator_background = document.getElementById(
+          "chapter_background/" + enterTime
+        );
+        if (generator_background) {
+          generator_background.style.display = "none";
+        }
       }
-	if(video.state() === "playing"){
-	document.getElementById("OverlayDiv").style.display = "none"
-	document.getElementById("section").style.display = "none"
-	}
-    }, 1000);
+      if (generator_background) {
+        killSwitch(generator_background.parentElement);
+      }
+    });
+
+    // The chapter takes up no real time in the video, so we have to pause and play again after a few seconds
+    // Note, this is a little buggy
+    video.bind(
+      "betweentimes",
+      parseFloat(enterTime),
+      endTime,
+      function (withinInterval) {
+        if (withinInterval && video.state() == "playing") {
+          video.pause();
+          setTimeout(function () {
+            if (withinInterval) {
+              video.play();
+            }
+          }, 10000);
+        }
+        if (generator_background) {
+          killSwitch(generator_background.parentElement);
+        }
+      }
+    );
   }
 
   function playbuzz(enterTime, endTime, link, scale, yAxis) {
