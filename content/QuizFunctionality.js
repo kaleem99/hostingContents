@@ -1,4 +1,7 @@
 let optionChosen = "";
+console.log(100);
+console.log("************", 1000);
+console.log(document.querySelectorAll(".buttonQuiz"));
 function changeAnswer(option) {
   console.log(option);
   optionChosen = option;
