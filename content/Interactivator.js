@@ -290,8 +290,11 @@ Wistia.plugin("interactivator", function (video, options) {
     }, 1000);
   }
 
-function Add_Quiz(...args) {
+  function Add_Quiz(...args) {
     // Chapter automatically creates a background and transition animation.
+    const textQuestion = args[2];
+    const CorrectOption = args.pop();
+    const optionQuestions = args.filter((data) => data !== "").slice(3);
     console.log(args);
     let enterTime = args[0];
     console.log(enterTime);
@@ -311,8 +314,15 @@ function Add_Quiz(...args) {
     generator_background.style.pointerEvents = "none";
     generator_background.id = "chapter_background/" + enterTime;
     chapterText = document.createElement("div");
+
     generator_background.appendChild(chapterText);
-    chapterText.innerHTML = "Quiz Generator Text";
+    for (let i = 0; i < optionQuestions.length; i++) {
+      const button = document.createElement("button");
+      button.innerHTML = optionQuestions[i];
+      generator_background.appendChild(button);
+    }
+
+    chapterText.innerHTML = textQuestion;
     chapterText.style.pointerEvents = "all";
     chapterText.classList.add("chapterText");
     chapterLine = document.createElement("div");
@@ -388,7 +398,7 @@ function Add_Quiz(...args) {
       }
     );
   }
-	
+
   function addClassToFillPath(id) {
     // Adds a class to the fill path of a lottie animation so that it can be styled in CSS
     var elem = document.getElementById(id);
