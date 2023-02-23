@@ -6,6 +6,7 @@ Wistia.plugin("interactivator", function (video, options) {
   var outro = options.outro;
   let startPlay = true;
   let production = false;
+  let optionChosen = "";
   // Top and bottom (outside of 'cut here') are only used outisde of Interactivator tool, i.e. Review page and in embed code on OLC.
   // Middle part used in Interactivator tool from Flask server, with different arguments passed in.
   // -- cut here --
@@ -278,7 +279,36 @@ Wistia.plugin("interactivator", function (video, options) {
       return elem;
     }
   }
-
+  function changeAnswer(option) {
+    console.log(option);
+    optionChosen = option;
+    let elementOptions = document.getElementsByClassName("buttonQuiz option");
+    let num = option[option.length - 1];
+    for (let i = 0; i < elementOptions.length; i++) {
+      elementOptions[i].style.backgroundColor = "#009cde";
+    }
+    elementOptions[num - 1].style.backgroundColor = "#035dae";
+  }
+  function checkAnswer(type) {
+    if (type) {
+      // idElementName = "OverlayDivVideoInteractive";
+      // isQuizComplete[quizIndex] = true;
+      return true;
+    }
+    let inputs = document.querySelectorAll(".buttonQuiz");
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].className.includes("correct")) {
+        if (inputs[i].id === optionChosen) {
+          alert("correct");
+          // isQuizComplete[quizIndex] = true;
+          break;
+        } else {
+          alert("Incorrect try again");
+          break;
+        }
+      }
+    }
+  }
   function Video_Interactivity_Timestamp(enterTime, endTime) {
     let timer = setInterval(() => {
       console.log(parseInt(video.time()), parseInt(enterTime));
@@ -318,14 +348,19 @@ Wistia.plugin("interactivator", function (video, options) {
 
     chapterText.innerHTML = textQuestion;
     for (let i = 0; i < optionQuestions.length; i++) {
-      // const button = document.createElement("button");
-      // button.innerHTML = optionQuestions[i];
-      // document.getElementById("QuizValue").appendChild(button)
-      chapterText.innerHTML += `<br><button class="buttonQuiz option ${
+      chapterText.innerHTML += `<br><button id='Option ${
+        i + 1
+      }' class="buttonQuiz option ${
         i + 1 == CorrectOption[CorrectOption.length - 1] ? "correct" : ""
-      }" onClick="console.log(${i})">${optionQuestions[i]}</button>`;
+      }" onclick="changeAnswer(\`Option ${i + 1}\`)">${
+        optionQuestions[i]
+      }</button>`;
     }
-    document.body.insertAdjacentHTML("beforebegin", '<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>')
+    chapterText.innerHTML += `<button class="button" id="submit" onclick="checkAnswer()" tabindex="0"> <strong>Submit</strong></button>`;
+    document.body.insertAdjacentHTML(
+      "beforebegin",
+      '<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>'
+    );
     chapterText.style.pointerEvents = "all";
     chapterText.classList.add("chapterText");
 
