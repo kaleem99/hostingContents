@@ -336,14 +336,16 @@ Wistia.plugin("interactivator", function (video, options) {
       }</button>`;
     }
     chapterText.innerHTML += `<br><button class="button" id="submit" onclick="let options = document.querySelectorAll('.buttonQuiz');
+  let results = document.getElementById('results');
   for(let i = 0; i < options.length; i++){
     if(options[i].classList.contains('correct')){
-      if(options[i].id === CorrectOption){
-        alert('Correct')
+      if(options[i].id === 'Option 2'){
+        results.innerHTML = ('Correct')
         break;
       }
       else{
-        alert('Incorrect please try again.')
+        results.innerHTML = ('Incorrect please try again.')
+        break;
       }
     }
   }" tabindex="0"> <strong>Submit</strong></button>`;
