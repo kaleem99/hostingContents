@@ -338,7 +338,7 @@ Wistia.plugin("interactivator", function (video, options) {
     chapterText.innerHTML += `<br><button class="button" id="submit" onclick="let options = document.querySelectorAll('.buttonQuiz');
   for(let i = 0; i < options.length; i++){
     if(options[i].classList.contains('correct')){
-      if(options[i].id === 'Option 2'){
+      if(options[i].id === CorrectOption){
         alert('Correct')
         break;
       }
