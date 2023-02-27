@@ -319,8 +319,8 @@ Wistia.plugin("interactivator", function (video, options) {
     chapterText = document.createElement("div");
 
     generator_background.appendChild(chapterText);
-
-    chapterText.innerHTML = textQuestion;
+    chapterText.innerHTML += `<h1 id="results"></h1><br>`;
+    chapterText.innerHTML += textQuestion;
     for (let i = 0; i < optionQuestions.length; i++) {
       chapterText.innerHTML += `<br><button id='Option ${
         i + 1
