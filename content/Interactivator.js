@@ -326,7 +326,12 @@ Wistia.plugin("interactivator", function (video, options) {
         i + 1
       }' class="buttonQuiz option ${
         i + 1 == CorrectOption[CorrectOption.length - 1] ? "correct" : ""
-      }" onclick="changeAnswer(\`Option ${i + 1}\`)">${
+      }" onclick="let btnOpts = document.querySelectorAll('.buttonQuiz');
+    for(let i = 0; i < btnOpts.length; i++){
+      btnOpts[i].classList.remove('correct')
+    }
+    this.classList.add('correct')
+    ">${
         optionQuestions[i]
       }</button>`;
     }
