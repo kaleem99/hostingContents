@@ -335,7 +335,18 @@ Wistia.plugin("interactivator", function (video, options) {
         optionQuestions[i]
       }</button>`;
     }
-    chapterText.innerHTML += `<br><button class="button" id="submit" onclick="checkAnswer()" tabindex="0"> <strong>Submit</strong></button>`;
+    chapterText.innerHTML += `<br><button class="button" id="submit" onclick="let options = document.querySelectorAll('.buttonQuiz');
+  for(let i = 0; i < options.length; i++){
+    if(options[i].classList.contains('correct')){
+      if(options[i].id === 'Option 2'){
+        alert('Correct')
+        break;
+      }
+      else{
+        alert('Incorrect please try again.')
+      }
+    }
+  }" tabindex="0"> <strong>Submit</strong></button>`;
     document.body.insertAdjacentHTML(
       "beforebegin",
       '<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>'
