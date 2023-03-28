@@ -69,3 +69,12 @@
     font-size: 12px;
     margin-top: 10px;
   }
+ #edxImage {
+    width: 150px;
+    height: 70px;
+  }
+  #fastCompanyText {
+    border-top: 3px solid #0c262b;
+    width: 470px;
+    height: 50px;
+  }
