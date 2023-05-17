@@ -78,3 +78,8 @@
     width: 470px;
     height: 50px;
   }
+  .aTag{
+    text-decoration-line: none;
+    color: black;
+    font-weight: 700; 
+  }
