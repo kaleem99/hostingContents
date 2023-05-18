@@ -28,14 +28,14 @@
   margin-left: 2px;
   padding: 0px;
 }
-#fastCompanyImage {
+#fastImage {
   margin-left: 0px;
   margin-right: auto;
   margin-top: 0px;
   width: 48.75px;
   height: 60px;
 }
-#fastCompanyText {
+#fastText {
   float: right;
   text-align: left;
   font-size: 12px;
@@ -51,7 +51,7 @@
   height: 28px;
   vertical-align: top;
 }
-#nameAndSurname {
+#FullName {
   width: 470px;
   height: 34px;
   color: #f42684;
@@ -59,11 +59,11 @@
   margin-top: 10px;
   vertical-align: bottom;
 }
-#GetSmarterImage {
+#GSImage {
   width: 126px;
   height: 56.81px;
 }
-#fastCompanyData {
+#fastData {
   border-top: 3px solid #f42684;
   width: 470px;
   height: 50px;
