@@ -12,11 +12,11 @@
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 `,t.PopupHolderSpacer=r.default.div`
   margin: auto;
-  max-width: 500px;
+  max-width: 900px;
   padding: 10px;
 `,t.PopupHolder=r.default.div`
   margin: auto;
-  max-width: 480px;
+  max-width: 880px;
   display: block;
   position: relative;
   z-index: 1;
