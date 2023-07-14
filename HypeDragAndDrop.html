@@ -690,6 +690,7 @@
       let selectedPopupValue = "";
       let resultVariable = "";
       let arrOfDragAndDrop = [];
+
       $(document).ready(function () {
         let initialConvenienceTop = $("#Convenience-Move").css("top");
         let initialConvenienceLeft = $("#Convenience-Move").css("left");
@@ -725,14 +726,45 @@
           "#Quota-Move",
           "#Snowball-Move",
         ];
-        var moveOrder = [1, 2, 3, 4]; // Specify the order of movement
-
-        var index = 0;
+        let moveOrder = [1, 2, 3, 4]; // Specify the order of movement
+        let index = 0;
+        let isClicked = false;
+        const checkWhichElementToMoveBack = (element) => {
+          console.log(element);
+          if (element === "Convenience-Move") {
+            return { top: initialConvenienceTop, left: initialConvenienceLeft };
+          } else if (element === "Purpose-Move") {
+            return { top: initialPurposeTop, left: initialPurposeLeft };
+          } else if (element === "Quota-Move") {
+            return { top: initialQuotaTop, left: initialQuotaLeft };
+          } else {
+            return { top: initialSnowballTop, left: initialSnowballLeft };
+          }
+        };
+        $("#Convenience-Move, #Quota-Move, #Snowball-Move, #Purpose-Move").blur(
+          function (e) {
+            if (isClicked) {
+              console.log("sending it back");
+              console.log(this);
+              const resultData = checkWhichElementToMoveBack(e.target.id);
+              setTimeout(() => {
+                $(this).animate(
+                  {
+                    top: resultData.top,
+                    left: resultData.left,
+                  },
+                  "slow"
+                );
+              });
+            }
+          }
+        );
         $("#Convenience-Move, #Quota-Move, #Snowball-Move, #Purpose-Move").on(
           "keydown",
           function (e) {
             if (e.keyCode === 32) {
               var currentMove = moveOrder[index];
+              isClicked = true;
               switch (currentMove) {
                 case 1:
                   $(this).animate(
@@ -752,6 +784,7 @@
                     "slow"
                   );
                   break;
+
                 case 3:
                   $(this).animate(
                     {
@@ -760,6 +793,7 @@
                     },
                     "slow"
                   );
+
                   break;
                 case 4:
                   $(this).animate(
@@ -777,8 +811,8 @@
                 index = 0; // Reset index when all movements are completed
               }
             }
-            if (e.keyCode === 13) {
-              console.log(e.target.id);
+
+            if (e.keyCode === 13 && isClicked) {
               if (index === 1) {
                 $(this).animate(
                   {
@@ -787,6 +821,7 @@
                   },
                   "slow"
                 );
+                isClicked = false;
               } else if (index === 2) {
                 $(this).animate(
                   {
@@ -795,6 +830,7 @@
                   },
                   "slow"
                 );
+                isClicked = false;
               } else if (index === 3) {
                 $(this).animate(
                   {
@@ -803,6 +839,7 @@
                   },
                   "slow"
                 );
+                isClicked = false;
               } else {
                 $(this).animate(
                   {
@@ -811,6 +848,7 @@
                   },
                   "slow"
                 );
+                isClicked = false;
               }
             }
           }
@@ -891,53 +929,53 @@
         //     }
         //   }
         // );
-        $(
-          "#Convenience-popup, #Purpose-popup, #Quota-popup, #Snowball-popup"
-        ).on("keydown", function (e) {
-          if (e.keyCode === 13) {
-            var targetMoveElement = $("#" + selectedPopupValue + "-Move");
-            const target = $("#" + e.target.id.split("-")[0]);
-            targetMoveElement.css({
-              top: target[0].style.top,
-              left: target[0].style.left,
-            });
-            arrOfDragAndDrop.push(e.target.id.split("-")[0]);
-            let x = document.getElementById("AccessibilityPopup");
-            x.style.display = "none";
-            correct.push(e.target.id.split("-")[0]);
-            result.push(selectedPopupValue);
+        // $(
+        //   "#Convenience-popup, #Purpose-popup, #Quota-popup, #Snowball-popup"
+        // ).on("keydown", function (e) {
+        //   if (e.keyCode === 13) {
+        //     var targetMoveElement = $("#" + selectedPopupValue + "-Move");
+        //     const target = $("#" + e.target.id.split("-")[0]);
+        //     targetMoveElement.css({
+        //       top: target[0].style.top,
+        //       left: target[0].style.left,
+        //     });
+        //     arrOfDragAndDrop.push(e.target.id.split("-")[0]);
+        //     let x = document.getElementById("AccessibilityPopup");
+        //     x.style.display = "none";
+        //     correct.push(e.target.id.split("-")[0]);
+        //     result.push(selectedPopupValue);
 
-            if (correct.length === 4) {
-              for (let i = 0; i < correct.length; i++) {
-                if (correct[i] !== result[i]) {
-                  alert("Incorrect Please Try Again");
+        //     if (correct.length === 4) {
+        //       for (let i = 0; i < correct.length; i++) {
+        //         if (correct[i] !== result[i]) {
+        //           alert("Incorrect Please Try Again");
 
-                  correct.length = 0;
-                  result.length = 0;
-                  setTimeout(() => {
-                    for (let i = 0; i < test.length; i++) {
-                      const element = $(test[i]);
-                      element.css({
-                        top: topData[i],
-                        left: leftData[i],
-                      });
-                    }
-                  }, 1000);
-                  $(
-                    "#Convenience-popup, #Purpose-popup, #Quota-popup, #Snowball-popup"
-                  ).css("display", "block");
-                  document.getElementById(
-                    arrOfDragAndDrop[i] + "-popup"
-                  ).style.display = "block";
-                  arrOfDragAndDrop = [];
+        //           correct.length = 0;
+        //           result.length = 0;
+        //           setTimeout(() => {
+        //             for (let i = 0; i < test.length; i++) {
+        //               const element = $(test[i]);
+        //               element.css({
+        //                 top: topData[i],
+        //                 left: leftData[i],
+        //               });
+        //             }
+        //           }, 1000);
+        //           $(
+        //             "#Convenience-popup, #Purpose-popup, #Quota-popup, #Snowball-popup"
+        //           ).css("display", "block");
+        //           document.getElementById(
+        //             arrOfDragAndDrop[i] + "-popup"
+        //           ).style.display = "block";
+        //           arrOfDragAndDrop = [];
 
-                  return false;
-                }
-              }
-              alert("correct");
-            }
-          }
-        });
+        //           return false;
+        //         }
+        //       }
+        //       alert("correct");
+        //     }
+        //   }
+        // });
         // Droppable
         for (let i = 0; i < test.length; i++) {
           $(test[i].split("-")[0]).droppable({
