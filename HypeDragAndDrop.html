@@ -23,6 +23,7 @@
         display: block;
         overflow: hidden;
         position: absolute;
+        margin: auto;
         width: 1200px;
         top: 0px;
         left: 0px;
@@ -726,26 +727,38 @@
           "#Quota-Move",
           "#Snowball-Move",
         ];
+        const keyElements = ["#Convenience", "#Snowball", "#Purpose", "#Quota"];
         let moveOrder = [1, 2, 3, 4]; // Specify the order of movement
         let index = 0;
         let isClicked = false;
+
         const checkWhichElementToMoveBack = (element) => {
           console.log(element);
-          if (element === "Convenience-Move") {
-            return { top: initialConvenienceTop, left: initialConvenienceLeft };
-          } else if (element === "Purpose-Move") {
-            return { top: initialPurposeTop, left: initialPurposeLeft };
-          } else if (element === "Quota-Move") {
-            return { top: initialQuotaTop, left: initialQuotaLeft };
-          } else {
-            return { top: initialSnowballTop, left: initialSnowballLeft };
+          let formattedElement = element.split("-")[0];
+          return {
+            top: eval(`initial${formattedElement}Top`),
+            left: eval(`initial${formattedElement}Left`),
+          };
+        };
+        const keyElementsFunct = (e, keyElements, currentMove) => {
+          for (let i = 0; i < keyElements.length; i++) {
+            if (i + 1 === currentMove) {
+              $(e).animate(
+                {
+                  top: parseInt($(keyElements[i]).css("top")) - 10 + "px",
+                  left: $(keyElements[i]).css("left"),
+                },
+                "slow"
+              );
+              break;
+            }
           }
         };
         $("#Convenience-Move, #Quota-Move, #Snowball-Move, #Purpose-Move").blur(
           function (e) {
+            index = 0;
+
             if (isClicked) {
-              console.log("sending it back");
-              console.log(this);
               const resultData = checkWhichElementToMoveBack(e.target.id);
               setTimeout(() => {
                 $(this).animate(
@@ -759,61 +772,56 @@
             }
           }
         );
+        $(
+          "#Convenience-Move, #Quota-Move, #Snowball-Move, #Purpose-Move"
+        ).focus(function (e) {
+          let element = e.target.id;
+          if (element === "Convenience-Move") {
+            index = 0;
+            return { top: initialConvenienceTop, left: initialConvenienceLeft };
+          } else if (element === "Purpose-Move") {
+            index = 1;
+
+            return { top: initialPurposeTop, left: initialPurposeLeft };
+          } else if (element === "Quota-Move") {
+            index = 2;
+            return { top: initialQuotaTop, left: initialQuotaLeft };
+          } else {
+            index = 3;
+            return { top: initialSnowballTop, left: initialSnowballLeft };
+          }
+        });
         $("#Convenience-Move, #Quota-Move, #Snowball-Move, #Purpose-Move").on(
           "keydown",
           function (e) {
-            if (e.keyCode === 32) {
+            if (e.keyCode === 38) {
               var currentMove = moveOrder[index];
               isClicked = true;
-              switch (currentMove) {
-                case 1:
-                  $(this).animate(
-                    {
-                      top: parseInt($("#Convenience").css("top")) - 10 + "px",
-                      left: $("#Convenience").css("left"),
-                    },
-                    "slow"
-                  );
-                  break;
-                case 2:
-                  $(this).animate(
-                    {
-                      top: parseInt($("#Snowball").css("top")) - 10 + "px",
-                      left: $("#Snowball").css("left"),
-                    },
-                    "slow"
-                  );
-                  break;
+              keyElementsFunct(e.target, keyElements, currentMove);
+            }
 
-                case 3:
-                  $(this).animate(
-                    {
-                      top: parseInt($("#Purpose").css("top")) - 10 + "px",
-                      left: $("#Purpose").css("left"),
-                    },
-                    "slow"
-                  );
-
-                  break;
-                case 4:
-                  $(this).animate(
-                    {
-                      top: parseInt($("#Quota").css("top")) - 10 + "px",
-                      left: $("#Quota").css("left"),
-                    },
-                    "slow"
-                  );
-                  break;
-              }
-
+            if (e.keyCode === 39) {
               index++;
               if (index >= moveOrder.length) {
                 index = 0; // Reset index when all movements are completed
               }
+              var currentMove = moveOrder[index];
+              isClicked = true;
+              keyElementsFunct(e.target, keyElements, currentMove);
+            }
+            if (e.keyCode === 37) {
+              if (index <= 0) {
+                index = 4;
+              }
+              index--;
+              var currentMove = moveOrder[index];
+              isClicked = true;
+              keyElementsFunct(e.target, keyElements, currentMove);
             }
 
             if (e.keyCode === 13 && isClicked) {
-              if (index === 1) {
+              var currentMove = moveOrder[index];
+              if (currentMove === 1) {
                 $(this).animate(
                   {
                     top: parseInt($("#Convenience").css("top")),
@@ -821,8 +829,9 @@
                   },
                   "slow"
                 );
+                correct.push("Convenience");
                 isClicked = false;
-              } else if (index === 2) {
+              } else if (currentMove === 2) {
                 $(this).animate(
                   {
                     top: parseInt($("#Snowball").css("top")),
@@ -830,8 +839,10 @@
                   },
                   "slow"
                 );
+                correct.push("Snowball");
+
                 isClicked = false;
-              } else if (index === 3) {
+              } else if (currentMove === 3) {
                 $(this).animate(
                   {
                     top: parseInt($("#Purpose").css("top")),
@@ -839,6 +850,7 @@
                   },
                   "slow"
                 );
+                correct.push("Purpose");
                 isClicked = false;
               } else {
                 $(this).animate(
@@ -848,22 +860,16 @@
                   },
                   "slow"
                 );
+                correct.push("Quota");
                 isClicked = false;
               }
+              e.target.blur();
+              result.push(e.target.id.split("-")[0]);
+              checkIfElementsAreCorrect("Move");
             }
           }
         );
-        const dropComp = (element, ui, dotIn) => {
-          $("#" + ui.draggable[0].id).css(
-            "top",
-            $("#" + $(element).attr("id")).css("top")
-          );
-          $("#" + ui.draggable[0].id).css(
-            "left",
-            $("#" + $(element).attr("id")).css("left")
-          );
-          resultVariable = ui.draggable[0].id.split("-")[0];
-          correctVariable = $(element).attr("id");
+        const checkIfElementsAreCorrect = (type) => {
           setTimeout(() => {
             if (result.length === 4) {
               let filteredResult = result.filter(
@@ -881,9 +887,23 @@
                 }
               }
             }
-
-            dotIn = false;
+            if (type === "Drag") {
+              dotIn = false;
+            }
           }, 1000);
+        };
+        const dropComp = (element, ui, dotIn) => {
+          $("#" + ui.draggable[0].id).css(
+            "top",
+            $("#" + $(element).attr("id")).css("top")
+          );
+          $("#" + ui.draggable[0].id).css(
+            "left",
+            $("#" + $(element).attr("id")).css("left")
+          );
+          resultVariable = ui.draggable[0].id.split("-")[0];
+          correctVariable = $(element).attr("id");
+          checkIfElementsAreCorrect("Drag");
         };
 
         // 	Draggable Convenience
@@ -902,8 +922,12 @@
               } else {
                 $(test[i]).css("top", $(MovingElement).css("top"));
                 $(test[i]).css("left", $(MovingElement).css("left"));
-                result.push(resultVariable);
-                correct.push(correctVariable);
+                if (!result.includes(resultVariable)) {
+                  result.push(resultVariable);
+                  correct.push(correctVariable);
+                }
+                console.log(result, correct);
+                dotIn = false;
               }
             },
           });
@@ -983,6 +1007,7 @@
               "#Convenience-Move, #Purpose-Move, #Quota-Move, #Snowball-Move",
             tolerance: "touch",
             greedy: true,
+            // disabled: true,
             over: function (event, ui) {
               dotIn = true;
               // MovingElement = "#Convenience";
@@ -993,6 +1018,27 @@
             },
             drop: function (event, ui) {
               dropComp(this, ui, dotIn);
+            },
+          });
+        }
+        for (let i = 0; i < test.length; i++) {
+          $(test[i].split("-")[0]).droppable({
+            accept:
+              "#Convenience-Move, #Purpose-Move, #Quota-Move, #Snowball-Move",
+            tolerance: "pointer",
+            greedy: true,
+            // disabled: true,
+            over: function (event, ui) {
+              dotIn = true;
+              // MovingElement = "#Convenience";
+              // MovingElement = "#" + $(this).attr("id");
+            },
+            out: function (event, ui) {
+              dotIn = false;
+            },
+            drop: function (event, ui) {
+              dropComp(this, ui, dotIn);
+              console.log("yes");
             },
           });
         }
