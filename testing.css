@@ -1,0 +1,60 @@
+
+.QuizInput {
+    width: 90%;
+    height: 600px;
+    background-color: #4b9dde;
+    margin: 50px auto;
+    border: 1px solid;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+  }
+  input {
+    width: 200px;
+    border-radius: 5px;
+    height: 25px;
+    border: 1px solid;
+    background-color: white;
+    color: #1e252b;
+  }
+  #btn {
+    width: 200px;
+    height: 40px;
+    background-color: navy;
+    margin: 20px auto;
+    color: white;
+    border-radius: 10px;
+  }
+  #Inputs {
+    height: 280px;
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  #btnsDiv {
+    display: grid;
+    grid-template-columns: auto;
+    width: 90%;
+    margin: 1% auto;
+  }
+  .inputQuestion {
+    width: 150px;
+    height: 50px;
+  }
+  
+  #body {
+    position: absolute;
+    top: 20px;
+    /* display: none; */
+    right: 20px;
+    width: 600px;
+    height: 800px;
+    background-color: #000c36;
+  }
+  #QInput1 {
+    width: 400px;
+    margin: 0px auto;
+  }
+  #iFrameQuiz {
+    /* display: none; */
+  }

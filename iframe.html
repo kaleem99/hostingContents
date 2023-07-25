@@ -1,0 +1,116 @@
+iFrame Quiz
+<link
+  rel="stylesheet"
+  href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"
+/>
+<div style="display: none" id="OverlayDiv"></div>
+<section
+  style="
+    z-index: 99;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+    display: none;
+  "
+  id="section"
+>
+  <h1 id="Question">What is your name?</h1>
+  <br /><button
+    class="buttonQuiz option"
+    id="option1"
+    onclick="changeAnswer(`Option 1`)"
+    tabindex="0"
+  >
+    A</button
+  ><br /><br /><button
+    class="buttonQuiz option correct"
+    id="Option 2"
+    onclick="changeAnswer(`Option 2`)"
+    tabindex="0"
+  >
+    B</button
+  ><br /><br /><button
+    class="buttonQuiz option"
+    id="option3"
+    onclick="changeAnswer(`Option 3`)"
+    tabindex="0"
+  >
+    V</button
+  ><br /><br /><button
+    class="button"
+    id="submit"
+    onclick="checkAnswer()"
+    tabindex="0"
+  >
+    <strong>Submit</strong></button
+  ><br /><br />
+  <div id="results"></div>
+</section>
+iFrame
+<iframe
+  src="https://fast.wistia.net/embed/iframe/q0mxf16odu?plugin%5Binteractivator%5D%5BcourseCode%5D=HAR-FIH&plugin%5Binteractivator%5D%5Bfunctions%5D=new&plugin%5Binteractivator%5D%5Bchapters%5D=%5B%5D&plugin%5Binteractivator%5D%5Bid%5D=q0mxf16odu&plugin%5Binteractivator%5D%5Bintro%5D=q0mxf16odu&plugin%5Binteractivator%5D%5Boutro%5D=&plugin%5Binteractivator%5D%5Bsrc%5D=https://videos.getsmarter.com/Interactive+Video+Content/interactivator.js"
+  title="1"
+  allowtransparency="true"
+  frameborder="0"
+  scrolling="no"
+  class="wistia_embed"
+  name="wistia_embed"
+  allowfullscreen=""
+  mozallowfullscreen=""
+  webkitallowfullscreen=""
+  oallowfullscreen=""
+  msallowfullscreen=""
+  style="z-index: 0"
+></iframe>
+<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+<script>
+  let optionChosen = "";
+  let videoId = document.querySelector("iframe").src;
+  let isQuizComplete = false;
+  videoId = videoId.slice(0, videoId.indexOf("?"));
+  videoId = videoId.slice(videoId.lastIndexOf("/") + 1, videoId.length);
+  function changeAnswer(option) {
+    optionChosen = option;
+  }
+  function checkAnswer() {
+    let inputs = document.querySelectorAll(".buttonQuiz");
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].className.includes("correct")) {
+        if (inputs[i].id === optionChosen) {
+          alert("correct");
+          isQuizComplete = true;
+          break;
+        } else {
+          alert("Incorrect try again");
+          break;
+        }
+      }
+    }
+  }
+  window._wq = window._wq || [];
+  _wq.push({
+    id: videoId,
+    onReady: function (video) {
+      function stop() {
+        video.pause();
+        document.getElementById("section").style.display = "inline";
+        document.getElementById("OverlayDiv").style.display = "block";
+      }
+      let myInterval = setInterval(() => {
+        if (Math.floor(video._time) == 16 && !isQuizComplete) {
+          stop();
+          clearInterval(myInterval);
+        }
+      }, 1000);
+      let checkIfQuizIsComplete = setInterval(() => {
+        if (isQuizComplete) {
+          video.play();
+          clearInterval(checkIfQuizIsComplete);
+          document.querySelector("#section").style.display = "none";
+          document.getElementById("OverlayDiv").style.display = "none";
+        }
+      }, 1000);
+    },
+  });
+</script>
