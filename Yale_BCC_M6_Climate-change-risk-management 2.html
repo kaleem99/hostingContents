@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Yale_BCC_M6_Climate-change-risk-management 2</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color:#FFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=yes, initial-scale=1.0, width=320" />
+	<link href='https://fonts.googleapis.com/css?family=Noto+Sans&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:600&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:700&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Noto+Sans+JP:300&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Noto+Serif+JP&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Noto+Sans+JP&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Noto+Sans+JP:500&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Noto+Sans+JP:700&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Noto+Sans+HK:500&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Noto+Sans:700&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Noto+Sans+TC&subset=latin' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Noto+Sans:italic&subset=latin' rel='stylesheet' type='text/css'>
+	
+	<style>
+    a {
+    text-decoration: underline;
+    color: #000440;
+    }
+</style>
+ <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css"
+    />
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+   
+<!-- Hotjar Tracking Code for https://getsmartergraphics.s3-us-west-2.amazonaws.com/courses/yale+css/m1/yale_css_m1u1_interactive_infographic.html -->
+
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2213145,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    const arrOfDragAndDrop = [];
+    let selectedPopupValue = "";
+    let emissionsVal = "25,000,000";
+    let budgetVal = "$75,000,000";
+    let challenge = 0;
+    let cost = "";
+    let costType = "";
+    let emissions = "";
+    let emissionsType = "";
+    let budgetOption = 0;
+    const budgetIncrease = [30000000, 10000000];
+    let randomizedSceneAndData = "";
+    let randomChallengeName1 = "";
+    let randomChallengeName2 = "";
+    const data = [
+  {
+    Option1: {
+      Cost: "$25,000,000",
+      CostType: "Cost",
+      Emissions: "5,000,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$5,000,000",
+      CostType: "Cost",
+      Emissions: "500,000",
+      EmissionsType: "Decrease",
+    },
+  },
+  {
+    Option1: {
+      Cost: "$1,000,000",
+      CostType: "Cost",
+      Emissions: "500,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$20,000,000",
+      CostType: "Cost",
+      Emissions: "2,500,000",
+      EmissionsType: "Decrease",
+    },
+    Option3: {
+      Cost: "$5,000,000",
+      CostType: "Cost",
+      Emissions: "1,000,000",
+      EmissionsType: "Decrease",
+    },
+  },
+   [{
+    Option1: {
+      Cost: "$0",
+      CostType: "Cost",
+      Emissions: "500,000",
+      EmissionsType: "Increase",
+    },
+    Option2: {
+      Cost: "$5,000,000",
+      CostType: "Cost",
+      Emissions: "0",
+      EmissionsType: "Decrease",
+    },
+    Option3: {
+      Cost: "$15,000,000",
+      CostType: "Cost",
+      Emissions: "1,000,000",
+      EmissionsType: "Decrease",
+    },
+  },
+  {
+    Option1: {
+      Cost: "$15,000,000",
+      CostType: "Cost",
+      Emissions: "1,000,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$5,000,000",
+      CostType: "Cost",
+      Emissions: "0",
+      EmissionsType: "Decrease",
+    },
+  }],
+  {
+    Option1: {
+      Cost: "$25,000,000",
+      CostType: "Cost",
+      Emissions: "5,000,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$10,000,000",
+      CostType: "Cost",
+      Emissions: "2,500,000",
+      EmissionsType: "Decrease",
+    },
+    Option3: {
+      Cost: "0",
+      CostType: "Cost",
+      Emissions: "250,000",
+      EmissionsType: "Increase",
+    },
+  },
+  {
+    Option1: {
+      Cost: "0",
+      CostType: "Cost",
+      Emissions: "250,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$10,000,000",
+      CostType: "Cost",
+      Emissions: "2,500,000",
+      EmissionsType: "Decrease",
+    },
+    Option3: {
+      Cost: "$15,000,000",
+      CostType: "Cost",
+      Emissions: "5,000,000",
+      EmissionsType: "Decrease",
+    },
+  },
+  [{
+    Option1: {
+      Cost: "$10,000,000",
+      CostType: "Cost",
+      Emissions: "2,500,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$5,000,000",
+      CostType: "Saving",
+      Emissions: "500,000",
+      EmissionsType: "Increase",
+    },
+  },
+  {
+    Option1: {
+      Cost: "$5,000,000",
+      CostType: "Cost",
+      Emissions: "1,000,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$1,000,000",
+      CostType: "Cost",
+      Emissions: "0",
+      EmissionsType: "Decrease",
+    },
+    Option3: {
+      Cost: "$10,000,000",
+      CostType: "Cost",
+      Emissions: "2,500,000",
+      EmissionsType: "Decrease",
+    },
+  },
+],
+    {
+    Option1: {
+      Cost: "$5,000,000",
+      CostType: "Cost",
+      Emissions: "500,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$10,000,000",
+      CostType: "Cost",
+      Emissions: "2,500,000",
+      EmissionsType: "Decrease",
+    },
+    Option3: {
+      Cost: "0",
+      CostType: "Cost",
+      Emissions: "1,000,000",
+      EmissionsType: "Increase",
+    },
+  },
+  {
+    Option1: {
+      Cost: "0",
+      CostType: "Cost",
+      Emissions: "1,000,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$10,000,000",
+      CostType: "Cost",
+      Emissions: "2,500,000",
+      EmissionsType: "Decrease",
+    },
+    Option3: {
+      Cost: "$5,000,000",
+      CostType: "Saving",
+      Emissions: "1,000,000",
+      EmissionsType: "Increase",
+    },
+  },
+   {
+    Option1: {
+      Cost: "$1,000,000",
+      CostType: "Saving",
+      Emissions: "500,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$15,000,000",
+      CostType: "Cost",
+      Emissions: "2,500,000",
+      EmissionsType: "Decrease",
+    },
+    Option3: {
+      Cost: "$5,000,000",
+      CostType: "Cost",
+      Emissions: "1,000,000",
+      EmissionsType: "Decrease",
+    },
+  },
+	{
+    Option1: {
+      Cost: "$10,000,000",
+      CostType: "Cost",
+      Emissions: "2,500,000",
+      EmissionsType: "Decrease",
+    },
+    Option2: {
+      Cost: "$5,000,000",
+      CostType: "Cost",
+      Emissions: "1,000,000",
+      EmissionsType: "Decrease",
+    },
+    Option3: {
+      Cost: "$15,000,000",
+      CostType: "Cost",
+      Emissions: "5,000,000",
+      EmissionsType: "Decrease",
+    },
+    Option4: {
+      Cost: "0",
+      CostType: "Cost",
+      Emissions: "0",
+      EmissionsType: "Decrease",
+    },
+  },
+];
+
+</script>
+	
+
+	<!-- end copy -->
+  </head>
+  <body>
+	<!-- copy these lines to your document: -->
+
+	<div id="yalebccm6climatechangeriskmanagement2_hype_container" class="HYPE_document" style="margin:auto;position:relative;width:320px;height:702px;overflow:hidden;">
+		<script type="text/javascript" charset="utf-8" src="Yale_BCC_M6_Climate-change-risk-management%202.hyperesources/yalebccm6climatechangeriskmanagement2_hype_generated_script.js?67052"></script>
+	</div>
+
+	<!-- end copy -->
+	
+
+
+	<!-- text content for search engines: -->
+
+	<div style="display:none" aria-hidden=true>
+
+		<div></div>
+		<div>Start</div>
+		<div>Climate change risk management</div>
+		<div>
+</div>
+		<div>In this e-learning activity, you will be responsible for ensuring that Sea Share reaches net zero within the next 10 years.</div>
+		<div>Time (10 years):
+</div>
+		<div>CO₂e (mt)</div>
+		<div>Guide Sea Share to net zero</div>
+		<div>Annual emissions:
+</div>
+		<div>As the new chief operating officer (COO) of Sea Share, a global shipping company, you have been tasked with managing the company’s climate change strategy. You have been given a starting budget of $75,000,000 to begin reducing the company’s annual greenhouse gas (GHG) emissions.
+You will need to use this budget carefully as you try to reduce those emissions over the next 10 years, bearing in mind that the budget may be subject to increases based on performance. To do so, you will need
+to make strategic financial decisions in response to key climate change risks and opportunities, as well as certain business imperatives.
+
+You must achieve net zero within 10 years or the company will fail to meet global emissions reduction targets and will disappoint important investors, as well as customers, who are seeking to integrate net-zero commitments into their business decisions.</div>
+		<div>25,000,000</div>
+		<div>Get started</div>
+		<div>Budget:
+</div>
+		<div>Continue</div>
+		<div>Operational threats prompt businesses to take action.</div>
+		<div>As the new chief operating officer (COO) of Sea Share, a global shipping company,
+you have been tasked with managing the company’s climate change strategy.
+You have been given a starting budget of $75,000,000 to begin reducing the company’s annual greenhouse gas (GHG) emissions. You will need to use this budget carefully as
+you try to reduce those emissions over the next 10 years, bearing in mind that the budget may be subject to increases based on performance. To do so, you will need to make strategic financial decisions in response to key climate change risks and opportunities,
+as well as certain business imperatives.
+
+You must achieve net zero within 10 years or the company will fail to meet global emissions reduction targets and will disappoint important investors, as well as customers, who are seeking to integrate net-zero commitments into their business decisions.</div>
+		<div>Round 1
+</div>
+		<div>Global shipping and climate change
+</div>
+		<div>The global demand for shipping continues to increase each year,
+requiring Sea Share to invest more and more in infrastructure and shipping vessels.
+At the same time, severe weather and rising sea levels, driven by climate change, threaten to disrupt operations and global supply chains.
+
+Your current annual GHG emissions are 25,000,000 metric tons (mt) of CO₂e.
+Monitor your budget closely over the next 10 years as you try to reduce those emissions to zero on your path to decarbonization.</div>
+		<div>2014
+
+</div>
+		<div>2015
+
+</div>
+		<div>2010
+
+</div>
+		<div>2000</div>
+		<div>6</div>
+		<div>1987</div>
+		<div>11</div>
+		<div>1997</div>
+		<div>8</div>
+		<div>12</div>
+		<div>1989</div>
+		<div>4</div>
+		<div>14</div>
+		<div>10</div>
+		<div>2022
+</div>
+		<div>1970</div>
+		<div>1998</div>
+		<div>5</div>
+		<div>1948</div>
+		<div>2019
+
+</div>
+		<div>1</div>
+		<div>3</div>
+		<div>13</div>
+		<div>1990</div>
+		<div>9</div>
+		<div>2011
+
+</div>
+		<div>16</div>
+		<div>7</div>
+		<div>15</div>
+		<div>2</div>
+		<div>Bousso, Ron. 2018. “BP Deepwater Horizon Costs Balloon to $65 Billion.” Last modified January 16, 2018. https://www.reuters.com/article/us-bp-deepwaterhorizon/bp-deepwater-horizon-costs-balloon-to-65-billion-idUSKBN1F50NL.
+
+Business Roundtable. 2019. “Business Roundtable Redefines the Purpose of a Corporation to Promote ‘an Economy That Serves All Americans.’” Last modified August 19, 2019. https://www.businessroundtable.org/business-roundtable-redefines-the-purpose-of-a-corporation-to-promote-an-economy-that-serves-all-americans. 
+Corporate Citizenship. n.d. “Sustainability Timeline.” Accessed October 15, 2020. https://corporate-citizenship.com/sustainability-timeline/.
+
+Cushman, John H. 1998. “Nike Pledges to End Child Labor and Apply U.S. Rules Abroad.” New York Times, May 13, 1998. https://www.nytimes.com/1998/05/13/business/international-business-nike-pledges-to-end-child-labor-and-apply-us-rules-abroad.html.
+
+Jonsson, Samuel, Anders Ydstedt, and Elke Asen. 2020. “Looking Back on 30 Years of Carbon Taxes in Sweden.” Last modified September 23, 2020. https://taxfoundation.org/sweden-carbon-tax-revenue-greenhouse-gas-emissions/.
+
+Tepper, Taylor. 2020. “Milton Friedman on the Social Responsibility of Business, 50 Years Later.” Forbes.
+Last modified September 16, 2020. https://www.forbes.com/advisor/investing/milton-friedman-social-responsibility-of-business/.
+
+United Nations. n.d. “Universal Declaration of Human Rights.” Accessed October 15, 2020. https://www.un.org/en/universal-declaration-human-rights/.
+
+United Nations Climate Change. n.d.-a “What Is the Kyoto Protocol?” Accessed October 15, 2020. https://unfccc.int/kyoto_protocol.
+
+United Nations Climate Change. n.d.-b. “What Is the Paris Agreement?” Accessed October 15, 2020. https://unfccc.int/process-and-meetings/the-paris-agreement/what-is-the-paris-agreement.
+
+Webb, Toby. 2016. “History of CSR and Sustainability in Business, Part Two.” Video, 12:43. https://www.youtube.com/watch?v=jvdr8bmb-8w.
+</div>
+		<div>Bibliography</div>
+		<div>Time:
+</div>
+		<div>$75,000,000</div>
+		<div>Focus on efficiency by investing in new hull coatings and paint technologies that will inhibit corrosion and biofouling – both of which create drag and result in greater fuel consumption.</div>
+		<div>Scope 1 management</div>
+		<div>The engineering team has suggested two options to reduce these emissions. Which will you choose?</div>
+		<div>Next challenge</div>
+		<div>$5,000,000</div>
+		<div>$25,000,000</div>
+		<div>Select</div>
+		<div>Reduce marine
+transport emissions.</div>
+		<div>Cost:</div>
+		<div>Sea Share has recently conducted
+an audit of its total carbon footprint. The largest source of emissions is the combustion of marine diesel to power its ocean-going vessels.</div>
+		<div>Develop next-generation hybrid maritime engines that could improve efficiencies by as much as 40% if implemented across the entire fleet.</div>
+		<div>Reduce marine transport emissions.</div>
+		<div>$5,000,000</div>
+		<div>Cost</div>
+		<div>Focus on efficiency by investing in new hull coatings and paint technologies that will inhibit corrosion and biofouling –
+both of which create drag and result in greater fuel consumption.</div>
+		<div>Sea Share has recently conducted an audit of its total carbon footprint. The largest source of emissions is the combustion of marine diesel to power its ocean-going vessels.</div>
+		<div>The global demand for shipping continues to increase each year, requiring Sea Share to invest more and more in infrastructure and shipping vessels. At the same time, severe weather and rising sea levels, driven by climate change, threaten to disrupt operations and global supply chains.
+
+Your current annual GHG emissions
+are 25,000,000 metric tons (mt) of CO₂e. Monitor your budget closely over the next 10 years as you try to reduce those emissions to zero on your path to decarbonization.</div>
+		<div>Global shipping
+and climate change</div>
+		<div>Start over</div>
+		<div>Insufficient budget
+</div>
+		<div>You do not have sufficient budget to select this option.
+
+What would you like to do instead?</div>
+		<div>You do not have sufficient budget to select this option, you will have to make another choice.</div>
+		<div>Reselect</div>
+		<div>$1,000,000</div>
+		<div>How can you reduce the company’s trucking emissions?</div>
+		<div>Join a port-led initiative to electrify all port activities, doing away with trucks and vehicles that use fossil fuels within ports.</div>
+		<div>Reduce road
+transport emissions</div>
+		<div>The second major source of Sea Share’s scope 1 emissions is its trucking operations. These are required in and around port facilities globally and across road networks in two major markets: the United States (US) and the European Union (EU).</div>
+		<div>Focus on truck engine efficiency by investing heavily in alternate fuel systems – moving beyond current engine efficiency regulations in the company’s two major markets –
+and thereby becoming a leader in
+the industry.</div>
+		<div>Focus on packing efficiency by purchasing and applying new algorithm-based packing software, with the aim of reducing the amount of trips and load of each truck.</div>
+		<div>$20,000,000</div>
+		<div>$20,000,000</div>
+		<div>Reduce road transport emissions</div>
+		<div>Focus on truck engine efficiency by investing heavily in alternate fuel systems – moving beyond current engine efficiency regulations in the company’s two major markets – and thereby becoming
+a leader in the industry.</div>
+		<div>Climate change batters the shipping industry.</div>
+		<div>After two years as COO, you have become aware that the world will
+surpass 2°C of warming, despite new government regulations and
+commitments from large companies.
+
+Sea Share has felt the consequences of climate change in its operations, with a 10% increase in weather-related disruptions over the past two years. The message from the board of directors is clear: Stick to the net zero target, but maintain conservative financial oversight!</div>
+		<div>Round 2</div>
+		<div>Global warming continues to increase</div>
+		<div>Round 2
+</div>
+		<div>After two years as COO, you have become aware that the world will surpass 2°C of warming, despite
+new government regulations and commitments from large companies.
+
+Sea Share has felt the consequences of climate change in its operations, with a 10% increase in weather-related disruptions over the past two years. The message from the board of directors is clear: Stick to the net zero target, but maintain conservative financial oversight!</div>
+		<div>Do nothing and accept the possibility of disrupted operations in these ports, as well as the associated emissions from baseline operations, while work is curtailed.</div>
+		<div>A month of severe heat has hit port facilities in Northern Europe for the third time in three years. Under EU law, workers in those ports must have their working hours reduced and have access to cooled facilities to prevent heat exhaustion.</div>
+		<div>Invest in robotic systems for affected ports. Such systems can function alongside port workers at all times (thereby increasing efficiency) and replace them during heat waves (ensuring work can continue).</div>
+		<div>$0</div>
+		<div>Invest in cooling systems to maintain productivity at the ports during heat waves. While this would save some emissions by maintaining efficient operations, it would also create emissions from increased electricity usage.</div>
+		<div>$15,000,000</div>
+		<div>Severe
+weather events</div>
+		<div>Address extreme temperatures in Northern European ports.</div>
+		<div>Invest in cooling systems to maintain productivity at the ports during
+heat waves. While this would save some emissions by maintaining efficient operations, it would also create emissions from increased electricity usage.</div>
+		<div>Severe weather events</div>
+		<div>Sea Share is looking at several options to meet these requirements. Some have implications for emissions and must therefore come from your climate budget.</div>
+		<div>One of Sea Share’s major North American ports is expected to be hit by an increasing number of hurricanes. The company has done business in this port for over 20 years, but has recently been in discussions with the main exporting companies about shifting operations to a port 200 miles away.
+
+The alternative port has greater resilience to hurricanes in the region and a move promises marginal improvements in emissions (due to fewer disruptions). However, shifting ports would mean greater emissions from customers moving materials, increasing scope 3 emissions.</div>
+		<div>Do nothing and risk future hurricane disruptions, as well as their inevitable associated costs.</div>
+		<div>Address hurricane threats
+to a North American port.</div>
+		<div>Shift to the alternative port.</div>
+		<div>Address hurricane threats to
+a North American port.</div>
+		<div>One of Sea Share’s major North American ports
+is expected to be hit by an increasing number of hurricanes. The company has done business in
+this port for over 20 years, but has recently been
+in discussions with the main exporting companies about shifting operations to a port 200 miles away.
+
+The alternative port has greater resilience to hurricanes in the region and a move promises marginal improvements in emissions (due to fewer disruptions). However, shifting ports would mean greater emissions from customers moving materials, increasing scope 3 emissions.</div>
+		<div>Sustainable diesel: This is derived from petroleum, like any other diesel fuel, but the extraction, transport, and refining is conducted by operations that are certified to have lower emissions and improved efficiency.</div>
+		<div>$10,000,000</div>
+		<div>Fuel technologies have progressed substantially in the last few years and a variety of options are now emerging. Two alternatives to diesel fuel look particularly promising and would substantially reduce carbon emissions.
+
+While each of these fuel types has the potential to break even on costs over time, heavy initial investment is needed to bring either one to scale in the short term. Fortunately, both options are compatible with the company’s current engines.</div>
+		<div>Marine biodiesel: This consists
+of a fraction of the volume derived from plant stock, thereby reducing the carbon life cycle of the fuel substantially.</div>
+		<div>Consider fossil fuel alternatives.</div>
+		<div>Stick with traditional marine diesel fuel.</div>
+		<div>Emerging technologies</div>
+		<div>Which fuel will you choose for Sea Share’s ships?</div>
+		<div>$10,000,000</div>
+		<div>Marine biodiesel: This consists of a fraction of the volume derived from plant stock, thereby reducing the carbon life cycle of the fuel substantially.</div>
+		<div>In the past four years, more and more companies have begun to publicly declare their net-zero commitments. While this pressures Sea Share to maintain its commitments, it also supports partnerships toward climate goals, particularly in relation to scope
+3 emissions – the bulk of which come from moving goods into, through,
+and out of port facilities.</div>
+		<div>Companies strive for net zero</div>
+		<div>Despite the ongoing climate-change challenges, Sea Share's financials have remained stable. The board remains committed to the net-zero target, and so you have been given an additional $30,000,000.</div>
+		<div>Scope 3 emissions become a central concern.</div>
+		<div>Budget increase</div>
+		<div>Round 3
+</div>
+		<div>Round 3</div>
+		<div>In the past four years, more and more companies have
+begun to publicly declare their net zero-commitments. While this pressures Sea Share to maintain its commitments, it also supports partnerships toward climate goals, particularly in relation to scope 3 emissions – the bulk of which come from moving goods into, through, and out of port facilities.</div>
+		<div>Join the initiative as a full member
+and push for the most aggressive infrastructure upgrades that include measures to reduce congestion and improve resilience to prevent longer shut-down of port activities in the face of probable future weather disruptions.</div>
+		<div>Port traffic continues to be a challenge: Infrastructure is aging and, in many markets, unable to handle increased shipping volumes. This leads to frequent traffic jams, where idling engines increase emissions, and raises energy demand to store temperature-sensitive materials at ports and on ships waiting off-shore.
+
+A number of the company’s larger port partners have proposed a new “Sustainable Ports Initiative” that focuses on infrastructure improvements to reduce congestion. Joining entails shared investment with the ports, governments, other shipping companies, and on-shore terminals.</div>
+		<div>Join the initiative as a contributing member with no voting rights.
+The group then pushes for infrastructure upgrades to reduce congestion, but not to improve resilience, resulting in some (but not all) potential emissions reductions.</div>
+		<div>Don’t join the initiative. Instead, benefit from the investment of other companies, even though this means there will be insufficient funds to address the most material infrastructure upgrades.</div>
+		<div>Net-zero collaboration</div>
+		<div>Use port partnerships to reduce emissions.</div>
+		<div>To what extent will you partner to reduce your and others’ emissions?</div>
+		<div>To what extent will you partner to reduce yours and others’ emissions?</div>
+		<div>Port traffic continues to be a challenge: Infrastructure is aging and, in many markets, unable to handle increased shipping volumes.
+This leads to frequent traffic jams, where idling engines increase emissions, and raises energy demand to store temperature-sensitive materials
+at ports and on ships waiting off-shore.
+
+A number of the company’s larger port partners have proposed a new “Sustainable Ports Initiative” that focuses on infrastructure improvements to reduce congestion. Joining entails shared investment with the ports, governments, other shipping companies, and on-shore terminals.</div>
+		<div>Join the initiative as a contributing member with no voting rights. The group then pushes for infrastructure upgrades to reduce congestion, but not to improve resilience, resulting in some
+(but not all) potential emissions reductions.</div>
+		<div>Join the initiative as a full member and push for the most aggressive infrastructure upgrades that include measures to reduce congestion and improve resilience to prevent longer shut-down of port activities in the face of probable future weather disruptions.</div>
+		<div>Changing regulations</div>
+		<div>Saving:</div>
+		<div>The US government has changed, and the new administration has relaxed the regulations on truck engine efficiency. The result is that a substantial portion of the Sea Share fleet can remain on the road for 10 more years (past the company’s net-zero target date).
+
+The company has already started the conversion process, but delaying could offer substantial savings.</div>
+		<div>Shift course and delay the implementation of higher efficiency engines. Doing so will save millions in the long run, but risks increasing emissions.</div>
+		<div>Will you stick to your target, believing that businesses should go beyond regulation, or will you take this opportunity to save costs, trusting the government’s advice that improved engine efficiency isn’t essential yet?</div>
+		<div>Continue as planned, adhering to the previous administration’s timeline and regulations for improving engine efficiency and completing the conversation of the US fleet now.</div>
+		<div>Take a position on policy.</div>
+		<div>The US government has changed,
+and the new administration has relaxed
+the regulations on truck engine efficiency. The result is that a substantial portion of the Sea Share fleet can remain on the road for 10 more years (past the company’s
+net-zero target date).
+
+The company has already started the conversion process, but delaying could offer substantial savings.</div>
+		<div>Saving</div>
+		<div>$1,000,000</div>
+		<div>Once-in-a-lifetime flooding has occurred in the Pacific Northwest, and two major ports have experienced substantial infrastructural damage, disrupting operations.
+
+Regional governments are working with port authorities to rebuild, and are considering how to balance rail and truck traffic. Rail is more carbon efficient, but has a greater initial infrastructure cost.
+
+As a key stakeholder, Sea Share has been asked to weigh in. The company will not incur any direct costs for the upgrades, but taxes and port fees
+will increase.</div>
+		<div>How will you respond?</div>
+		<div>Respond to the impact of a natural disaster.</div>
+		<div>Push for predominantly rail-based infrastructural options.</div>
+		<div>$10,000,00</div>
+		<div>Push for more efficient rail and “green” upgrades to port facilities (such as charging stations for hybrid trucks and hydrogen fuel storage).</div>
+		<div>Rebuilding infrastructure</div>
+		<div>Push for predominantly truck-based infrastructural options.</div>
+		<div>Push for more efficient rail and “green” upgrades to port facilities
+(such as charging stations for hybrid trucks and hydrogen fuel storage).</div>
+		<div>Once-in-a-lifetime flooding has occurred in
+the Pacific Northwest, and two major ports have experienced substantial infrastructural damage, disrupting operations.
+
+Regional governments are working with port authorities to rebuild, and are considering how to balance rail and truck traffic. Rail is more carbon efficient, but has a greater initial infrastructure cost.
+
+As a key stakeholder, Sea Share has been asked to weigh in. The company will not incur any direct costs for the upgrades, but taxes and port fees will increase.</div>
+		<div>Round 4
+</div>
+		<div>Integrating business and climate strategies</div>
+		<div>The effects of climate change continue to disrupt.</div>
+		<div>You have been COO for six years.
+The natural world continues to transform as a result of climate change, as do business operations.
+
+It is becoming increasingly clear that the company’s infrastructure network is threatened, particularly in emerging markets. The business is changing as a result and executive leadership must make tough decisions on where the business should operate, considering the implications on both its bottom line and its net-zero commitments.
+
+In the next two years, you will need
+to prove you can reduce emissions without blowing your budget, as executive leadership is concerned about how much the net-zero target costs the company.</div>
+		<div>Round 4</div>
+		<div>You have been COO for six years. The natural world continues to transform
+as a result of climate change, as do business operations.
+
+It is becoming increasingly clear that the company’s infrastructure network is threatened,
+particularly in emerging markets. The business is changing as a result and executive leadership must make tough decisions on where the business should operate, considering the implications on both its bottom line and its net-zero commitments.
+
+In the next two years, you will need to prove you can reduce emissions without blowing your budget, as executive leadership is concerned about how much the net-zero target costs the company.</div>
+		<div>The push to net zero</div>
+		<div>The board of directors has reiterated its support for the net-zero target
+and continues to emphasize the limited budget and importance of saving costs. They have given you
+an additional $10,000,000 for the
+final push to net zero.</div>
+		<div>Round 5
+</div>
+		<div>Find other ways to balance the scales.</div>
+		<div>The past eight years have been bumpy: The shipping sector has transformed, and Sea Share has managed to hold
+on by beginning its transition to a low-carbon economy and weathering some challenging disruptions as a result of climate change.
+
+Sea Share’s remaining annual GHG emissions must be reduced to zero in the next two years. You may have to look to novel methods to reduce or offset those emissions.</div>
+		<div>Round 5</div>
+		<div>The board of directors has reiterated its support for the net-zero target and continues to emphasize the limited budget and importance of saving costs. They have given you an additional $10,000,000 for the final push to net zero.</div>
+		<div>The past eight years have been bumpy: The shipping
+sector has transformed, and Sea Share has managed to hold on by beginning its transition to a low-carbon economy and weathering some challenging disruptions as a result of climate change.
+
+Sea Share’s remaining annual GHG emissions must be reduced to zero in the next two years. You may have to look to novel methods to reduce or offset those emissions.</div>
+		<div>Respond to regional climate change risks.</div>
+		<div>Shift away from more vulnerable regions, risking short-term revenue
+loss but securing overall improvements in business efficiency.</div>
+		<div>Will you invest in stronger safety and resiliency systems to ensure the company’s ships can operate under more severe conditions or
+do you anticipate that customers will start to move to more resilient regions in the future, and therefore think it best to phase out operations in affected areas?</div>
+		<div>Do nothing. Accept the risks and associated emissions.</div>
+		<div>Retrofit ships with improved
+safety systems, cooling systems, and emissions controls in an effort to minimize disruptions in
+severe weather.</div>
+		<div>Developing resilience</div>
+		<div>Rising sea levels, severe heat, and greater storm frequency and intensity are all increasing in marginal but measurable ways. A recent analysis of these risks by the Intergovernmental Panel on Climate Change highlights infrastructure vulnerability in areas where Sea Share has port operations, such as Southeast Asia and West Africa.</div>
+		<div>Retrofit ships with improved safety systems, cooling systems, and emissions controls in an effort to minimize disruptions in severe weather.</div>
+		<div>Rising sea levels, severe heat, and greater storm frequency and intensity are all
+increasing in marginal but measurable ways.
+A recent analysis of these risks by the Intergovernmental Panel on Climate Change highlights infrastructure vulnerability in areas where Sea Share has port operations, such as Southeast Asia and West Africa.</div>
+		<div>Will you invest in stronger safety and resiliency systems to ensure the company’s ships can operate under more severe conditions or do you anticipate that customers will start to move to more resilient regions in the future, and therefore think it best to phase out operations in affected areas?</div>
+		<div>Shift away from more vulnerable regions, risking short-term revenue loss but securing overall improvements in business efficiency.</div>
+		<div>Manage changing technologies.</div>
+		<div>The market is shifting. No sector demonstrates this more than energy: Customer demand for liquefied
+natural gas (LNG) is increasing each year as gas prices drop, and the world sees it as a transition fuel to a lower carbon economy.
+
+But LNG requires enormous amounts of energy to cool and ship. Sea Share
+is considering different ways to expand its shipping fleet to include LNG ships.</div>
+		<div>Transitioning to a low-carbon economy</div>
+		<div>Invest in previous-generation LNG ships at discount prices, even though they generate greater emissions.</div>
+		<div>Invest in current-generation
+LNG ships, where the cost of the investment will largely be borne by the market price of LNG.</div>
+		<div>Invest in next-generation, ultra-high efficiency LNG ships with an associated cost premium (above market rates).</div>
+		<div>How will you expand the fleet to include LNG ships?</div>
+		<div>Invest in current-generation LNG ships, where the cost of the investment will largely be borne by the market price of LNG.</div>
+		<div>Transitioning to
+a low-carbon economy</div>
+		<div>The market is shifting. No sector demonstrates this more than energy: Customer demand for liquefied natural gas (LNG) is increasing each year as gas prices drop, and the world sees it as a transition fuel to a lower carbon economy.
+
+But LNG requires enormous amounts
+of energy to cool and ship. Sea Share is considering different ways to expand its shipping fleet to include LNG ships.</div>
+		<div>Calculate an internal carbon price and “trade” credits between businesses to incentivise savings.</div>
+		<div>Trading in
+carbon credits</div>
+		<div>Use carbon credits to reach net zero.</div>
+		<div>Invest in new technologies that sequester carbon from on-board emissions. This technology requires marginally higher energy costs and substantial upfront investment,
+but the resulting credits should
+be valuable on trading markets.</div>
+		<div>Focus on fuel-efficiency credits. This aligns well with operational savings, making this a cost-positive option.</div>
+		<div>Which form of credit will you invest in?</div>
+		<div>A group of investors has approached the company with the idea of establishing carbon credits based on reduced fuel usage. Using carbon credits may well help Sea Share reach net zero, as its remaining annual GHG emissions are proving almost impossible to reduce.
+
+The markets have recently been shifting away from fuel-efficiency-based credits, towards carbon-sequestration credits. Deciding which credit type to pursue requires balancing the costs against the potential revenue and carbon benefits.</div>
+		<div>$15,000,000</div>
+		<div>Invest in new technologies that sequester carbon from on-board emissions. This technology requires marginally higher energy costs and substantial upfront investment, but the resulting credits should be valuable on trading markets.</div>
+		<div>A group of investors has approached the company with the idea of establishing carbon credits based on reduced fuel usage. Using carbon credits may well help Sea Share reach net zero, as its remaining annual GHG emissions are proving almost impossible to reduce.
+
+The markets have recently been shifting away from fuel-efficiency-based credits, towards carbon-sequestration credits. Deciding which credit type to pursue requires balancing the costs against the potential revenue and carbon benefits.</div>
+		<div>Trading in carbon credits</div>
+		<div>Purchase one million validated and measurable credits, based on engineered carbon capture and sequestration technologies in the oil and gas industry.</div>
+		<div>Purchase one million validated carbon sequestration credits based on validated agricultural and forest carbon sequestration technologies.</div>
+		<div>View your impact</div>
+		<div>Carbon offsets
+</div>
+		<div>Would you use carbon offsets? If so, which type of credit would you buy?</div>
+		<div>Use carbon offsets to reach net zero.</div>
+		<div>Purchase one million low-quality carbon credits based on efficiency gains in the energy sector.</div>
+		<div>Sea Share’s 10-year window to achieve net zero is nearly up, but the business still has annual GHG emissions!
+
+You have the option of buying
+carbon credits from the market to offset remaining emissions. A variety of credits are available. As expected, the higher the value of the credit in terms of carbon offset, the more expensive it is.</div>
+		<div>Don’t purchase credits</div>
+		<div>Sea Share’s 10-year window to achieve net zero is nearly up, but the business still has annual GHG emissions!
+
+You have the option of buying carbon credits from the market to offset remaining emissions. A variety of credits are available. As expected, the higher the value of the credit in terms of carbon offset, the more expensive it is.</div>
+		<div>Carbon offsets</div>
+		<div>Don’t purchase credits.</div>
+		<div>Purchase one million validated carbon sequestration credits based
+on validated agricultural and forest carbon sequestration technologies.</div>
+		<div>You’ve reached net zero.</div>
+		<div>Congratulations!</div>
+		<div>Exit</div>
+		<div>Well done on achieving your
+net-zero target! You have brought
+the company into a new decade of lower emissions and preserved your own job as a result.
+
+Play again to see if you can take the company to a net-positive result.</div>
+		<div>Retry</div>
+		<div>Well done on achieving your net-zero target! You have brought the company into a new decade of lower emissions and preserved your own job as a result.
+
+Play again to see if you can take the company to a net-positive result.</div>
+		<div>You have surpassed net zero and guided Sea Share into net-positive territory.</div>
+		<div>Well done. You managed to achieve
+a net-positive carbon result! Not only have you taken care of your own emissions, you are now a leading example for other companies
+(by beginning to account for your past emissions and the continued emissions of others in your value chain).
+
+Being net positive required not only early, heavy investment in reducing your own scope 1 emissions, but also smart decisions and partnerships that helped you leverage cost effective carbon savings later on.
+
+Play again to see how different choices influence the result.</div>
+		<div>Well done. You managed to achieve a net-positive carbon result! Not only have you taken care of your own emissions, you are now a leading example for other companies (by beginning to account for your past emissions and the continued emissions of others in your value chain).
+
+Being net positive required not only early, heavy investment in reducing your own scope 1 emissions, but also smart decisions and partnerships that helped you leverage cost effective carbon savings later on.
+
+Play again to see how different choices influence the result.</div>
+		<div>Unfortunately, you have failed to
+ reach net zero. Operations continue to be disrupted by climate change and the company is increasingly exposed to the volatility of fuel prices. Key investors have downgraded your stock and customers have fled to more resilient operators, but you haven’t noticed because you lost your job!
+
+You are encouraged to try again.
+But this time, think about the fact that the largest opportunities for reducing emissions occur early on in your journey. Consider the “low-hanging fruit” of scope 1 emissions reduction, and bear in mind that a ton of CO₂e saved early on has a bigger long-term impact on climate change than that same ton saved later on.
+
+Invest early to reap the rewards of carbon savings, and try to save enough money to select strategic investments
+in later years. Good luck!</div>
+		<div>Sea Share did not reach net zero on time.</div>
+		<div>Too late!
+</div>
+		<div>Unfortunately, you have failed to reach net zero. Operations continue to be disrupted by climate change and the company is increasingly exposed to the volatility of fuel prices. Key investors have downgraded your stock and customers have fled to more resilient operators, but you haven’t noticed because you lost your job!
+
+You are encouraged to try again. But this time, think about the fact that the largest opportunities for reducing emissions occur early on in your journey. Consider the “low-hanging fruit” of scope 1 emissions reduction, and bear in mind that a ton of CO₂e saved early on has a bigger long-term impact on climate change than that same ton saved later on.
+
+Invest early to reap the rewards of carbon savings, and try to save enough money to select strategic investments in later years. Good luck!</div>
+		<div>Retry</div>
+		<div>Too late!</div>
+		<div>Exit</div>
+		<div>Purpose</div>
+		<div>X</div>
+		<div>Convenience</div>
+		<div>Snowball
+</div>
+		<div>Snowball </div>
+		<div>Convenience
+</div>
+		<div>Quota</div>
+		<div>Drag and Drop</div>
+		<div>Purpose
+</div>
+		<div>Quota
+</div>
+		<div>Snowball</div>
+
+	</div>
+
+	<!-- end text content: -->
+
+  </body>
+</html>
