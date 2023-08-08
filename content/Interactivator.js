@@ -10,10 +10,7 @@ Wistia.plugin("interactivator", function (video, options) {
   // Top and bottom (outside of 'cut here') are only used outisde of Interactivator tool, i.e. Review page and in embed code on OLC.
   // Middle part used in Interactivator tool from Flask server, with different arguments passed in.
   // -- cut here --
-	function changeAnswer(option) {
-		console.log(option);
-		console.log("*".repeat(100));
-	}
+
   if (options.bypassLowerThird == true) {
     let lwrThirdData = true;
   }
@@ -331,9 +328,7 @@ Wistia.plugin("interactivator", function (video, options) {
       btnOpts[i].classList.remove('correct')
     }
     this.classList.add('correct')
-    ">${
-        optionQuestions[i]
-      }</button>`;
+    ">${optionQuestions[i]}</button>`;
     }
     chapterText.innerHTML += `<br><button class="button" id="submit" onclick="let options = document.querySelectorAll('.buttonQuiz');
   let results = document.getElementById('results');
@@ -439,7 +434,7 @@ Wistia.plugin("interactivator", function (video, options) {
         }
       }
     );
-     console.log(document.querySelectorAll(".buttonQuiz"));
+    console.log(document.querySelectorAll(".buttonQuiz"));
   }
 
   function addClassToFillPath(id) {
@@ -547,40 +542,40 @@ Wistia.plugin("interactivator", function (video, options) {
         var event = document.getElementById("b4ckgr0un6");
         event.innerHTML =
           `
-						<div id="background">
-							<div id="flipCardBackground">
-							<input hidden type="checkbox" id="toggle">
-							<label for="toggle">
-								<div id="flip-card-container" class="flip-card-container">
-								<div class="flip-card">
-									<div class="flip-card-front">
-									<p id="question">` +
+						  <div id="background">
+							  <div id="flipCardBackground">
+							  <input hidden type="checkbox" id="toggle">
+							  <label for="toggle">
+								  <div id="flip-card-container" class="flip-card-container">
+								  <div class="flip-card">
+									  <div class="flip-card-front">
+									  <p id="question">` +
           question +
           `</p>
-									<span id="showAnswer" class="invisible">
-										<div></div>
-										<p>
-										Show answer
-										</p>
-									</span>
-									</div>
-									<div class="flip-card-back">
-									<p id="answer">` +
+									  <span id="showAnswer" class="invisible">
+										  <div></div>
+										  <p>
+										  Show answer
+										  </p>
+									  </span>
+									  </div>
+									  <div class="flip-card-back">
+									  <p id="answer">` +
           answer +
           `</p>
-									</div>
-								</div>
-								</div>
-							</label>
-							<div id="textContainer">
-								<p id="FlipCardPrompt">Type your answer here</p>
-								<textarea autofocus id="studentInput">` +
+									  </div>
+								  </div>
+								  </div>
+							  </label>
+							  <div id="textContainer">
+								  <p id="FlipCardPrompt">Type your answer here</p>
+								  <textarea autofocus id="studentInput">` +
           prompt +
           `</textarea>
-							</div>
-							</div>
-						</div>
-					`;
+							  </div>
+							  </div>
+						  </div>
+					  `;
         var studentInput = document.getElementById("studentInput");
         studentInput.setSelectionRange(
           studentInput.value.length,
@@ -612,6 +607,9 @@ Wistia.plugin("interactivator", function (video, options) {
 
   function lowerThird(enterTime, endTime, speaker, Left_or_Right, ltAnim) {
     // Interactive function with arguments sent by user
+    let d1 = "";
+    let d2 = "";
+    let url = "";
     if (ltAnim == undefined) {
       lt = document.createElement("div");
       lt.id = "bodyMovin";
