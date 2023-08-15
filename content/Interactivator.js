@@ -287,7 +287,7 @@ Wistia.plugin("interactivator", function (video, options) {
     generator_background.style.width = "70%";
     generator_background.style.minHeight = "500px";
     generator_background.style.maxHeight = "700px";
-    generator_background.style.margin = "20% auto";
+    generator_background.style.margin = "auto";
     generator_background.style.left = "0";
     generator_background.style.right = "0";
     generator_background.style.top = "0";
