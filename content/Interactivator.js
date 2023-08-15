@@ -280,43 +280,46 @@ Wistia.plugin("interactivator", function (video, options) {
     }
   }
 
-  async function Video_Interactivity_Timestamp(
-    enterTime,
-    endTime,
-    content,
-    html
-  ) {
-    const url = html; // Replace with the actual URL
-    const result = await fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          return "Network response was not ok";
-        }
-        return response.text();
-      })
-      .then((htmlContent) => {
-        console.log(htmlContent); // This will log the HTML content of the URL
-        return `<div style="width: 80%; margin: auto; z-index">${htmlContent}</div>`;
-      })
-      .catch((error) => {
-       return("Fetch error:", error);
-      });
-
-    let startChap = parseFloat(enterTime) - 0.625;
-    let generator_background = backgroundAndTrans(startChap, endTime);
+  function Video_Interactivity_Timestamp(...args) {
+    let startChap = parseFloat(args[0]) - 0.625;
+    let generator_background = backgroundAndTrans(startChap, args[1]);
     generator_background.style.display = "none";
+    generator_background.style.width = "70%";
+    generator_background.style.minHeight = "500px";
+    generator_background.style.maxHeight = "700px";
+    generator_background.style.margin = "20% auto";
+    generator_background.style.left = "0";
+    generator_background.style.right = "0";
+    generator_background.style.top = "0";
+    generator_background.style.bottom = "0";
+
     generator_background.classList.add("chapter_background");
     generator_background.style.pointerEvents = "none";
-    generator_background.id = "chapter_background/" + enterTime;
+    generator_background.id = "chapter_background/" + args[0];
     chapterText = document.createElement("div");
     generator_background.appendChild(chapterText);
     // chapterText.innerHTML = html;
     chapterText.style.pointerEvents = "all";
+    chapterText.style.width = "100%";
     chapterText.classList.add("chapterText");
     chapterLine = document.createElement("div");
-    chapterLine.classList.add("chapterLine");
-
+    // chapterLine.classList.add("chapterLine");
+    console.log(args);
+    console.log("arguments");
+    const videoInputs = args.filter((data) => data !== "").slice(3);
+    let titleInput = videoInputs.shift();
+    chapterText.innerHTML += `<p style='font-size: 0.6em;
+      padding: 1em;
+      text-align: left;
+      color: #38761D;'>“Follow these steps to conduct the exercise. Write down your reflections from the exercise in your journal. How do your reflections inform your goal?”</p>`;
+    chapterText.innerHTML += `<h3 style="font-size: 45px;">${titleInput}</h3>`;
     // Line must be slightly longer than the text
+    // chapterText += `<div style="width: 50%; text-align: left; margin: auto;">`
+    for (let i = 0; i < videoInputs.length; i++) {
+      chapterText.innerHTML += `<div style="width: 80%; text-align: left; margin: 20px auto; font-size: 30px;"><li>${videoInputs[i]}</li></div>`;
+    }
+    // chapterText += "</div>"
+
     function addLine(chapterText) {
       if (chapterText.offsetWidth > 0) {
         chapterLine.style.width = chapterText.offsetWidth + 100 + "px";
@@ -330,11 +333,11 @@ Wistia.plugin("interactivator", function (video, options) {
     addLine(chapterText);
 
     // Bind the chapter animation to the video
-    video.bind("betweentimes", startChap, endTime, function (withinInterval) {
+    video.bind("betweentimes", startChap, args[1], function (withinInterval) {
       if (withinInterval) {
         makeiOSSafe();
         generator_background = document.getElementById(
-          "chapter_background/" + enterTime
+          "chapter_background/" + args[0]
         );
         generator_background.style.display = "flex";
         // hide all other generator_backgrounds
@@ -354,7 +357,7 @@ Wistia.plugin("interactivator", function (video, options) {
         }
       } else {
         generator_background = document.getElementById(
-          "chapter_background/" + enterTime
+          "chapter_background/" + args[0]
         );
         if (generator_background) {
           generator_background.style.display = "none";
@@ -369,12 +372,10 @@ Wistia.plugin("interactivator", function (video, options) {
     // Note, this is a little buggy
     video.bind(
       "betweentimes",
-      parseFloat(enterTime),
-      endTime,
+      parseFloat(args[0]),
+      args[1],
       function (withinInterval) {
         if (withinInterval && video.state() == "playing") {
-          chapterText.innerHTML = result;
-
           video.pause();
           // setTimeout(function () {
           //   if (withinInterval) {
@@ -388,7 +389,6 @@ Wistia.plugin("interactivator", function (video, options) {
       }
     );
   }
-
 
   function Add_Quiz(...args) {
     // Chapter automatically creates a background and transition animation.
