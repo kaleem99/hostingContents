@@ -280,16 +280,115 @@ Wistia.plugin("interactivator", function (video, options) {
     }
   }
 
-  function Video_Interactivity_Timestamp(enterTime, endTime) {
-    let timer = setInterval(() => {
-      console.log(parseInt(video.time()), parseInt(enterTime));
-      if (parseInt(video.time()) == parseInt(enterTime)) {
-        video.pause();
-        console.log("stopped");
-        clearInterval(timer);
+  async function Video_Interactivity_Timestamp(
+    enterTime,
+    endTime,
+    content,
+    html
+  ) {
+    const url = html; // Replace with the actual URL
+    const result = await fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          return "Network response was not ok";
+        }
+        return response.text();
+      })
+      .then((htmlContent) => {
+        console.log(htmlContent); // This will log the HTML content of the URL
+        return `<div style="width: 80%; margin: auto; z-index">${htmlContent}</div>`;
+      })
+      .catch((error) => {
+       return("Fetch error:", error);
+      });
+
+    let startChap = parseFloat(enterTime) - 0.625;
+    let generator_background = backgroundAndTrans(startChap, endTime);
+    generator_background.style.display = "none";
+    generator_background.classList.add("chapter_background");
+    generator_background.style.pointerEvents = "none";
+    generator_background.id = "chapter_background/" + enterTime;
+    chapterText = document.createElement("div");
+    generator_background.appendChild(chapterText);
+    // chapterText.innerHTML = html;
+    chapterText.style.pointerEvents = "all";
+    chapterText.classList.add("chapterText");
+    chapterLine = document.createElement("div");
+    chapterLine.classList.add("chapterLine");
+
+    // Line must be slightly longer than the text
+    function addLine(chapterText) {
+      if (chapterText.offsetWidth > 0) {
+        chapterLine.style.width = chapterText.offsetWidth + 100 + "px";
+        chapterText.appendChild(chapterLine);
+      } else {
+        setTimeout(function () {
+          addLine(chapterText);
+        }, 500);
       }
-    }, 1000);
+    }
+    addLine(chapterText);
+
+    // Bind the chapter animation to the video
+    video.bind("betweentimes", startChap, endTime, function (withinInterval) {
+      if (withinInterval) {
+        makeiOSSafe();
+        generator_background = document.getElementById(
+          "chapter_background/" + enterTime
+        );
+        generator_background.style.display = "flex";
+        // hide all other generator_backgrounds
+        for (
+          let i = 0;
+          i < document.getElementsByClassName("generator_background").length;
+          i++
+        ) {
+          if (
+            document.getElementsByClassName("generator_background")[i] !=
+            generator_background
+          ) {
+            document.getElementsByClassName("generator_background")[
+              i
+            ].style.display = "none";
+          }
+        }
+      } else {
+        generator_background = document.getElementById(
+          "chapter_background/" + enterTime
+        );
+        if (generator_background) {
+          generator_background.style.display = "none";
+        }
+      }
+      if (generator_background) {
+        killSwitch(generator_background.parentElement);
+      }
+    });
+
+    // The chapter takes up no real time in the video, so we have to pause and play again after a few seconds
+    // Note, this is a little buggy
+    video.bind(
+      "betweentimes",
+      parseFloat(enterTime),
+      endTime,
+      function (withinInterval) {
+        if (withinInterval && video.state() == "playing") {
+          chapterText.innerHTML = result;
+
+          video.pause();
+          // setTimeout(function () {
+          //   if (withinInterval) {
+          //     video.play();
+          //   }
+          // }, 10000);
+        }
+        if (generator_background) {
+          killSwitch(generator_background.parentElement);
+        }
+      }
+    );
   }
+
 
   function Add_Quiz(...args) {
     // Chapter automatically creates a background and transition animation.
