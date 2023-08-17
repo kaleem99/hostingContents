@@ -4,10 +4,10 @@ class Poll {
     this.selected = sessionStorage.getItem("poll-selected");
     this.endpoint = "https://express-template-backend.onrender.com/poll/";
 
-    // this.root.insertAdjacentHTML(
-    //   "afterbegin",
-    //   `<div class="poll__title">${title}</div>`
-    // );
+ this.root.insertAdjacentHTML(
+      "afterbegin",
+      `<div class="poll__title">Which communication situation or type of communication would make you most nervous in the Amazon scenario?</div>`
+    );
 
     this._refresh();
   }
