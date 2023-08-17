@@ -6,6 +6,7 @@ Wistia.plugin("interactivator", function (video, options) {
   var outro = options.outro;
   let startPlay = true;
   let production = false;
+  let loadedHtmlContent = "";
 
   // Top and bottom (outside of 'cut here') are only used outisde of Interactivator tool, i.e. Review page and in embed code on OLC.
   // Middle part used in Interactivator tool from Flask server, with different arguments passed in.
@@ -287,7 +288,7 @@ Wistia.plugin("interactivator", function (video, options) {
     generator_background.style.width = "70%";
     generator_background.style.minHeight = "500px";
     generator_background.style.maxHeight = "700px";
-    generator_background.style.margin = "auto";
+    generator_background.style.margin = "5% auto";
     generator_background.style.left = "0";
     generator_background.style.right = "0";
     generator_background.style.top = "0";
@@ -389,7 +390,139 @@ Wistia.plugin("interactivator", function (video, options) {
       }
     );
   }
+  function Video_Pausing_Embedded_Poll(...args) {
+    let startChap = parseFloat(args[0]) - 0.625;
+    let generator_background = backgroundAndTrans(startChap, args[1]);
+    generator_background.style.display = "none";
+    generator_background.style.width = "70%";
+    generator_background.style.minHeight = "500px";
+    generator_background.style.maxHeight = "700px";
+    generator_background.style.margin = "5% auto";
+    generator_background.style.left = "0";
+    generator_background.style.right = "0";
+    generator_background.style.top = "0";
+    generator_background.style.bottom = "0";
 
+    generator_background.classList.add("chapter_background");
+    generator_background.style.pointerEvents = "none";
+    generator_background.id = "chapter_background/" + args[0];
+    chapterText = document.createElement("div");
+    generator_background.appendChild(chapterText);
+    // chapterText.innerHTML = html;
+    chapterText.style.pointerEvents = "all";
+    chapterText.style.width = "100%";
+    chapterText.classList.add("chapterText");
+    chapterLine = document.createElement("div");
+    // chapterLine.classList.add("chapterLine");
+
+    const videoInputs = args.filter((data) => data !== "").slice(3);
+    let titleInput = videoInputs.shift();
+    const htmlContent = `<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Voting System</title>
+        <link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/client/main.css" />
+        <script src="https://kaleem99.github.io/hostingContents/client/main.js" defer></script>
+      </head>
+      <body>
+        <div class="poll"></div>
+      </body>
+    </html>`;
+
+    var scriptElement = document.createElement("script");
+
+    // Set the script's source URL
+    scriptElement.src =
+      "https://kaleem99.github.io/hostingContents/client/main.js";
+
+    // Append the script element to the container
+    document.body.appendChild(scriptElement);
+    chapterText.innerHTML += htmlContent;
+
+    // chapterText.innerHTML += `<p style='font-size: 0.6em;
+    //   padding: 1em;
+    //   text-align: left;
+    //   color: #38761D;'>“Follow these steps to conduct the exercise. Write down your reflections from the exercise in your journal. How do your reflections inform your goal?”</p>`;
+    // chapterText.innerHTML += `<h3 style="font-size: 45px;">${titleInput}</h3>`;
+    // // Line must be slightly longer than the text
+    // // chapterText += `<div style="width: 50%; text-align: left; margin: auto;">`
+    // for (let i = 0; i < videoInputs.length; i++) {
+    //   chapterText.innerHTML += `<div style="width: 80%; text-align: left; margin: 20px auto; font-size: 30px;"><li>${videoInputs[i]}</li></div>`;
+    // }
+    // // chapterText += "</div>"
+
+    function addLine(chapterText) {
+      if (chapterText.offsetWidth > 0) {
+        chapterLine.style.width = chapterText.offsetWidth + 100 + "px";
+        chapterText.appendChild(chapterLine);
+      } else {
+        setTimeout(function () {
+          addLine(chapterText);
+        }, 500);
+      }
+    }
+    addLine(chapterText);
+
+    // Bind the chapter animation to the video
+    video.bind("betweentimes", startChap, args[1], function (withinInterval) {
+      if (withinInterval) {
+        makeiOSSafe();
+        generator_background = document.getElementById(
+          "chapter_background/" + args[0]
+        );
+        generator_background.style.display = "flex";
+        // hide all other generator_backgrounds
+        for (
+          let i = 0;
+          i < document.getElementsByClassName("generator_background").length;
+          i++
+        ) {
+          if (
+            document.getElementsByClassName("generator_background")[i] !=
+            generator_background
+          ) {
+            document.getElementsByClassName("generator_background")[
+              i
+            ].style.display = "none";
+          }
+        }
+      } else {
+        generator_background = document.getElementById(
+          "chapter_background/" + args[0]
+        );
+        if (generator_background) {
+          generator_background.style.display = "none";
+        }
+      }
+      if (generator_background) {
+        killSwitch(generator_background.parentElement);
+      }
+    });
+
+    // The chapter takes up no real time in the video, so we have to pause and play again after a few seconds
+    // Note, this is a little buggy
+    video.bind(
+      "betweentimes",
+      parseFloat(args[0]),
+      args[1],
+      function (withinInterval) {
+        if (withinInterval && video.state() == "playing") {
+          video.pause();
+          // setTimeout(function () {
+          //   if (withinInterval) {
+          //     video.play();
+          //   }
+          // }, 10000);
+        }
+        if (generator_background) {
+          killSwitch(generator_background.parentElement);
+        }
+      }
+    );
+  }
   function Add_Quiz(...args) {
     // Chapter automatically creates a background and transition animation.
     const textQuestion = args[2];
@@ -423,26 +556,26 @@ Wistia.plugin("interactivator", function (video, options) {
       }' class="buttonQuiz option ${
         i + 1 == CorrectOption[CorrectOption.length - 1] ? "correct" : ""
       }" onclick="let btnOpts = document.querySelectorAll('.buttonQuiz');
-    for(let i = 0; i < btnOpts.length; i++){
-      btnOpts[i].classList.remove('correct')
-    }
-    this.classList.add('correct')
-    ">${optionQuestions[i]}</button>`;
+      for(let i = 0; i < btnOpts.length; i++){
+        btnOpts[i].classList.remove('correct')
+      }
+      this.classList.add('correct')
+      ">${optionQuestions[i]}</button>`;
     }
     chapterText.innerHTML += `<br><button class="button" id="submit" onclick="let options = document.querySelectorAll('.buttonQuiz');
-  let results = document.getElementById('results');
-  for(let i = 0; i < options.length; i++){
-    if(options[i].classList.contains('correct')){
-      if(options[i].id === 'Option 2'){
-        results.innerHTML = ('Correct')
-        break;
+    let results = document.getElementById('results');
+    for(let i = 0; i < options.length; i++){
+      if(options[i].classList.contains('correct')){
+        if(options[i].id === 'Option 2'){
+          results.innerHTML = ('Correct')
+          break;
+        }
+        else{
+          results.innerHTML = ('Incorrect please try again.')
+          break;
+        }
       }
-      else{
-        results.innerHTML = ('Incorrect please try again.')
-        break;
-      }
-    }
-  }" tabindex="0"> <strong>Submit</strong></button>`;
+    }" tabindex="0"> <strong>Submit</strong></button>`;
     document.body.insertAdjacentHTML(
       "beforebegin",
       '<link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/css/Interactivator.css"/>'
@@ -468,7 +601,7 @@ Wistia.plugin("interactivator", function (video, options) {
     function addLine(chapterText) {
       if (chapterText.offsetWidth > 0) {
         chapterLine.style.width = chapterText.offsetWidth + 100 + "px";
-        chapterText.appendChild(chapterLine);
+        // chapterText.appendChild(chapterLine);
       } else {
         setTimeout(function () {
           addLine(chapterText);
@@ -641,40 +774,40 @@ Wistia.plugin("interactivator", function (video, options) {
         var event = document.getElementById("b4ckgr0un6");
         event.innerHTML =
           `
-						  <div id="background">
-							  <div id="flipCardBackground">
-							  <input hidden type="checkbox" id="toggle">
-							  <label for="toggle">
-								  <div id="flip-card-container" class="flip-card-container">
-								  <div class="flip-card">
-									  <div class="flip-card-front">
-									  <p id="question">` +
+                            <div id="background">
+                                <div id="flipCardBackground">
+                                <input hidden type="checkbox" id="toggle">
+                                <label for="toggle">
+                                    <div id="flip-card-container" class="flip-card-container">
+                                    <div class="flip-card">
+                                        <div class="flip-card-front">
+                                        <p id="question">` +
           question +
           `</p>
-									  <span id="showAnswer" class="invisible">
-										  <div></div>
-										  <p>
-										  Show answer
-										  </p>
-									  </span>
-									  </div>
-									  <div class="flip-card-back">
-									  <p id="answer">` +
+                                        <span id="showAnswer" class="invisible">
+                                            <div></div>
+                                            <p>
+                                            Show answer
+                                            </p>
+                                        </span>
+                                        </div>
+                                        <div class="flip-card-back">
+                                        <p id="answer">` +
           answer +
           `</p>
-									  </div>
-								  </div>
-								  </div>
-							  </label>
-							  <div id="textContainer">
-								  <p id="FlipCardPrompt">Type your answer here</p>
-								  <textarea autofocus id="studentInput">` +
+                                        </div>
+                                    </div>
+                                    </div>
+                                </label>
+                                <div id="textContainer">
+                                    <p id="FlipCardPrompt">Type your answer here</p>
+                                    <textarea autofocus id="studentInput">` +
           prompt +
           `</textarea>
-							  </div>
-							  </div>
-						  </div>
-					  `;
+                                </div>
+                                </div>
+                            </div>
+                        `;
         var studentInput = document.getElementById("studentInput");
         studentInput.setSelectionRange(
           studentInput.value.length,
