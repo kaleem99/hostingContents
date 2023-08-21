@@ -3,8 +3,10 @@ class Poll {
     this.root = root;
     this.selected = sessionStorage.getItem("poll-selected");
     this.endpoint = "https://express-template-backend.onrender.com/poll/";
-
- this.root.insertAdjacentHTML(
+    this.url = window.location.href;
+    this.pattern = /plugin%5Binteractivator%5D%5Bid%5D=([^&]+)/;
+    this.videoID = this.url.match(this.pattern)[1];
+    this.root.insertAdjacentHTML(
       "afterbegin",
       `<div class="poll__title">Which communication situation or type of communication would make you most nervous in the Amazon scenario?</div>`
     );
@@ -13,8 +15,9 @@ class Poll {
   }
 
   async _refresh() {
+    console.log(this.videoID);
     console.log(document.body);
-    const response = await fetch(this.endpoint + "pxn2ycze9k");
+    const response = await fetch(this.endpoint + this.videoID);
     const data = await response.json();
 
     this.root.querySelectorAll(".poll__option").forEach((option) => {
@@ -43,7 +46,7 @@ class Poll {
         fragment
           .querySelector(".poll__option")
           .addEventListener("click", () => {
-            fetch(this.endpoint + "pxn2ycze9k", {
+            fetch(this.endpoint + this.videoID, {
               method: "post",
               body: `add=${option.label}`,
               headers: {
