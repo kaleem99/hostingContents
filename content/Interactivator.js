@@ -402,7 +402,8 @@ Wistia.plugin("interactivator", function (video, options) {
     generator_background.style.right = "0";
     generator_background.style.top = "0";
     generator_background.style.bottom = "0";
-
+    console.log(video.hashedId());
+    console.log("*".repeat(20));
     generator_background.classList.add("chapter_background");
     generator_background.style.pointerEvents = "none";
     generator_background.id = "chapter_background/" + args[0];
@@ -435,8 +436,7 @@ Wistia.plugin("interactivator", function (video, options) {
     var scriptElement = document.createElement("script");
 
     // Set the script's source URL
-    scriptElement.src =
-      "https://kaleem99.github.io/hostingContents/client/main.js";
+    scriptElement.src = `http://127.0.0.1:8080/voting-app-js-node/client/main.js?${video.hashedId()}`;
 
     // Append the script element to the container
     document.body.appendChild(scriptElement);
