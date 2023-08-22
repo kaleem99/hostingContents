@@ -436,7 +436,7 @@ Wistia.plugin("interactivator", function (video, options) {
     var scriptElement = document.createElement("script");
 
     // Set the script's source URL
-    scriptElement.src = `http://127.0.0.1:8080/voting-app-js-node/client/main.js?${video.hashedId()}`;
+    scriptElement.src = `https://kaleem99.github.io/hostingContents/client/main.js?${video.hashedId()}`;
 
     // Append the script element to the container
     document.body.appendChild(scriptElement);
