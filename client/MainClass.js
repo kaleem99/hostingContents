@@ -53,10 +53,17 @@ class Poll {
     this.root.querySelectorAll(".poll__option").forEach((option) => {
       option.remove();
     });
+    const total = Object.values(data2).reduce(
+      (sum, value) => sum + value,
+      0
+    );
+    
 
     for (const option in data2) {
       const template = document.createElement("template");
       const fragment = template.content;
+      const percentage = (data2[option] / total) * 100;
+
       template.innerHTML = `
         <div class="poll__option ${
           this.selected == option ? "poll__option--selected" : ""
@@ -66,7 +73,7 @@ class Poll {
           }%;"></div>
           <div class="poll__option-info">
             <span class="poll__label">${option}</span>
-            <span class="poll__percentage">${data2[option]}%</span>
+            <span class="poll__percentage">${percentage.toFixed(2)}%</span>
           </div>
         </div>
       `;
