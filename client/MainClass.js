@@ -17,10 +17,10 @@ class Poll {
     this.root = root;
     this.selected = sessionStorage.getItem("poll-selected");
     this.endpoint = "https://express-template-backend.onrender.com/poll/";
+    // this.videoID = "pg4ycfs4k7";
     this.url = window.location.href;
     this.pattern = /plugin%5Binteractivator%5D%5Bid%5D=([^&]+)/;
     this.videoID = this.url.match(this.pattern)[1];
-    // this.videoID = "pxn2ycze9k";
     this.root.insertAdjacentHTML(
       "afterbegin",
       `<div class="poll__title">Title Input</div>`
@@ -49,7 +49,7 @@ class Poll {
 
   _renderOptions(data2) {
     const reference = database.ref(`Polls/${this.videoID}`);
-
+    
     this.root.querySelectorAll(".poll__option").forEach((option) => {
       option.remove();
     });
@@ -57,45 +57,28 @@ class Poll {
     for (const option in data2) {
       const template = document.createElement("template");
       const fragment = template.content;
-
-      const pollOptionDiv = document.createElement("div");
-      pollOptionDiv.className = "poll__option";
-      if (this.selected == option) {
-        pollOptionDiv.classList.add("poll__option--selected");
-      }
-
-      const pollOptionFillDiv = document.createElement("div");
-      pollOptionFillDiv.className = "poll__option-fill";
-      pollOptionFillDiv.style.width = data2[option] + "%";
-
-      const pollOptionInfoDiv = document.createElement("div");
-      pollOptionInfoDiv.className = "poll__option-info";
-
-      const pollLabelSpan = document.createElement("span");
-      pollLabelSpan.className = "poll__label";
-      pollLabelSpan.textContent = option;
-
-      const pollPercentageSpan = document.createElement("span");
-      pollPercentageSpan.className = "poll__percentage";
-      pollPercentageSpan.textContent = data2[option] + "%";
-
-      pollOptionInfoDiv.appendChild(pollLabelSpan);
-      pollOptionInfoDiv.appendChild(pollPercentageSpan);
-
-      pollOptionDiv.appendChild(pollOptionFillDiv);
-      pollOptionDiv.appendChild(pollOptionInfoDiv);
-
-      fragment.appendChild(pollOptionDiv);
-
-      // Now you can append the fragment to your desired container in the DOM
-      // For example: document.body.appendChild(fragment);
-
+      template.innerHTML = `
+        <div class="poll__option ${
+          this.selected == option ? "poll__option--selected" : ""
+        }">
+          <div class="poll__option-fill" style="width: ${
+            data2[option]
+          }%;"></div>
+          <div class="poll__option-info">
+            <span class="poll__label">${option}</span>
+            <span class="poll__percentage">${data2[option]}%</span>
+          </div>
+        </div>
+      `;
       let x = document.getElementsByClassName("poll__option");
-      console.log(x);
+      console.log(x, 74, this.videoID, this.selected);
       if (!this.selected) {
+        console.log(100000);
+        console.log(this.videoID);
         fragment
           .querySelector(".poll__option")
           .addEventListener("click", () => {
+            console.log(20000, this.videoID);
             const newData = { ...data2 };
             newData[option] += 1;
             reference
@@ -111,6 +94,7 @@ class Poll {
               });
           });
       }
+
       this.root.appendChild(fragment);
     }
   }
