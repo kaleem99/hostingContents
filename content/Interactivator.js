@@ -288,7 +288,7 @@ Wistia.plugin("interactivator", function (video, options) {
     generator_background.style.width = "70%";
     generator_background.style.minHeight = "500px";
     generator_background.style.maxHeight = "700px";
-    generator_background.style.margin = "5% auto";
+    generator_background.style.margin = "auto";
     generator_background.style.left = "0";
     generator_background.style.right = "0";
     generator_background.style.top = "0";
@@ -397,7 +397,7 @@ Wistia.plugin("interactivator", function (video, options) {
     generator_background.style.width = "70%";
     generator_background.style.minHeight = "500px";
     generator_background.style.maxHeight = "700px";
-    generator_background.style.margin = "5% auto";
+    generator_background.style.margin = "auto";
     generator_background.style.left = "0";
     generator_background.style.right = "0";
     generator_background.style.top = "0";
@@ -426,7 +426,6 @@ Wistia.plugin("interactivator", function (video, options) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Voting System</title>
         <link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/client/main.css" />
-        <script src="https://kaleem99.github.io/hostingContents/client/main.js" defer></script>
       </head>
       <body>
         <div class="poll"></div>
@@ -434,11 +433,14 @@ Wistia.plugin("interactivator", function (video, options) {
     </html>`;
 
     var scriptElement = document.createElement("script");
-
+    var scriptElement2 = document.createElement("script");
     // Set the script's source URL
-    scriptElement.src = `https://kaleem99.github.io/hostingContents/client/main.js?${video.hashedId()}`;
-
-    // Append the script element to the container
+    scriptElement.src = `https://www.gstatic.com/firebasejs/3.7.4/firebase.js`;
+    scriptElement.onload = function () {
+      scriptElement2.src = `https://kaleem99.github.io/hostingContents/client/MainClass.js`;
+      // Append the script element to the container
+      document.body.appendChild(scriptElement2);
+    };
     document.body.appendChild(scriptElement);
     chapterText.innerHTML += htmlContent;
 
