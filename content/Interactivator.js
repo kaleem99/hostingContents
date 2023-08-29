@@ -283,6 +283,7 @@ Wistia.plugin("interactivator", function (video, options) {
 
   function Video_Interactivity_Timestamp(...args) {
     let startChap = parseFloat(args[0]) - 0.625;
+    let bullet = "initial"
     let generator_background = backgroundAndTrans(startChap, args[1]);
     generator_background.style.display = "none";
     generator_background.style.width = "100%";
@@ -313,12 +314,15 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log("arguments");
     const videoInputs = args.filter((data) => data !== "").slice(3);
     let titleInput = videoInputs.shift();
-
+    let checkIfBulletPoints = videoInputs.pop();
+    if(checkIfBulletPoints === "NO"){
+      bullet = "none"
+    }
     chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${titleInput}</p>`;
     // Line must be slightly longer than the text
     // chapterText += `<div style="width: 50%; text-align: left; margin: auto;">`
     for (let i = 0; i < videoInputs.length; i++) {
-      chapterText.innerHTML += `<div style="width: 80%; text-align: left; margin: 25px auto; font-size: 25px;"><li>${videoInputs[i]}</li></div>`;
+      chapterText.innerHTML += `<div style="width: 80%; text-align: left; margin: 25px auto; font-size: 25px;"><li style="list-style-type: ${bullet}" >${videoInputs[i]}</li></div>`;
     }
     // chapterText += "</div>"
     chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">Write down your reflections from the exercise in your strategy template. Consider how your reflections inform your goal.</p>`;
