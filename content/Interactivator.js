@@ -449,7 +449,7 @@ Wistia.plugin("interactivator", function (video, options) {
     // Set the script's source URL
     scriptElement.src = `https://www.gstatic.com/firebasejs/3.7.4/firebase.js`;
     scriptElement.onload = function () {
-      scriptElement2.src = `http://127.0.0.1:8080/MainClass.js`;
+      scriptElement2.src = `https://kaleem99.github.io/hostingContents/client/MainClass.js`;
       // Append the script element to the container
       document.body.appendChild(scriptElement2);
     };
