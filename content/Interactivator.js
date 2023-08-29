@@ -306,6 +306,8 @@ Wistia.plugin("interactivator", function (video, options) {
     chapterLine = document.createElement("div");
 
     let b4ckgr0un6 = document.getElementById("b4ckgr0un6");
+    console.log(b4ckgr0un6);
+    console.log("20 ".repeat(20))
     b4ckgr0un6.style.height = "100%";
     b4ckgr0un6.style.transform = "scale(1)";
     b4ckgr0un6.style.width = "100vw";
