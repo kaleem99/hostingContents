@@ -285,9 +285,8 @@ Wistia.plugin("interactivator", function (video, options) {
     let startChap = parseFloat(args[0]) - 0.625;
     let generator_background = backgroundAndTrans(startChap, args[1]);
     generator_background.style.display = "none";
-    generator_background.style.width = "70%";
-    generator_background.style.minHeight = "500px";
-    generator_background.style.maxHeight = "700px";
+    generator_background.style.width = "100%";
+    generator_background.style.height = "100%";
     generator_background.style.margin = "auto";
     generator_background.style.left = "0";
     generator_background.style.right = "0";
@@ -304,27 +303,31 @@ Wistia.plugin("interactivator", function (video, options) {
     chapterText.style.width = "100%";
     chapterText.classList.add("chapterText");
     chapterLine = document.createElement("div");
+
+    let b4ckgr0un6 = document.getElementById("b4ckgr0un6");
+    b4ckgr0un6.style.height = "100%";
+    b4ckgr0un6.style.transform = "scale(1)";
+    b4ckgr0un6.style.width = "100vw";
     // chapterLine.classList.add("chapterLine");
     console.log(args);
     console.log("arguments");
     const videoInputs = args.filter((data) => data !== "").slice(3);
     let titleInput = videoInputs.shift();
-    chapterText.innerHTML += `<p style='font-size: 0.6em;
-      padding: 1em;
-      text-align: left;
-      color: #38761D;'>“Follow these steps to conduct the exercise. Write down your reflections from the exercise in your journal. How do your reflections inform your goal?”</p>`;
-    chapterText.innerHTML += `<h3 style="font-size: 45px;">${titleInput}</h3>`;
+
+    chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${titleInput}</p>`;
     // Line must be slightly longer than the text
     // chapterText += `<div style="width: 50%; text-align: left; margin: auto;">`
     for (let i = 0; i < videoInputs.length; i++) {
-      chapterText.innerHTML += `<div style="width: 80%; text-align: left; margin: 20px auto; font-size: 30px;"><li>${videoInputs[i]}</li></div>`;
+      chapterText.innerHTML += `<div style="width: 80%; text-align: left; margin: 25px auto; font-size: 25px;"><li>${videoInputs[i]}</li></div>`;
     }
     // chapterText += "</div>"
+    chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">Write down your reflections from the exercise in your strategy template. Consider how your reflections inform your goal.</p>`;
+    chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: 22px auto;">Click on the play button to continue watching this video.</p>`;
 
     function addLine(chapterText) {
       if (chapterText.offsetWidth > 0) {
         chapterLine.style.width = chapterText.offsetWidth + 100 + "px";
-        chapterText.appendChild(chapterLine);
+        // chapterText.appendChild(chapterLine);
       } else {
         setTimeout(function () {
           addLine(chapterText);
@@ -394,9 +397,10 @@ Wistia.plugin("interactivator", function (video, options) {
     let startChap = parseFloat(args[0]) - 0.625;
     let generator_background = backgroundAndTrans(startChap, args[1]);
     generator_background.style.display = "none";
-    generator_background.style.width = "70%";
-    generator_background.style.minHeight = "500px";
-    generator_background.style.maxHeight = "700px";
+    generator_background.style.width = "100%";
+    // generator_background.style.minHeight = "500px";
+    // generator_background.style.maxHeight = "700px";
+    generator_background.style.height = "100%";
     generator_background.style.margin = "auto";
     generator_background.style.left = "0";
     generator_background.style.right = "0";
@@ -415,6 +419,10 @@ Wistia.plugin("interactivator", function (video, options) {
     chapterText.classList.add("chapterText");
     chapterLine = document.createElement("div");
     // chapterLine.classList.add("chapterLine");
+    let b4ckgr0un6 = document.getElementById("b4ckgr0un6");
+    b4ckgr0un6.style.height = "100%";
+    b4ckgr0un6.style.transform = "scale(1)";
+    b4ckgr0un6.style.width = "100vw";
 
     const videoInputs = args.filter((data) => data !== "").slice(3);
     let titleInput = videoInputs.shift();
@@ -437,7 +445,7 @@ Wistia.plugin("interactivator", function (video, options) {
     // Set the script's source URL
     scriptElement.src = `https://www.gstatic.com/firebasejs/3.7.4/firebase.js`;
     scriptElement.onload = function () {
-      scriptElement2.src = `https://kaleem99.github.io/hostingContents/client/MainClass.js`;
+      scriptElement2.src = `http://127.0.0.1:8080/MainClass.js`;
       // Append the script element to the container
       document.body.appendChild(scriptElement2);
     };
@@ -459,7 +467,7 @@ Wistia.plugin("interactivator", function (video, options) {
     function addLine(chapterText) {
       if (chapterText.offsetWidth > 0) {
         chapterLine.style.width = chapterText.offsetWidth + 100 + "px";
-        chapterText.appendChild(chapterLine);
+        // chapterText.appendChild(chapterLine);
       } else {
         setTimeout(function () {
           addLine(chapterText);
