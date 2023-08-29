@@ -315,7 +315,7 @@ Wistia.plugin("interactivator", function (video, options) {
     const videoInputs = args.filter((data) => data !== "").slice(3);
     let titleInput = videoInputs.shift();
     let checkIfBulletPoints = videoInputs.pop();
-    if(checkIfBulletPoints === "YES"){
+    if(checkIfBulletPoints.toLowerCase() === "YES"){
       bullet = "none"
     }
     chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${titleInput}</p>`;
