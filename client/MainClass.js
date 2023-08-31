@@ -29,14 +29,13 @@ class Poll {
     this._refresh();
   }
 
-  async _refresh() {
+ async _refresh() {
     const reference = database.ref(`Polls/${this.videoID}`);
     reference
       .once("value")
       .then((snapshot) => {
         if (snapshot.exists()) {
           const data = snapshot.val();
-          console.log(data);
           this._renderOptions(data);
         } else {
           console.log("No data available");
@@ -57,36 +56,38 @@ class Poll {
       (sum, value) => sum + value,
       0
     );
-    
 
     for (const option in data2) {
-    const template = document.createElement("template");
+      const template = document.createElement("template");
       const fragment = template.content;
-      const percentage = (data2[option] / total) * 100;
+      const percentage = ((data2[option] / total) * 100).toFixed(2);
+      const voteText = data2[option] === 1 ? " vote" : " votes";
       template.innerHTML = `
       <div class="poll__option ${
         this.selected == option ? "poll__option--selected" : ""
       }">
-        <div class="poll__option-fill" style="width: ${
-          this.selected != null ? percentage.toFixed(2) : "0"
-        }%;"></div>
+        <div class="poll__option__outer" style="${
+          this.selected == option ? "background: #cce896" : ""
+        }">
+          <div class="poll__option-fill" style="width: ${
+            this.selected != null ? percentage : "0"
+          }%;"><p class="votes">${
+        this.selected != null ? data2[option] + voteText : ""
+      }</p></div>
+          </div>
         <div class="poll__option-info">
           <span class="poll__label">${option}</span>
           <span class="poll__percentage">${
-            this.selected != null ? percentage.toFixed(2) : "0"
+            this.selected != null ? percentage : "0"
           }%</span>
         </div>
       </div>
     `;
       let x = document.getElementsByClassName("poll__option");
-      console.log(x, 74, this.videoID, this.selected);
       if (!this.selected) {
-        console.log(100000);
-        console.log(this.videoID);
         fragment
           .querySelector(".poll__option")
           .addEventListener("click", () => {
-            console.log(20000, this.videoID);
             const newData = { ...data2 };
             newData[option] += 1;
             reference
@@ -108,17 +109,9 @@ class Poll {
   }
 }
 
-let result = "";
-const url = window.location.href;
+const p = new Poll(
+  document.querySelector(".poll"),
+  "Which communication situation or type of communication would make you most nervous in the Amazon scenario?"
+);
 
-const regex = /Video_Pausing_Embedded_Poll\((.*?)\);/;
-const match = url.match(regex);
 
-if (match) {
-  const dataInsideFunctionCall = match[1].split(",").map((item) => item);
-  result = decodeURIComponent(dataInsideFunctionCall[3]).replace(/"/g, "");
-} else {
-  result = "Generic Heading";
-}
-
-const p = new Poll(document.querySelector(".poll"), result);
