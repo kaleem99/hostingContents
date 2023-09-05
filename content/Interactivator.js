@@ -443,7 +443,20 @@ Wistia.plugin("interactivator", function (video, options) {
       </head>
       <body>
         <div class="OuterPoll">
+            <p style="
+    /* transform: scale(0.4); */
+    margin-block-end: 0.5em;
+    margin-block-start: 0.5em;
+    text-align: left;
+    font-size: 80%;
+">Interactive Video Poll</p>
           <div class="poll"></div>
+          <p style="
+    text-align: left;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    font-size: 80%;
+">Click on the play button to continue watching.</p>
         </div>
       </body>
     </html>`;
