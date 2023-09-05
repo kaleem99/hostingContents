@@ -442,7 +442,9 @@ Wistia.plugin("interactivator", function (video, options) {
         <link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/client/main.css" />
       </head>
       <body>
-        <div class="poll"></div>
+        <div class="OuterPoll">
+          <div class="poll"></div>
+        </div>
       </body>
     </html>`;
 
