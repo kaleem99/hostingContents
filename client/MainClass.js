@@ -109,9 +109,20 @@ class Poll {
   }
 }
 
-const p = new Poll(
-  document.querySelector(".poll"),
-  "Which communication situation or type of communication would make you most nervous in the Amazon scenario?"
-);
+let result = "";
+const url = window.location.href;
+
+const regex = /Video_Pausing_Embedded_Poll\((.*?)\);/;
+const match = url.match(regex);
+
+if (match) {
+  const dataInsideFunctionCall = match[1].split(",").map((item) => item);
+  result = decodeURIComponent(dataInsideFunctionCall[3]).replace(/"/g, "");
+} else {
+  result = "Generic Heading";
+}
+
+const p = new Poll(document.querySelector(".poll"), result);
+
 
 
