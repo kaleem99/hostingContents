@@ -45,15 +45,18 @@
 }
  */
 
-
-.poll {
+.OuterPoll{
+  transform: scale(0.7);
   width: 80%;
+  margin: auto;
+}
+.poll {
+  width: 100%;
   padding: 1.5rem;
   margin: auto;
   font-family: sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
-  transform: scale(0.7);
 }
 
 .poll__title {
