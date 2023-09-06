@@ -330,7 +330,7 @@ Wistia.plugin("interactivator", function (video, options) {
     if (checkIfBulletPoints.toUpperCase() === "YES") {
       bullet = "none";
     }
-    chapterText.innerHTML += `<h3 style="font-size: 25px; text-align: left; width: 80%; margin: auto; margin-bottom: 40px;">${titleInput}</h3><br>`;
+    chapterText.innerHTML += `<h3 style="font-size: 25px; text-align: left; width: 80%; margin: auto; margin-bottom: 40px;">${titleInput}</h3>`;
     // Line must be slightly longer than the text
     // chapterText += `<div style="width: 50%; text-align: left; margin: auto;">`
     chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${question}</p>`;
@@ -456,7 +456,9 @@ Wistia.plugin("interactivator", function (video, options) {
         <link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/client/main.css" />
       </head>
       <body>
-        <div class="poll"></div>
+        <div class="OuterPoll">
+          <div class="poll"></div>
+        </div>
       </body>
     </html>`;
 
@@ -472,7 +474,7 @@ Wistia.plugin("interactivator", function (video, options) {
     document.body.appendChild(scriptElement);
     chapterText.innerHTML += htmlContent;
     chapterText.innerHTML +=
-      '<p style="font-size: 25px; text-align: left; width: 80%; margin: 22px auto;">Click on the play button to continue watching this video.</p>';
+      '<p style="font-size: 25px; text-align: center; margin: 22px auto;">Click on the play button to continue watching this video.</p>';
     // chapterText.innerHTML += `<p style='font-size: 0.6em;
     //   padding: 1em;
     //   text-align: left;
