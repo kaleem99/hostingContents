@@ -315,8 +315,8 @@ Wistia.plugin("interactivator", function (video, options) {
     const videoInputs = args.filter((data) => data !== "").slice(3);
     let titleInput = videoInputs.shift();
     let question = videoInputs.shift();
-    let endingOffText = videoInputs.pop();
     let checkIfBulletPoints = videoInputs.pop();
+    let endingOffText = videoInputs.pop();
     if (checkIfBulletPoints === "YES") {
       bullet = "none";
     }
