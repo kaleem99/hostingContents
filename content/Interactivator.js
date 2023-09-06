@@ -283,7 +283,7 @@ Wistia.plugin("interactivator", function (video, options) {
 
   function Video_Interactivity_Timestamp(...args) {
     let startChap = parseFloat(args[0]) - 0.625;
-    let bullet = "initial"
+    let bullet = "initial";
     let generator_background = backgroundAndTrans(startChap, args[1]);
     generator_background.style.display = "none";
     generator_background.style.width = "100%";
@@ -306,8 +306,6 @@ Wistia.plugin("interactivator", function (video, options) {
     chapterLine = document.createElement("div");
 
     let b4ckgr0un6 = document.getElementById("b4ckgr0un6");
-    console.log(b4ckgr0un6);
-    console.log("20 ".repeat(20))
     b4ckgr0un6.style.height = "100%";
     b4ckgr0un6.style.transform = "scale(1)";
     b4ckgr0un6.style.width = "100vw";
@@ -316,18 +314,22 @@ Wistia.plugin("interactivator", function (video, options) {
     console.log("arguments");
     const videoInputs = args.filter((data) => data !== "").slice(3);
     let titleInput = videoInputs.shift();
+    let question = videoInputs.shift();
+    let endingOffText = videoInputs.pop();
     let checkIfBulletPoints = videoInputs.pop();
-    if(checkIfBulletPoints.toUpperCase() === "YES"){
-      bullet = "none"
+    if (checkIfBulletPoints === "YES") {
+      bullet = "none";
     }
     chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${titleInput}</p>`;
     // Line must be slightly longer than the text
     // chapterText += `<div style="width: 50%; text-align: left; margin: auto;">`
+    chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${question}</p>`;
+
     for (let i = 0; i < videoInputs.length; i++) {
       chapterText.innerHTML += `<div style="width: 80%; text-align: left; margin: 25px auto; font-size: 25px;"><li style="list-style-type: ${bullet}" >${videoInputs[i]}</li></div>`;
     }
     // chapterText += "</div>"
-    chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">Write down your reflections from the exercise in your strategy template. Consider how your reflections inform your goal.</p>`;
+    chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${endingOffText}</p>`;
     chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: 22px auto;">Click on the play button to continue watching this video.</p>`;
 
     function addLine(chapterText) {
@@ -432,6 +434,8 @@ Wistia.plugin("interactivator", function (video, options) {
 
     const videoInputs = args.filter((data) => data !== "").slice(3);
     let titleInput = videoInputs.shift();
+    // Click on the play button to continue watching the video.
+    // Please complete the Interactive Poll
     const htmlContent = `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -442,22 +446,7 @@ Wistia.plugin("interactivator", function (video, options) {
         <link rel="stylesheet" href="https://kaleem99.github.io/hostingContents/client/main.css" />
       </head>
       <body>
-        <div class="OuterPoll">
-            <p style="
-    /* transform: scale(0.4); */
-    margin-block-end: 0.5em;
-    margin-block-start: 0.5em;
-    text-align: left;
-    font-size: 80%;
-">Interactive Video Poll</p>
-          <div class="poll"></div>
-          <p style="
-    text-align: left;
-    margin-block-start: 0.5em;
-    margin-block-end: 0.5em;
-    font-size: 80%;
-">Click on the play button to continue watching.</p>
-        </div>
+        <div class="poll"></div>
       </body>
     </html>`;
 
@@ -472,7 +461,8 @@ Wistia.plugin("interactivator", function (video, options) {
     };
     document.body.appendChild(scriptElement);
     chapterText.innerHTML += htmlContent;
-
+    chapterText.innerHTML +=
+      '<p style="font-size: 25px; text-align: left; width: 80%; margin: 22px auto;">Click on the play button to continue watching this video.</p>';
     // chapterText.innerHTML += `<p style='font-size: 0.6em;
     //   padding: 1em;
     //   text-align: left;
