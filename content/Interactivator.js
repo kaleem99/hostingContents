@@ -317,10 +317,20 @@ Wistia.plugin("interactivator", function (video, options) {
     let question = videoInputs.shift();
     let checkIfBulletPoints = videoInputs.pop();
     let endingOffText = videoInputs.pop();
-    if (checkIfBulletPoints === "YES") {
+    console.log(
+      "Title",
+      titleInput,
+      "Question",
+      question,
+      "checkIfBulletPoints",
+      checkIfBulletPoints,
+      "endingOffText",
+      endingOffText
+    );
+    if (checkIfBulletPoints.toUpperCase() === "YES") {
       bullet = "none";
     }
-    chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${titleInput}</p>`;
+    chapterText.innerHTML += `<h3 style="font-size: 25px; text-align: left; width: 80%; margin: auto; margin-bottom: 40px;">${titleInput}</h3><br>`;
     // Line must be slightly longer than the text
     // chapterText += `<div style="width: 50%; text-align: left; margin: auto;">`
     chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${question}</p>`;
@@ -330,7 +340,7 @@ Wistia.plugin("interactivator", function (video, options) {
     }
     // chapterText += "</div>"
     chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: auto;">${endingOffText}</p>`;
-    chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: 22px auto;">Click on the play button to continue watching this video.</p>`;
+    chapterText.innerHTML += `<p style="font-size: 25px; text-align: left; width: 80%; margin: 40px auto;">Click on the play button to continue watching this video.</p>`;
 
     function addLine(chapterText) {
       if (chapterText.offsetWidth > 0) {
