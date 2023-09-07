@@ -282,6 +282,7 @@ Wistia.plugin("interactivator", function (video, options) {
   }
 
   function Video_Interactivity_Timestamp(...args) {
+    console.log(new Date());
     let startChap = parseFloat(args[0]) - 0.625;
     let bullet = "initial";
     let generator_background = backgroundAndTrans(startChap, args[1]);
@@ -355,6 +356,7 @@ Wistia.plugin("interactivator", function (video, options) {
     addLine(chapterText);
 
     // Bind the chapter animation to the video
+    video.bind("afterTimes");
     video.bind("betweentimes", startChap, args[1], function (withinInterval) {
       if (withinInterval) {
         makeiOSSafe();
@@ -389,7 +391,13 @@ Wistia.plugin("interactivator", function (video, options) {
         killSwitch(generator_background.parentElement);
       }
     });
-
+    video.bind("play", function () {
+      if (generator_background.style.display === "flex") {
+        setTimeout(() => {
+          generator_background.style.display = "none";
+        }, 900);
+      }
+    });
     // The chapter takes up no real time in the video, so we have to pause and play again after a few seconds
     // Note, this is a little buggy
     video.bind(
@@ -399,11 +407,6 @@ Wistia.plugin("interactivator", function (video, options) {
       function (withinInterval) {
         if (withinInterval && video.state() == "playing") {
           video.pause();
-          // setTimeout(function () {
-          //   if (withinInterval) {
-          //     video.play();
-          //   }
-          // }, 10000);
         }
         if (generator_background) {
           killSwitch(generator_background.parentElement);
@@ -474,7 +477,7 @@ Wistia.plugin("interactivator", function (video, options) {
     document.body.appendChild(scriptElement);
     chapterText.innerHTML += htmlContent;
     chapterText.innerHTML +=
-      '<p style="font-size: 25px; text-align: center; margin: 22px auto;">Click on the play button to continue watching this video.</p>';
+      '<p style="font-size: 25px; text-align: center; margin: 0px auto;">Click on the play button to continue watching this video.</p>';
     // chapterText.innerHTML += `<p style='font-size: 0.6em;
     //   padding: 1em;
     //   text-align: left;
@@ -537,6 +540,13 @@ Wistia.plugin("interactivator", function (video, options) {
 
     // The chapter takes up no real time in the video, so we have to pause and play again after a few seconds
     // Note, this is a little buggy
+    video.bind("play", function () {
+      if (generator_background.style.display === "flex") {
+        setTimeout(() => {
+          generator_background.style.display = "none";
+        }, 900);
+      }
+    });
     video.bind(
       "betweentimes",
       parseFloat(args[0]),
