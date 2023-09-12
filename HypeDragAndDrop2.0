@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <style>
+      .quiz-container1 {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      .quiz-container2 {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+        position: absolute;
+        top: 300px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="HYPE_element"
+      id="hype-obj-8SMISQWYNR29SYV3FOS8"
+      hype_scene_index="5"
+      style="
+        pointer-events: auto;
+        top: 660px;
+        left: 45px;
+        width: 1132px;
+        height: 124px;
+        position: absolute;
+        overflow: visible;
+        z-index: 5;
+      "
+    >
+      <div
+        class="HYPE_element_container"
+        style="
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 1;
+        "
+      >
+        <div
+          class="HYPE_element dropzone ui-droppable"
+          id="hype-obj-IDRT5O9J0MG189EJYNWW"
+          hype_scene_index="5"
+          data-dropzone="1"
+          style="
+            pointer-events: auto;
+            top: 0px;
+            left: 0px;
+            width: 233px;
+            height: 50px;
+            position: absolute;
+            border-style: solid;
+            background-color: rgb(255, 255, 255);
+            border-width: 2px;
+            border-color: rgb(26, 26, 26);
+            overflow: visible;
+            z-index: 1;
+            border-radius: 45px;
+          "
+        ></div>
+      </div>
+      <div
+        class="HYPE_element_container"
+        style="
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 2;
+        "
+      >
+        <div
+          class="HYPE_element dropzone ui-droppable"
+          id="hype-obj-LRN9AO7DIH1HZT9CLJ31"
+          hype_scene_index="5"
+          data-dropzone="2"
+          style="
+            pointer-events: auto;
+            top: 0px;
+            left: 294px;
+            width: 233px;
+            height: 50px;
+            position: absolute;
+            border-style: solid;
+            background-color: rgb(255, 255, 255);
+            border-width: 2px;
+            border-color: rgb(26, 26, 26);
+            overflow: visible;
+            z-index: 2;
+            border-radius: 45px;
+          "
+        ></div>
+      </div>
+      <div
+        class="HYPE_element_container"
+        style="
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 3;
+        "
+      >
+        <div
+          class="HYPE_element dropzone ui-droppable"
+          id="hype-obj-DVQU2952GG69PBTCQZ43"
+          hype_scene_index="5"
+          data-dropzone="3"
+          style="
+            pointer-events: auto;
+            top: 0px;
+            left: 598px;
+            width: 233px;
+            height: 50px;
+            position: absolute;
+            border-style: solid;
+            background-color: rgb(255, 255, 255);
+            border-width: 2px;
+            border-color: rgb(26, 26, 26);
+            overflow: visible;
+            z-index: 3;
+            border-radius: 45px;
+          "
+        ></div>
+      </div>
+      <div
+        class="HYPE_element_container"
+        style="
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 4;
+        "
+      >
+        <div
+          class="HYPE_element dropzone ui-droppable"
+          id="hype-obj-4SSAPRYSJNN7LOKM1UPP"
+          hype_scene_index="5"
+          data-dropzone="4"
+          style="
+            pointer-events: auto;
+            top: 0px;
+            left: 895px;
+            width: 233px;
+            height: 50px;
+            position: absolute;
+            border-style: solid;
+            background-color: rgb(255, 255, 255);
+            border-width: 2px;
+            border-color: rgb(26, 26, 26);
+            overflow: visible;
+            z-index: 4;
+            border-radius: 45px;
+          "
+        ></div>
+      </div>
+      <div
+        class="HYPE_element_container"
+        style="
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 6;
+        "
+      >
+        <div
+          class="HYPE_element draggable ui-draggable ui-draggable-handle"
+          id="Clusterdrag"
+          hype_scene_index="5"
+          data-draggable="1"
+          tabindex="0"
+          style="
+            pointer-events: auto;
+            top: 70px;
+            left: 0px;
+            width: 237px;
+            height: 54px;
+            position: absolute;
+            overflow: visible;
+            z-index: 6;
+          "
+        >
+          <div
+            class="HYPE_element_container"
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 1;
+            "
+          >
+            <div
+              class="HYPE_element"
+              id="hype-obj-J790OV3XB3YUEON6V5FS"
+              hype_scene_index="5"
+              style="
+                pointer-events: auto;
+                top: 0px;
+                left: 0px;
+                width: 233px;
+                height: 50px;
+                position: absolute;
+                border-style: solid;
+                background-color: rgb(186, 12, 47);
+                border-width: 2px;
+                border-color: rgb(186, 12, 47);
+                overflow: visible;
+                z-index: 1;
+                border-radius: 45px;
+              "
+            ></div>
+          </div>
+          <div
+            class="HYPE_element_container"
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 2;
+            "
+          >
+            <div
+              class="HYPE_element"
+              id="hype-obj-K52FSC5WU4RRYNMIIDLJ"
+              hype_scene_index="5"
+              style="
+                pointer-events: auto;
+                top: 8px;
+                left: 0px;
+                width: 219px;
+                height: 18px;
+                position: absolute;
+                padding: 8px;
+                color: rgb(255, 255, 255);
+                display: inline;
+                font-family: 'Noto Sans HK';
+                font-size: 14px;
+                overflow-wrap: break-word;
+                font-weight: 500;
+                overflow: visible;
+                z-index: 2;
+                text-align: center;
+              "
+            >
+              <span id="docs-internal-guid-f50aa467-7fff-c8ef-29de-ab3a0b9eced8"
+                ><span
+                  style="
+                    font-style: normal;
+                    font-variant-ligatures: normal;
+                    font-variant-caps: normal;
+                    font-variant-alternates: normal;
+                    font-variant-numeric: normal;
+                    font-variant-east-asian: normal;
+                    font-variant-position: normal;
+                    text-decoration: none;
+                    vertical-align: baseline;
+                    white-space: pre-wrap;
+                  "
+                  >Cluster Sampling</span
+                ></span
+              ><br />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="HYPE_element_container"
+        style="
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 5;
+        "
+      >
+        <div
+          class="HYPE_element draggable ui-draggable ui-draggable-handle"
+          id="Stratifieddrag"
+          hype_scene_index="5"
+          data-draggable="2"
+          tabindex="0"
+          style="
+            pointer-events: auto;
+            top: 70px;
+            left: 293px;
+            width: 237px;
+            height: 54px;
+            position: absolute;
+            overflow: visible;
+            z-index: 5;
+          "
+        >
+          <div
+            class="HYPE_element_container"
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 1;
+            "
+          >
+            <div
+              class="HYPE_element"
+              id="hype-obj-64EJU3BF7NBWXL6AWNPS"
+              hype_scene_index="5"
+              style="
+                pointer-events: auto;
+                top: 0px;
+                left: 0px;
+                width: 233px;
+                height: 50px;
+                position: absolute;
+                border-style: solid;
+                background-color: rgb(186, 12, 47);
+                border-width: 2px;
+                border-color: rgb(186, 12, 47);
+                overflow: visible;
+                z-index: 1;
+                border-radius: 45px;
+              "
+            ></div>
+          </div>
+          <div
+            class="HYPE_element_container"
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 2;
+            "
+          >
+            <div
+              class="HYPE_element"
+              id="hype-obj-R6VUDZU6R68BNXVDZB7D"
+              hype_scene_index="5"
+              style="
+                pointer-events: auto;
+                top: 8px;
+                left: 0px;
+                width: 219px;
+                height: 18px;
+                position: absolute;
+                padding: 8px;
+                color: rgb(255, 255, 255);
+                display: inline;
+                font-family: 'Noto Sans HK';
+                font-size: 14px;
+                overflow-wrap: break-word;
+                font-weight: 500;
+                overflow: visible;
+                z-index: 2;
+                text-align: center;
+              "
+            >
+              <span id="docs-internal-guid-f50aa467-7fff-c8ef-29de-ab3a0b9eced8"
+                ><span
+                  style="
+                    font-style: normal;
+                    font-variant-ligatures: normal;
+                    font-variant-caps: normal;
+                    font-variant-alternates: normal;
+                    font-variant-numeric: normal;
+                    font-variant-east-asian: normal;
+                    font-variant-position: normal;
+                    text-decoration: none;
+                    vertical-align: baseline;
+                    white-space: pre-wrap;
+                  "
+                  >Stratified Random Sampling</span
+                ></span
+              ><br />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="HYPE_element_container"
+        style="
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 7;
+        "
+      >
+        <div
+          class="HYPE_element draggable ui-draggable ui-draggable-handle"
+          id="Simplerandomdrag"
+          hype_scene_index="5"
+          data-draggable="3"
+          tabindex="0"
+          style="
+            pointer-events: auto;
+            top: 70px;
+            left: 598px;
+            width: 237px;
+            height: 54px;
+            position: absolute;
+            overflow: visible;
+            z-index: 7;
+          "
+        >
+          <div
+            class="HYPE_element_container"
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 1;
+            "
+          >
+            <div
+              class="HYPE_element"
+              id="hype-obj-ZPIJVGBYDTD3V4K3KAKE"
+              hype_scene_index="5"
+              style="
+                pointer-events: auto;
+                top: 0px;
+                left: 0px;
+                width: 233px;
+                height: 50px;
+                position: absolute;
+                border-style: solid;
+                background-color: rgb(186, 12, 47);
+                border-width: 2px;
+                border-color: rgb(186, 12, 47);
+                overflow: visible;
+                z-index: 1;
+                border-radius: 45px;
+              "
+            ></div>
+          </div>
+          <div
+            class="HYPE_element_container"
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 2;
+            "
+          >
+            <div
+              class="HYPE_element"
+              id="hype-obj-XIKGHAOEI02J985JDFBQ"
+              hype_scene_index="5"
+              style="
+                pointer-events: auto;
+                top: 8px;
+                left: 0px;
+                width: 219px;
+                height: 18px;
+                position: absolute;
+                padding: 8px;
+                color: rgb(255, 255, 255);
+                display: inline;
+                font-family: 'Noto Sans HK';
+                font-size: 14px;
+                overflow-wrap: break-word;
+                font-weight: 500;
+                overflow: visible;
+                z-index: 2;
+                text-align: center;
+              "
+            >
+              <span id="docs-internal-guid-c2fd9709-7fff-5770-5d9d-7eb17473fed0"
+                ><span
+                  style="
+                    font-style: normal;
+                    font-variant-ligatures: normal;
+                    font-variant-caps: normal;
+                    font-variant-alternates: normal;
+                    font-variant-numeric: normal;
+                    font-variant-east-asian: normal;
+                    font-variant-position: normal;
+                    text-decoration: none;
+                    vertical-align: baseline;
+                    white-space: pre-wrap;
+                  "
+                  >Simple Random Sampling</span
+                ></span
+              ><br />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="HYPE_element_container"
+        style="
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 8;
+        "
+      >
+        <div
+          class="HYPE_element draggable ui-draggable ui-draggable-handle"
+          id="Systematicdrag"
+          hype_scene_index="5"
+          data-draggable="4"
+          tabindex="0"
+          style="
+            pointer-events: auto;
+            top: 70px;
+            left: 891px;
+            width: 237px;
+            height: 54px;
+            position: absolute;
+            overflow: visible;
+            z-index: 8;
+          "
+        >
+          <div
+            class="HYPE_element_container"
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 1;
+            "
+          >
+            <div
+              class="HYPE_element"
+              id="hype-obj-8AZ4WMYSI62JBFPIK8JK"
+              hype_scene_index="5"
+              style="
+                pointer-events: auto;
+                top: 0px;
+                left: 0px;
+                width: 233px;
+                height: 50px;
+                position: absolute;
+                border-style: solid;
+                background-color: rgb(186, 12, 47);
+                border-width: 2px;
+                border-color: rgb(186, 12, 47);
+                overflow: visible;
+                z-index: 1;
+                border-radius: 45px;
+              "
+            ></div>
+          </div>
+          <div
+            class="HYPE_element_container"
+            style="
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 2;
+            "
+          >
+            <div
+              class="HYPE_element"
+              id="hype-obj-XQ2UHUN67V19SIHIKSZ9"
+              hype_scene_index="5"
+              style="
+                pointer-events: auto;
+                top: 8px;
+                left: 0px;
+                width: 219px;
+                height: 18px;
+                position: absolute;
+                padding: 8px;
+                color: rgb(255, 255, 255);
+                display: inline;
+                font-family: 'Noto Sans HK';
+                font-size: 14px;
+                overflow-wrap: break-word;
+                font-weight: 500;
+                overflow: visible;
+                z-index: 2;
+                text-align: center;
+              "
+            >
+              <span id="docs-internal-guid-ce83ec73-7fff-1c5d-b298-9dbbb0f4dbec"
+                ><span
+                  style="
+                    font-size: 11pt;
+                    font-style: normal;
+                    font-variant-ligatures: normal;
+                    font-variant-caps: normal;
+                    font-variant-alternates: normal;
+                    font-variant-numeric: normal;
+                    font-variant-east-asian: normal;
+                    font-variant-position: normal;
+                    text-decoration: none;
+                    vertical-align: baseline;
+                    white-space: pre-wrap;
+                  "
+                  >Systematic Sampling</span
+                ></span
+              ><br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+      let correctPositions = [2, 4, 1, 3];
+      let currentPositions = {};
+      let defaultPositions = [];
+      let moveOrder = [1, 2, 3, 4];
+      let index = 0;
+      let isClicked = false;
+
+      defaultPositions = Array.from(
+        document.querySelectorAll(".draggable")
+      ).map((elem) => elem.style.left);
+      $(function () {
+        $(".draggable").draggable({
+          // Revert the draggable element to its original position if it's not dropped on a valid dropzone
+          revert: function (dropped) {
+            if (!dropped) {
+              const draggableNumber = $(this).attr("data-draggable");
+              currentPositions[draggableNumber] = null; // Reset current position
+              return true;
+            }
+          },
+        });
+        $(".dropzone").droppable({
+          drop: function (event, ui) {
+            const dropzoneNumber = $(this).attr("data-dropzone");
+            const draggableNumber = ui.draggable.attr("data-draggable");
+            const dropzonePosition = $(this).position();
+            const draggablePosition = ui.helper.position();
+            const relativePosition = {
+              top: "0px",
+              left: dropzonePosition.left,
+            };
+            let checkIfCurrentPositionIsDropped =
+              Object.values(currentPositions);
+            if (checkIfCurrentPositionIsDropped.includes(dropzoneNumber)) {
+              currentPositions[draggableNumber] = null;
+              ui.helper.animate(
+                {
+                  top: "70px",
+                  left: defaultPositions[draggableNumber - 1],
+                },
+                500
+              );
+              return defaultPositions;
+            }
+            // Animate the draggable element to the dropzone's position
+            ui.helper.animate(relativePosition, 500);
+
+            currentPositions[draggableNumber] = dropzoneNumber; // Update current position
+
+            ui.draggable.draggable("disable");
+            let currentPositionArr = Object.values(currentPositions);
+            if (currentPositionArr.length === 4) {
+              setTimeout(() => {
+                for (let i = 0; i < currentPositionArr.length; i++) {
+                  if (parseInt(currentPositionArr[i]) !== correctPositions[i]) {
+                    let elementsToMoveBack =
+                      document.querySelectorAll(".draggable");
+                    elementsToMoveBack = Array.from(elementsToMoveBack);
+
+                    for (let i = 0; i < elementsToMoveBack.length; i++) {
+                      const elem = elementsToMoveBack[i];
+                      elem.style.left = defaultPositions[i];
+                      elem.style.top = "70px";
+                      $(elem).draggable("enable");
+                    }
+                    currentPositions = {};
+                    ui.draggable.draggable("enable");
+                    return alert("Incorrect");
+                  }
+                }
+                alert("Correct");
+              }, 1000);
+            }
+          },
+          out: function (event, ui) {
+            // When a draggable element is moved out of a dropzone, re-enable dragging
+            ui.draggable.draggable("enable");
+
+            // Reset the dropzone appearance and content
+            const draggableNumber = ui.draggable.attr("data-draggable");
+            currentPositions[draggableNumber] = null;
+          },
+        });
+
+        $(".draggable").focus(function (e) {
+          let element = e.target.id;
+          console.log(element);
+        });
+        const keyElementsFunct = (e, keyElements, currentMove) => {
+          $(e).animate(
+            {
+              top: parseInt($(keyElements[currentMove]).css("top")) - 10 + "px",
+              left: $(keyElements[currentMove - 1]).css("left"),
+            },
+            "slow"
+          );
+        };
+        $(".draggable").on("keydown", function (e) {
+          let keyElements = document.getElementsByClassName("dropzone");
+          console.log(e.keyCode);
+          if (e.keyCode === 38) {
+            var currentMove = moveOrder[index];
+            isClicked = true;
+            keyElementsFunct(e.target, keyElements, currentMove);
+          }
+
+          if (e.keyCode === 39) {
+            index++;
+            if (index >= moveOrder.length) {
+              index = 0; // Reset index when all movements are completed
+            }
+            var currentMove = moveOrder[index];
+            isClicked = true;
+            keyElementsFunct(e.target, keyElements, currentMove);
+          }
+          if (e.keyCode === 37) {
+            if (index <= 0) {
+              index = 4;
+            }
+            index--;
+            var currentMove = moveOrder[index];
+            isClicked = true;
+            keyElementsFunct(e.target, keyElements, currentMove);
+          }
+          const draggableNumber = $(this).attr("data-draggable");
+
+          if (e.keyCode === 13 && isClicked) {
+            var currentMove = moveOrder[index];
+            let allDroppingElements =
+              document.getElementsByClassName("dropzone");
+
+            const dropzoneNumber = $(allDroppingElements[index]).attr(
+              "data-dropzone"
+            );
+            const draggableNumber = $(this).attr("data-draggable");
+            let checkIfCurrentPositionIsDropped =
+              Object.values(currentPositions);
+
+            if (checkIfCurrentPositionIsDropped.includes(dropzoneNumber)) {
+              currentPositions[draggableNumber] = null;
+              $(this).animate(
+                {
+                  top: "70px",
+                  left: defaultPositions[draggableNumber - 1],
+                },
+                500
+              );
+              return defaultPositions;
+            }
+            $(this).animate(
+              {
+                top: allDroppingElements[index].style.top,
+                left: allDroppingElements[index].style.left,
+              },
+              "slow"
+            );
+            isClicked = false;
+            currentPositions[draggableNumber] = dropzoneNumber;
+            e.target.blur();
+            let currentPositionArr = Object.values(currentPositions);
+
+            if (currentPositionArr.length === 4) {
+              setTimeout(() => {
+                for (let i = 0; i < currentPositionArr.length; i++) {
+                  if (parseInt(currentPositionArr[i]) !== correctPositions[i]) {
+                    let elementsToMoveBack =
+                      document.querySelectorAll(".draggable");
+                    elementsToMoveBack = Array.from(elementsToMoveBack);
+
+                    for (let i = 0; i < elementsToMoveBack.length; i++) {
+                      const elem = elementsToMoveBack[i];
+                      elem.style.left = defaultPositions[i];
+                      elem.style.top = "70px";
+                      $(elem).draggable("enable");
+                    }
+                    currentPositions = {};
+                    return alert("Incorrect");
+                  }
+                }
+                alert("Correct");
+              }, 1000);
+            }
+            // checkIfElementsAreCorrect("Move");
+            // console.log(correct, "correct", result, "result");
+          }
+        });
+
+        $(".draggable").blur(function (e) {
+          index = 0;
+          let indexData = 0;
+          if (isClicked) {
+            let allDraggingElements =
+              document.getElementsByClassName("draggable");
+            for (let i = 0; i < allDraggingElements.length; i++) {
+              let elem = allDraggingElements[i];
+              if (elem.id === e.target.id) {
+                indexData = i;
+                break;
+              }
+            }
+            setTimeout(() => {
+              $(this).animate(
+                {
+                  top: "70px",
+                  left: defaultPositions[indexData],
+                },
+                "slow"
+              );
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
