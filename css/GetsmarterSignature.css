@@ -75,7 +75,11 @@
   font-weight: 700;
   font-family: Montserrat;
 }
-.IMG12{
+.2UImage{
   width: 60px !important;
   height: 40px !important;
+}
+.FastImage{
+  width: 49px !important;
+  height: 60px !important;
 }
