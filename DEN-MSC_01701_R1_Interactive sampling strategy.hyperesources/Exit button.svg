@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33.15 33.15">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 1.01px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #1a1a1a;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-width: 1.15px;
+      }
+    </style>
+  </defs>
+  <g id="Pop_up" data-name="Pop up">
+    <g>
+      <circle class="cls-2" cx="16.58" cy="16.58" r="16"/>
+      <g>
+        <line class="cls-1" x1="21.81" y1="11.34" x2="11.34" y2="21.81"/>
+        <line class="cls-1" x1="11.34" y1="11.34" x2="21.81" y2="21.81"/>
+      </g>
+    </g>
+  </g>
+</svg>

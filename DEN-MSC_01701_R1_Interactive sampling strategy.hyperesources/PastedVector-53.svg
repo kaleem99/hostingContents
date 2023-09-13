@@ -1,0 +1,41 @@
+<!-- Generator: Adobe Illustrator 24.2.3, SVG Export Plug-In  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="112px"
+	 height="112px" viewBox="0 0 112 112" style="overflow:visible;enable-background:new 0 0 112 112;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#012560;}
+	.st1{fill:#012560;stroke:url(#SVGID_1_);stroke-width:2.2;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill:#012560;stroke:url(#SVGID_2_);stroke-width:2.2;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st3{fill:#2DE498;}
+	.st4{fill:#FFFFFF;}
+	.st5{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:2.4745;stroke-miterlimit:10;}
+	.st6{fill:#6B94FF;stroke:#6B94FF;stroke-width:2.4745;stroke-miterlimit:10;}
+	.st7{fill:#012560;stroke:url(#SVGID_3_);stroke-width:2.2;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st8{fill:#012560;stroke:url(#SVGID_4_);stroke-width:2.2;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<defs>
+</defs>
+<g>
+	<circle class="st0" cx="56" cy="56" r="56"/>
+	<g id="Layer_2_2_">
+		<g id="layer_2_">
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="26.4735" y1="48.362" x2="92.2001" y2="48.362">
+				<stop  offset="0" style="stop-color:#FFFFFF"/>
+				<stop  offset="1" style="stop-color:#6B94FF"/>
+			</linearGradient>
+			<rect x="27.6" y="30" class="st1" width="63.5" height="36.7"/>
+			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="19.7999" y1="55.3955" x2="85.5265" y2="55.3955">
+				<stop  offset="0" style="stop-color:#FFFFFF"/>
+				<stop  offset="1" style="stop-color:#6B94FF"/>
+			</linearGradient>
+			<rect x="20.9" y="37" class="st2" width="63.5" height="36.7"/>
+			<path class="st3" d="M73.3,67.6H32.1c0-2.2-1.8-4-4-4c0,0,0-16.3,0-16.3c2.2,0,4.1-1.8,4.1-4.1h41.2c0,2.2,1.8,4.1,4.1,4.1v16.3
+				C75.1,63.5,73.3,65.4,73.3,67.6z"/>
+			<circle class="st4" cx="52.7" cy="55.4" r="7.9"/>
+			<ellipse class="st5" cx="33.7" cy="76.4" rx="7.8" ry="3.9"/>
+			<ellipse class="st6" cx="33.7" cy="71.9" rx="7.8" ry="3.9"/>
+			<ellipse class="st5" cx="33.7" cy="67.5" rx="7.8" ry="3.9"/>
+			<ellipse class="st6" cx="33.7" cy="63" rx="7.8" ry="3.9"/>
+		</g>
+	</g>
+</g>
+</svg>

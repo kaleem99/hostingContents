@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 903.7 30.32">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #b7babc;
+        stroke-miterlimit: 10;
+        stroke-width: 1.5px;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 0 0 12.26 12.26;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 0 0 11.87 11.87;
+      }
+    </style>
+  </defs>
+  <g id="Content">
+    <g>
+      <g>
+        <path class="cls-1" d="m.76,30.26s-.22-2.67,1.4-5.77"/>
+        <path class="cls-2" d="m11.52,17.04c3.33-1.18,7.69-1.95,13.39-1.95h421.68"/>
+        <line class="cls-1" x1="452.74" y1="15.09" x2="458.74" y2="15.09"/>
+      </g>
+      <g>
+        <path class="cls-1" d="m902.88,28.55s.52-2.75-1.26-5.76"/>
+        <path class="cls-3" d="m891.94,16.44c-3.06-.83-6.97-1.35-11.95-1.35h-409.3"/>
+        <line class="cls-1" x1="464.74" y1="15.09" x2="458.74" y2="15.09"/>
+      </g>
+      <g>
+        <line class="cls-1" x1="458.74" x2="458.74" y2="6"/>
+        <line class="cls-1" x1="458.74" y1="9.09" x2="458.74" y2="15.09"/>
+      </g>
+      <g>
+        <line class="cls-1" x1="302.45" y1="15.09" x2="302.45" y2="21.09"/>
+        <line class="cls-1" x1="302.45" y1="22.25" x2="302.45" y2="28.25"/>
+      </g>
+      <g>
+        <line class="cls-1" x1="605.46" y1="15.09" x2="605.46" y2="21.09"/>
+        <line class="cls-1" x1="605.46" y1="22.25" x2="605.46" y2="28.25"/>
+      </g>
+    </g>
+  </g>
+</svg>
