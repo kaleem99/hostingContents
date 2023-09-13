@@ -31,6 +31,9 @@ function validateUserDetails(userObj) {
       alert("Please complete the mandatory Name, Surname, and Title fields.");
       return false;
     }
+    if(userObj.number && userObj.number.length > 18){
+      return alert("Please ensure that the number of characters does not exceed 18 characters.")
+    }
     if (userObj.pOfficeAddress === "Remote" && !userObj.address) {
       alert("Please complete the mandatory remote address field");
       return false;

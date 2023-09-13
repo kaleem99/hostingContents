@@ -42,7 +42,7 @@ function mountCode(element) {
   const copyBtn = document.querySelector("#copy-HTML");
   const minHtml = element.innerHTML
     .replace(/\r|\n|\r\n|\t|\s\s|(["])[\s]([a-z])/g, "$1$2")
-    .replace(/id="lastname"|id="firstname"|id="title"|id="number"/g, "");
+    .replace(/id="lastname"|id="firstname"|id="title"/g, "");
   code.innerText = minHtml;
   copyBtn.innerText = "Copy HTML";
   element.appendChild(hr);

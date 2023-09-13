@@ -49,12 +49,12 @@ document.addEventListener("click", (event) => {
     if (getUser.salesforce) {
       popupContent = popupContent.querySelector("code");
     }
-    copyElement(popupContent, getUser);
+    copyElement(popupContent, getUser, elem.id);
     initCopyNotification(elem);
   }
   if (elem.id === "copy-signature") {
     let popupContent = document.querySelector("#popup-content");
-    copyElement(popupContent, getUser);
+    copyElement(popupContent, getUser, elem.id);
     initCopyNotification(elem);
   }
   // Close Popup

@@ -139,7 +139,7 @@ a {
 
 #popup #popup-inner p {
   margin-bottom: 0;
-  text-align: center;
+  /* text-align: center; */
 }
 #popup #popup-inner #popup-btns {
   width: 100%;

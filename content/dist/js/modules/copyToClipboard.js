@@ -1,15 +1,26 @@
-function copyElement(element, getUser) {
+function copyElement(element, getUser, buttonId) {
   const selection = window.getSelection();
   const range = document.createRange();
   range.selectNodeContents(element);
   selection.removeAllRanges();
-  if (getUser.signature === "gs" || getUser.signature === "edx") {
+  console.log(getUser.signature);
+  console.log(getUser.salesforce);
+  if (
+    (getUser.signature === "edx" || getUser.signature === "gs") &&
+    getUser.salesforce === true &&
+    buttonId === "copy-signature"
+  ) {
+    // range.setStart(element, 1);
+    range.setEnd(element, 4);
+  }
+  if (getUser.signature === "2u") {
     range.setStart(element, 0);
     range.setEnd(element, 1);
   }
-  if (getUser.signature === "2u" && getUser.salesforce === true) {
+  if (getUser.signature === "gs" && getUser.salesforce === undefined) {
+    element.innerHTML += "<br><br><br><p></p>";
+    range.setEnd(element, 3);
     range.setStart(element, 0);
-    range.setEnd(element, 1);
   }
   selection.addRange(range);
   document.execCommand("copy");
