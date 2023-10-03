@@ -10,7 +10,7 @@ function updateSignatureDetails2U(userObj) {
   const pronounNode = signature.querySelector("#pronoun");
   const namecoachNode = signature.querySelector("#NameCoach");
   name.innerText = getUser.pfirstName;
-  lastname.innerText = getUser.pLastName;
+  lastname.innerText = " " + getUser.pLastName;
   title.innerText = getUser.pJobTitle;
   if (getUser.pOfficeAddress === "Remote") {
     address.innerText = getUser.address;
@@ -36,6 +36,49 @@ function updateSignatureDetails2U(userObj) {
   } else {
     namecoachNode.remove();
   }
+  setTimeout(() => {
+    const trElements = signature.querySelectorAll("tr");
+    const tdElements = signature.querySelectorAll("td");
+    const tableElements = signature.querySelectorAll("table");
+    const spanElements = signature.querySelectorAll("span");
+    const tBodyElements = signature.querySelectorAll("tbody");
+    const pElements = signature.querySelectorAll("p");
+    const imgElements = signature.querySelectorAll("img");
+    const aElements = signature.querySelectorAll("a");
+    const strongElements = signature.querySelectorAll("strong");
+
+    console.log(trElements, tdElements);
+
+    // Loop through each tr element and add the style
+    trElements.forEach((tr) => {
+      tr.style.outlineStyle = "none";
+    });
+    // Loop through each td element and add the style
+    tdElements.forEach((td) => {
+      td.style.outlineStyle = "none";
+    });
+    tableElements.forEach((table) => {
+      table.style.outlineStyle = "none";
+    });
+    spanElements.forEach((span) => {
+      span.style.outlineStyle = "none";
+    });
+    tBodyElements.forEach((t) => {
+      t.style.outlineStyle = "none";
+    });
+    pElements.forEach((p) => {
+      p.style.outlineStyle = "none";
+    });
+    imgElements.forEach((img) => {
+      img.style.outlineStyle = "none";
+    });
+    aElements.forEach((a) => {
+      a.style.outlineStyle = "none";
+    });
+    strongElements.forEach((strong) => {
+      strong.style.outlineStyle = "none";
+    });
+  }, 500);
 }
 
 function updateSignatureDetailsGS(userObj) {

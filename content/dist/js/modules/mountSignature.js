@@ -20,13 +20,15 @@ function mountSignature(signature) {
       togglePopupLoader("hide");
       if (getUser.signature === "2u") {
         updateSignatureDetails2U(getUser);
+        console.log(10000);
       } else if (getUser.signature === "gs") {
         updateSignatureDetailsGS(getUser);
       } else {
         updateSignatureDetailsEdx(getUser);
       }
       if (getUser.salesforce) {
-        mountCode(popupContentDiv);
+        console.log(20000);
+        mountCode(popupContentDiv, getUser.signature);
       }
     })
     .catch((err) => {
@@ -35,14 +37,22 @@ function mountSignature(signature) {
     });
 }
 
-function mountCode(element) {
+function mountCode(element, type) {
   const code = document.createElement("code");
   const hr = document.createElement("hr");
   const p = document.createElement("p");
   const copyBtn = document.querySelector("#copy-HTML");
-  const minHtml = element.innerHTML
+
+  let minHtml = element.innerHTML
     .replace(/\r|\n|\r\n|\t|\s\s|(["])[\s]([a-z])/g, "$1$2")
     .replace(/id="lastname"|id="firstname"|id="title"/g, "");
+  if (type === "2u") {
+    minHtml = minHtml.replace(
+      /id="pfirstName"|id="pLastName"|id="pronoun"|id="pJobTitle"|id="pOfficeNumber"|id="pOfficeAddress"/g,
+      ""
+    );
+  }
+  console.log(minHtml.length);
   code.innerText = minHtml;
   copyBtn.innerText = "Copy HTML";
   element.appendChild(hr);
@@ -55,6 +65,8 @@ function mountCode(element) {
         " Characters - SF has a limit of 1333 &nbsp;⚠️" +
         '<br><a href="#" style="font-size:12px" onclick="alert(`Try removing some of the optional details.\r\nOtherwise, shorten the current details.`)">What should I do?</a>';
   element.appendChild(p);
+
+
 }
 
 export { mountSignature };

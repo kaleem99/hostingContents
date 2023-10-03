@@ -1,4 +1,5 @@
 function copyElement(element, getUser, buttonId) {
+
   const selection = window.getSelection();
   const range = document.createRange();
   range.selectNodeContents(element);
@@ -13,10 +14,10 @@ function copyElement(element, getUser, buttonId) {
     // range.setStart(element, 1);
     range.setEnd(element, 4);
   }
-  // if (getUser.signature === "2u") {
-  //   range.setStart(element, 0);
-  //   range.setEnd(element, 2);
-  // }
+  if (getUser.signature === "2u") {
+    range.setStart(element, 0);
+    range.setEnd(element, 1);
+  }
   if (getUser.signature === "gs" && getUser.salesforce === undefined) {
     element.innerHTML += "<br><br><br><p></p>";
     range.setEnd(element, 3);
