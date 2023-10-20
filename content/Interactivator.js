@@ -1368,6 +1368,15 @@ Wistia.plugin("interactivator", function (video, options) {
   window._wq = window._wq || [];
   _wq.push({
     id: WistiaId,
+    options: {
+      plugin: {
+        "captions-v1": {
+          onByDefault: true,
+          language: "eng",
+        },
+      },
+      time: video.time(),
+    },
     onReady: function (video) {
       execute(chapters, functionList);
     },
