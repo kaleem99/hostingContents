@@ -1375,10 +1375,10 @@ Wistia.plugin("interactivator", function (video, options) {
           language: "eng",
         },
       },
-      time: video.time(),
+      time: video.time()
     },
     onReady: function (video) {
       execute(chapters, functionList);
-    },
+    }
   });
 });
