@@ -14,61 +14,114 @@
   height="200px"
   width="300px"
   srcdoc=' -->
-<div style="width: 500px" class="iframe-wrapper">
-  <script
-    src="https://fast.wistia.com/embed/medias/roc17q5zlb.jsonp"
-    async
-  ></script>
-  <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
-  <div
-    class="wistia_responsive_padding"
-    style="padding: 56.25% 0 0 0; position: relative"
-  >
-    <div
-      class="wistia_responsive_wrapper"
-      style="height: 100%; left: 0; position: absolute; top: 0; width: 100%"
-    >
+<div style="width: 100%; height: 100%; background-color: #212021">
+  <div style="width: 100%; height: 80px; background-color: #2f2f2f"></div>
+  <div style="width: 100%; height: calc(100% - 80px); display: flex">
+    <div style="height: 100%; width: 30%; background-color: #212021">
       <div
-        class="wistia_embed wistia_async_roc17q5zlb seo=false videoFoam=true"
-        style="height: 100%; position: relative; width: 100%"
+        style="
+          width: 500px;
+          margin-top: 50px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+        class="iframe-wrapper"
       >
+        <script
+          src="https://fast.wistia.com/embed/medias/roc17q5zlb.jsonp"
+          async
+        ></script>
+        <script
+          src="https://fast.wistia.com/assets/external/E-v1.js"
+          async
+        ></script>
         <div
-          class="wistia_swatch"
-          style="
-            height: 100%;
-            left: 0;
-            opacity: 0;
-            overflow: hidden;
-            position: absolute;
-            top: 0;
-            transition: opacity 200ms;
-            width: 100%;
-          "
+          class="wistia_responsive_padding"
+          style="padding: 56.25% 0 0 0; position: relative"
         >
-          <img
-            src="https://fast.wistia.com/embed/medias/roc17q5zlb/swatch"
+          <div
+            class="wistia_responsive_wrapper"
             style="
-              filter: blur(5px);
               height: 100%;
-              object-fit: contain;
+              left: 0;
+              position: absolute;
+              top: 0;
               width: 100%;
             "
-            alt=""
-            aria-hidden="true"
-            onload="this.parentNode.style.opacity=1;"
-          />
+          >
+            <div
+              class="wistia_embed wistia_async_roc17q5zlb seo=false videoFoam=true"
+              style="height: 100%; position: relative; width: 100%"
+            >
+              <div
+                class="wistia_swatch"
+                style="
+                  height: 100%;
+                  left: 0;
+                  opacity: 0;
+                  overflow: hidden;
+                  position: absolute;
+                  top: 0;
+                  transition: opacity 200ms;
+                  width: 100%;
+                "
+              >
+                <img
+                  src="https://fast.wistia.com/embed/medias/roc17q5zlb/swatch"
+                  style="
+                    filter: blur(5px);
+                    height: 100%;
+                    object-fit: contain;
+                    width: 100%;
+                  "
+                  alt=""
+                  aria-hidden="true"
+                  onload="this.parentNode.style.opacity=1;"
+                />
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div
+        style="
+          width: 500px;
+          height: 400px;
+          background-color: #2f2f2f;
+          margin: 20px auto;
+          padding: 5px;
+        "
+      >
+        <h2 style="width: 80%; margin: auto; color: white">Transcript</h2>
+        <hr />
+        <div
+          id="Transcript"
+          style="
+            width: 80%;
+            margin: auto;
+            height: 300px;
+            overflow: auto;
+            padding: 10px;
+            background-color: #2f2f2f;
+            color: white;
+          "
+        ></div>
+      </div>
+    </div>
+    <div style="height: 100%; width: 70%">
+      <div
+        style="
+          width: 90%;
+          height: 96%;
+          background-color: white;
+          margin: 2% auto;
+          /* padding: 20px; */
+        "
+      >
+        <div style="width: 90%; height: 80%; padding: 20px" id="content"></div>
       </div>
     </div>
   </div>
-</div>
-<div style="width: 500px; height: 300px; background-color: gray">
-  <h2 style="width: 80%; margin: auto">Transcript</h2>
-  <hr />
-  <div
-    id="Transcript"
-    style="width: 80%; margin: auto; height: 200px; overflow: auto"
-  ></div>
 </div>
 <script>
   const WistiaURL = "roc17q5zlb"; // Replace with your actual Wistia URL
@@ -82,6 +135,10 @@
         "Bearer 185e6a59d70559fdf59fe891201cf3f96d0c6e645b9aa4e7e1f0bf645ad2bed9",
     },
     method: "get",
+  };
+  const objContent = {
+    heading: "Bureacratic Theory (Contd)",
+    list: ["People hired on the basis of competence"],
   };
   fetch(`https://api.wistia.com/v1/medias/${WistiaURL}/captions.json`, options)
     .then((response) => response.json())
@@ -110,7 +167,10 @@
 
         // Set the id attribute of the <p> element with the timestamp
         pElement.id = timestamp.split(" --> ").join("/");
-
+        pElement.style.marginBlockStart = "0px";
+        pElement.style.marginBlockEnd = "0px";
+        pElement.style.fontFamily = "Arial, sans-serif";
+        pElement.style.lineHeight = "28px";
         // Set the innerHTML of the <p> element with the spoken content
         pElement.innerHTML = spokenText;
         // console.log(pElement);
@@ -145,8 +205,8 @@
     },
     onReady: function (video) {
       // console.log(video.data.media.captions[0].text.split("\n"));
-      document.getElementById("Transcript").innerHTML =
-        video.data.media.captions[0].text;
+      // document.getElementById("Transcript").innerHTML =
+      //   video.data.media.captions[0].text;
       video.playbackRate("{{playRate}}");
       video.bind("playbackratechange", function (playbackRate) {
         document.getElementById("playRate").value = playbackRate;
@@ -193,55 +253,21 @@
           if (video.time() >= start && video.time() <= end) {
             console.log(true);
             allElements[i].focus();
-            allElements[i].style.color = "red";
+            allElements[i].style.color = "#41B8E1";
 
             allElements[i].scrollIntoView();
           } else {
             allElements[i].blur();
-            allElements[i].style.color = "black";
+            allElements[i].style.color = "white";
           }
         }
-        // document.getElementById("VidTime").value = video.time();
-        // var functions = document.getElementsByClassName("function");
-        // for (let i = 0; i < functions.length; i++) {
-        //   start = functions[i].parentNode.id.split("/")[0];
-        //   end = functions[i].parentNode.id.split("/")[1];
-        //   if (video.time() >= start && video.time() < end) {
-        //     functions[i].style.backgroundColor = "#62a7d1";
-        //     functions[i].style.color = "black";
-        //   } else {
-        //     functions[i].style.backgroundColor = "#1E252B";
-        //     functions[i].style.color = "#DDDDDD";
-        //   }
-        // }
-
-        // CCs = getCCs();
-        // for (let i = 0; i < CCs.length; i++) {
-        //   elmnt = document.getElementById(CCs[i][0] + "/" + CCs[i][1]);
-        //   if (video.time() >= CCs[i][0] && video.time() <= CCs[i][0] + 1) {
-        //     elmnt.style.border = "2px solid #fc4b00";
-        //     if (elmnt.className.includes("sub")) {
-        //       elmnt.className = elmnt.className.replace("Inactive", "Active");
-        //     }
-        //   } else if (video.time() > CCs[i][0] && video.time() < CCs[i][1]) {
-        //     elmnt.style.border = "2px solid transparent";
-        //     if (elmnt.className.includes("sub")) {
-        //       elmnt.className = elmnt.className.replace("Inactive", "Active");
-        //     }
-
-        //     if (
-        //       isInViewport(elmnt) == false &&
-        //       document.getElementById("autoScroll").innerHTML == "on"
-        //     ) {
-        //       elmnt.scrollIntoView();
-        //     }
-        //   } else {
-        //     elmnt.style.border = "2px solid transparent";
-        //     if (elmnt.className.includes("sub")) {
-        //       elmnt.className = elmnt.className.replace("Active", "Inactive");
-        //     }
-        //   }
-        // }
+        if (video.time() >= 56) {
+          let contentDiv = document.getElementById("content");
+          contentDiv.innerHTML =
+            `<h2>${objContent.heading}</h2>` +
+            "<br>" +
+            `<li>${objContent.list}</li>`;
+        }
       });
     },
   });
