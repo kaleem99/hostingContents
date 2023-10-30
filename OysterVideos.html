@@ -120,7 +120,7 @@
   let indexValue = 0;
   const WistiaURL = "roc17q5zlb";
   const arrOfData =
-    '{"time":"00:11","Link":"https://pdfobject.com/pdf/sample.pdf"} --> {"time":"00:21","Link":"https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf"} --> {"time":"00:31","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_3.pdf"} --> {"time":"00:40","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_4.pdf"} --> {"time":"00:49","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_6.pdf"} --> {"time":"01:00","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_7.pdf"} --> {"time":"01:11","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_8.pdf"}';
+    '{"time":"00:10","Link":"This is one of the faculty members for the course"} --> {"time":"00:20","Link":"We hope you are enjoying the content thus far"} --> {"time":"00:30","Link":"Remember this line for your next exercise"} --> {"time":"00:40","Link":"You should now have a good understanding of the Oyster solution"} --> {"time":"00:50","Link":"Just some more generic text"} --> {"time":"01:00","Link":"You are still watching this video"} --> {"time":"01:10","Link":"You have watched 01 minute and 10 seconds of the video."}';
   const WistiaHeaders = { Authorization: "Bearer YOUR_API_KEY" };
   const options = {
     headers: {
@@ -196,7 +196,8 @@
         return totalSeconds;
       }
       function getUrlLink(str) {
-        return '<embed width="100%" height="500" src="' + str + '"></embed>';
+         '<embed width="100%" height="500" src="' + str + '"></embed>';
+         return `<h2>${str}</h2>`
       }
       video.bind("timechange", function () {
         let element = document.getElementById("Transcript");
@@ -215,13 +216,22 @@
           }
         }
         const arr = arrOfData.split(" --> ");
-        const obj = JSON.parse(arr[indexValue]);
-        const time = timeStringToSeconds(obj.time);
-        const urlLink = obj.Link;
-        if (parseInt(video.time()) === time) {
-          document.getElementById("content").innerHTML = getUrlLink(urlLink);
-          indexValue++;
-        }
+        // const obj = JSON.parse(arr[indexValue]);
+        // const time = timeStringToSeconds(obj.time);
+        // const urlLink = obj.Link;
+        // if (parseInt(video.time()) === time) {
+        //   document.getElementById("content").innerHTML = getUrlLink(urlLink);
+        //   indexValue++;
+        // }
+        for(let i = 0; i < arr.length; i++){
+          const obj = (JSON.parse(arr[i]));
+          const time = timeStringToSeconds(obj.time);
+          const urlLink = obj.Link;
+          if (parseInt(video.time()) === time) {
+            document.getElementById("content").innerHTML = getUrlLink(urlLink);
+            // indexValue++;
+          }
+         }
       });
     },
   });
