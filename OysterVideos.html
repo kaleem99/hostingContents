@@ -1,27 +1,18 @@
-<!-- <iframe
-  title="1"
-  allowtransparency="true"
-  frameborder="0"
-  scrolling="no"
-  class="wistia_embed"
-  name="wistia_embed"
-  allowfullscreen=""
-  mozallowfullscreen=""
-  webkitallowfullscreen=""
-  oallowfullscreen=""
-  msallowfullscreen=""
-  style="zoom: 2"
-  height="200px"
-  width="300px"
-  srcdoc=' -->
 <div style="width: 100%; height: 100%; background-color: #212021">
-  <div style="width: 100%; height: 80px; background-color: #2f2f2f"></div>
-  <div style="width: 100%; height: calc(100% - 80px); display: flex">
-    <div style="height: 100%; width: 30%; background-color: #212021">
+  <div style="width: 100%; height: 20px; background-color: #2f2f2f"></div>
+  <div
+    style="
+      width: 100%;
+      height: calc(100% - 20px);
+      display: grid;
+      grid-template-columns: 50% auto;
+    "
+  >
+    <div style="height: 100%; width: 100%; background-color: #212021">
       <div
         style="
-          width: 500px;
-          margin-top: 50px;
+          width: 90%;
+          margin-top: 20px;
           margin-left: auto;
           margin-right: auto;
         "
@@ -85,8 +76,8 @@
       </div>
       <div
         style="
-          width: 500px;
-          height: 400px;
+          width: 90%;
+          height: 300px;
           background-color: #2f2f2f;
           margin: 20px auto;
           padding: 5px;
@@ -99,7 +90,7 @@
           style="
             width: 80%;
             margin: auto;
-            height: 300px;
+            height: 200px;
             overflow: auto;
             padding: 10px;
             background-color: #2f2f2f;
@@ -108,27 +99,29 @@
         ></div>
       </div>
     </div>
-    <div style="height: 100%; width: 70%">
+    <div style="height: 100%; width: 100%">
       <div
         style="
           width: 90%;
           height: 96%;
           background-color: white;
-          margin: 2% auto;
-          /* padding: 20px; */
+          margin: 2% auto; /* padding: 20px; */
         "
       >
-        <div style="width: 90%; height: 80%; padding: 20px" id="content"></div>
+        <div
+          style="width: 90%; height: 80%; padding: 20px; margin: auto"
+          id="content"
+        ></div>
       </div>
     </div>
   </div>
 </div>
 <script>
-  const WistiaURL = "roc17q5zlb"; // Replace with your actual Wistia URL
-  const WistiaHeaders = {
-    // Add your headers here, e.g., API keys or authentication tokens
-    Authorization: "Bearer YOUR_API_KEY",
-  };
+  let indexValue = 0;
+  const WistiaURL = "roc17q5zlb";
+  const arrOfData =
+    '{"time":"00:11","Link":"https://pdfobject.com/pdf/sample.pdf"} --> {"time":"00:21","Link":"https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf"} --> {"time":"00:31","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_3.pdf"} --> {"time":"00:40","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_4.pdf"} --> {"time":"00:49","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_6.pdf"} --> {"time":"01:00","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_7.pdf"} --> {"time":"01:11","Link":"https://kaleem99.github.io/hostingContents/PDF%20Files/sample_pdf_8.pdf"}';
+  const WistiaHeaders = { Authorization: "Bearer YOUR_API_KEY" };
   const options = {
     headers: {
       Authorization:
@@ -136,86 +129,44 @@
     },
     method: "get",
   };
-  const objContent = {
-    heading: "Bureacratic Theory (Contd)",
-    list: ["People hired on the basis of competence"],
-  };
-  fetch(`https://api.wistia.com/v1/medias/${WistiaURL}/captions.json`, options)
+  fetch("https://api.wistia.com/v1/medias/roc17q5zlb/captions.json", options)
     .then((response) => response.json())
     .then((data) => {
-      // Handle the response data here
       document.getElementById("Transcript").innerHTML = "";
-      // console.log(data[0].text.split("-->"));
       const captionBlocks = data[0].text.split("\n\n");
-
-      // Extract spoken content from each caption block
-
-      // Extract and display the spoken content with timestamps
       captionBlocks.forEach((block, index) => {
-        // Split the block into lines
         const lines = block.split("\n");
-
-        // Extract the timestamp (line 1)
         const timestamp = lines[1];
-        // console.log(timestamp, lines);
-        // Extract the spoken content (lines starting from the 2nd line)
         const spokenLines = lines.slice(2);
         const spokenText = spokenLines.join(" ");
-
-        // Create a new <p> element
         const pElement = document.createElement("p");
-
-        // Set the id attribute of the <p> element with the timestamp
         pElement.id = timestamp.split(" --> ").join("/");
         pElement.style.marginBlockStart = "0px";
         pElement.style.marginBlockEnd = "0px";
         pElement.style.fontFamily = "Arial, sans-serif";
         pElement.style.lineHeight = "28px";
-        // Set the innerHTML of the <p> element with the spoken content
         pElement.innerHTML = spokenText;
-        // console.log(pElement);
         document.getElementById("Transcript").appendChild(pElement);
-        // Append the <p> element to the container
-        // container.appendChild(pElement);
       });
-      // let arr = data[0].text.split("-->");
-      // console.log(data[0].text)
-      // for (let i = 0; i < arr.length; i++) {
-      //   // console.log(arr[i]);
-      //   const result = arr[i].split(/\n(?=\d+\n)/);
-
-      //   // console.log(result);
-      // }
     })
     .catch((error) => {
-      // Handle any errors that occur during the request
       console.error(error);
     });
   window._wq = window._wq || [];
   _wq.push({
     id: "roc17q5zlb",
     options: {
-      plugin: {
-        "captions-v1": {
-          onByDefault: true,
-          language: "eng",
-        },
-      },
+      plugin: { "captions-v1": { onByDefault: true, language: "eng" } },
       time: "roc17q5zlb",
     },
     onReady: function (video) {
-      // console.log(video.data.media.captions[0].text.split("\n"));
-      // document.getElementById("Transcript").innerHTML =
-      //   video.data.media.captions[0].text;
       video.playbackRate("{{playRate}}");
       video.bind("playbackratechange", function (playbackRate) {
         document.getElementById("playRate").value = playbackRate;
       });
-
       video.bind("play", function () {
         document.getElementById("autoScroll").innerHTML = "on";
       });
-
       video.bind("pause", function () {
         CCs = getCCs();
         console.log(CCs);
@@ -226,7 +177,6 @@
           }
         }
       });
-
       video.bind("seek", function () {
         CCs = getCCs();
         for (let i = 0; i < CCs.length; i++) {
@@ -240,37 +190,39 @@
         const seconds = parseFloat(parts[2].replace(",", "."));
         return hours * 3600 + minutes * 60 + seconds;
       }
-      // Hilights the element that is currently playing
+      function timeStringToSeconds(timeString) {
+        const [minutes, seconds] = timeString.split(":");
+        const totalSeconds = parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
+        return totalSeconds;
+      }
+      function getUrlLink(str) {
+        return '<embed width="100%" height="500" src="' + str + '"></embed>';
+      }
       video.bind("timechange", function () {
         let element = document.getElementById("Transcript");
         let allElements = element.querySelectorAll("p");
-        console.log(allElements[0]);
         for (let i = 0; i < allElements.length; i++) {
           let timeStamps = allElements[i].id.split("/");
           let start = timecodeToSeconds(timeStamps[0]);
           let end = timecodeToSeconds(timeStamps[1]);
-          // console.log(video.time(), start, end);
           if (video.time() >= start && video.time() <= end) {
-            console.log(true);
             allElements[i].focus();
             allElements[i].style.color = "#41B8E1";
-
             allElements[i].scrollIntoView();
           } else {
             allElements[i].blur();
             allElements[i].style.color = "white";
           }
         }
-        if (video.time() >= 56) {
-          let contentDiv = document.getElementById("content");
-          contentDiv.innerHTML =
-            `<h2>${objContent.heading}</h2>` +
-            "<br>" +
-            `<li>${objContent.list}</li>`;
+        const arr = arrOfData.split(" --> ");
+        const obj = JSON.parse(arr[indexValue]);
+        const time = timeStringToSeconds(obj.time);
+        const urlLink = obj.Link;
+        if (parseInt(video.time()) === time) {
+          document.getElementById("content").innerHTML = getUrlLink(urlLink);
+          indexValue++;
         }
       });
     },
   });
 </script>
-<!-- '
-></iframe> -->
