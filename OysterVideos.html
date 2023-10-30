@@ -216,22 +216,14 @@
           }
         }
         const arr = arrOfData.split(" --> ");
-        // const obj = JSON.parse(arr[indexValue]);
-        // const time = timeStringToSeconds(obj.time);
-        // const urlLink = obj.Link;
-        // if (parseInt(video.time()) === time) {
-        //   document.getElementById("content").innerHTML = getUrlLink(urlLink);
-        //   indexValue++;
-        // }
-        for(let i = 0; i < arr.length; i++){
-          const obj = (JSON.parse(arr[i]));
-          const time = timeStringToSeconds(obj.time);
-          const urlLink = obj.Link;
-          if (parseInt(video.time()) === time) {
-            document.getElementById("content").innerHTML = getUrlLink(urlLink);
-            // indexValue++;
-          }
-         }
+        const obj = JSON.parse(arr[indexValue]);
+        const time = timeStringToSeconds(obj.time);
+        const urlLink = obj.Link;
+        if (parseInt(video.time()) === time) {
+          document.getElementById("content").innerHTML += getUrlLink(urlLink);
+          indexValue++;
+        }
+       
       });
     },
   });
