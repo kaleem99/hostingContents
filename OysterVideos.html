@@ -102,7 +102,7 @@
               style="width: 200px; height: 30px"
             />
             <div style="width: auto; display: flex">
-              <button>prev</button>
+              <button onclick="nextAndPrevSearch('Previous')">prev</button>
               <text
                 id="searchNumOfNum"
                 style="
@@ -113,7 +113,7 @@
                 "
                 >0</text
               >
-              <button>next</button>
+              <button onclick="nextAndPrevSearch('Next')">next</button>
             </div>
           </div>
         </div>
@@ -183,12 +183,13 @@
     </div>
   </div>
 </div>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
   let indexValue = 0;
+  let searchIndex = 1;
+  const result = [];
   let wistiaControl = "";
   const WistiaURL = "roc17q5zlb";
   const arrOfData =
@@ -202,31 +203,15 @@
     method: "get",
   };
   function downloadHTMLasPDF(elementId, type) {
-    // const pdf = new jsPDF();
-
-    // // HTML content to be converted to PDF
-    // const htmlContent = document.getElementById(elementId); // Replace with your HTML content's ID
-    // const options = {
-    //   margin: 10,
-    //   x: 10,
-    //   y: 10,
-    // };
-
-    // pdf.html(htmlContent, options, () => {
-    //   pdf.save(`${type}.pdf`);
-    // });
     const { jsPDF } = window.jspdf;
-
     let doc = new jsPDF("l", "mm", [1500, 1400]);
-    let pdfjs = document.getElementById(elementId);
+    let pdfjs = document.getElementById(elementId).cloneNode(true);
     let divElement = document.createElement("div");
+    const arrOfElem = pdfjs
+      .querySelectorAll("p")
+      .forEach((elem) => (elem.style.color = "black"));
     divElement.innerHTML = pdfjs.innerHTML;
     divElement.style.width = "1000px";
-    // let clonedPDF = pdfjs.cloneNode(true);
-    // clonedPDF.style.height = "100vw";
-    // clonedPDF.style.height = "100%";
-    // clonedPDF.style.color = "black";
-    // clonedPDF.style.backgroundColor = "white";
     doc.html(divElement, {
       callback: function (doc) {
         doc.save(`${type}.pdf`);
@@ -244,11 +229,10 @@
     return hours * 3600 + minutes * 60 + seconds;
   }
   const filterTranscript = (value) => {
-    const result = [];
+    result.length = 0;
     const previousResult = [];
     let transcriptsDiv = document.getElementById("Transcript");
     let pElementsArr = transcriptsDiv.querySelectorAll("p");
-    // console.log(pElementsArr);
     for (let i = 0; i < pElementsArr.length; i++) {
       if (
         pElementsArr[i].innerHTML
@@ -265,10 +249,7 @@
       result[0].focus();
       result[0].scrollIntoView();
       elem.onclick = () => {
-        console.log(wistiaControl.time());
-        console.log(elem.id);
         const elemTime = timecodeToSeconds(elem.id.split("/")[0]);
-        console.log(elemTime);
         wistiaControl.time(elemTime);
       };
       elem.onmouseover = () => {
@@ -281,7 +262,28 @@
     previousResult.map((elem) => (elem.style.color = "white"));
     document.getElementById(
       "searchNumOfNum"
-    ).innerHTML = `1 of ${result.length}`;
+    ).innerHTML = `1 / ${result.length}`;
+  };
+  // const prevSearch = () => {
+  //   result[++searchIndex].f
+  // }
+  const nextAndPrevSearch = (type) => {
+    if (type === "Next") {
+      if (searchIndex < result.length) {
+        searchIndex++;
+      } else {
+        searchIndex = 1;
+      }
+    } else {
+      if (searchIndex > 1) {
+        searchIndex--;
+      }
+    }
+    result[searchIndex - 1].focus();
+    result[searchIndex - 1].scrollIntoView();
+    document.getElementById(
+      "searchNumOfNum"
+    ).innerHTML = `${searchIndex} / ${result.length}`;
   };
   fetch("https://api.wistia.com/v1/medias/roc17q5zlb/captions.json", options)
     .then((response) => response.json())
@@ -320,23 +322,12 @@
         document.getElementById("playRate").value = playbackRate;
       });
       video.bind("play", function () {
-        document.getElementById("autoScroll").innerHTML = "on";
       });
       video.bind("pause", function () {
-        CCs = getCCs();
-        console.log(CCs);
-        for (let i = 0; i < CCs.length; i++) {
-          elmnt = document.getElementById(CCs[i][0] + "/" + CCs[i][1]);
-          if (elmnt.style.color == "black") {
-            elmnt.focus();
-          }
-        }
+       
       });
       video.bind("seek", function () {
-        CCs = getCCs();
-        for (let i = 0; i < CCs.length; i++) {
-          document.getElementById("autoScroll").innerHTML = "on";
-        }
+       
       });
       function timecodeToSeconds(timecode) {
         const parts = timecode.split(":");
