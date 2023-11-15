@@ -1,18 +1,23 @@
 <div style="width: 100%; height: 100%; background-color: #212021">
-  <div style="width: 100%; height: 20px; background-color: #2f2f2f"></div>
-  <div
-    style="
-      width: 100%;
-      height: calc(100% - 20px);
-      display: grid;
-      grid-template-columns: 50% auto;
-    "
-  >
-    <div style="height: 100%; width: 100%; background-color: #212021">
+  <div style="width: 100%; height: auto; background-color: #2f2f2f">
+    <h3 style="color: white; text-align: center; margin-top: 10px">
+      Wistia Video Heading
+    </h3>
+  </div>
+  <div style="width: 100%; height: auto; display: flex">
+    <div
+      style="
+        height: 100%;
+        width: 100%;
+        background-color: #212021;
+        display: flex;
+        flex-direction: column;
+      "
+    >
       <div
         style="
           width: 90%;
-          margin-top: 20px;
+          margin-top: 2%;
           margin-left: auto;
           margin-right: auto;
         "
@@ -77,17 +82,17 @@
       <div
         style="
           width: 90%;
-          height: 300px;
+          height: calc(45vh - 80px);
           background-color: #2f2f2f;
-          margin: 20px auto;
+          margin: 20px auto 10px auto;
           padding: 5px;
         "
       >
         <div
           style="
-            width: 98%;
+            width: 96%;
             margin: auto;
-            height: 40px;
+            height: auto;
             padding-top: 5px;
             color: white;
           "
@@ -95,8 +100,7 @@
           <h2 style="width: 30%; margin: auto; color: white; float: left">
             Transcript
           </h2>
-          <div style="float: right; width: auto; display: flex">
-            <label>search captions</label>
+          <div style="width: 100%; display: flex">
             <input
               onchange="filterTranscript(this.value)"
               style="width: 200px; height: 30px"
@@ -115,49 +119,49 @@
               >
               <button onclick="nextAndPrevSearch('Next')">next</button>
             </div>
+            <button
+              onclick="downloadHTMLasPDF('Transcript', 'captions')"
+              style="
+                height: 30px;
+                float: right;
+                background-color: white;
+                border: none;
+                color: black;
+                border-radius: 5px;
+                margin-left: auto;
+                margin-right: 0px;
+                cursor: pointer;
+              "
+            >
+              Download captions
+            </button>
           </div>
         </div>
         <hr />
         <div
           id="Transcript"
           style="
-            width: 80%;
+            width: 96%;
             margin: auto;
-            height: 200px;
+            height: calc(45vh - 160px);
             overflow: auto;
-            padding: 10px;
             background-color: #2f2f2f;
             color: white;
           "
         ></div>
       </div>
     </div>
-    <div style="height: 100%; width: 100%">
+    <div style="height: calc(100vh - 100px); width: 100%">
       <div
         style="
           width: 90%;
           height: 96%;
           background-color: white;
-          margin: 2% auto; /* padding: 20px; */
+          margin: 2% auto;
         "
       >
         <div style="width: 100%; height: 50px">
-          <button
-            onclick="downloadHTMLasPDF('Transcript', 'captions')"
-            style="
-              height: 40px;
-              float: left;
-              margin-top: 20px;
-              margin-left: 20px;
-              background-color: #212021;
-              border: none;
-              color: white;
-              border-radius: 5px;
-              cursor: pointer;
-            "
-          >
-            Download captions
-          </button>
+          <h1 style="float: left; margin-left: 20px">Generic heading</h1>
           <button
             onclick="downloadHTMLasPDF('content', 'notes')"
             style="
@@ -176,7 +180,13 @@
           </button>
         </div>
         <div
-          style="width: 90%; height: 80%; padding: 20px; margin: auto"
+          style="
+            width: 90%;
+            height: 80%;
+            padding: 10px 20px 10px 20px;
+            margin: auto;
+            overflow: auto;
+          "
           id="content"
         ></div>
       </div>
@@ -193,7 +203,7 @@
   let wistiaControl = "";
   const WistiaURL = "roc17q5zlb";
   const arrOfData =
-    '{"time":"00:10","Link":"This is one of the faculty members for the course"} --> {"time":"00:20","Link":"We hope you are enjoying the content thus far"} --> {"time":"00:30","Link":"Remember this line for your next exercise"} --> {"time":"00:40","Link":"You should now have a good understanding of the Oyster solution"} --> {"time":"00:50","Link":"Just some more generic text"} --> {"time":"01:00","Link":"You are still watching this video"} --> {"time":"01:10","Link":"You have watched 01 minute and 10 seconds of the video."}';
+    '{"Link":"This is one of the faculty members for the course","time":"00:11"} --> {"Link":"We hope you are enjoying the content thus far","time":"00:22"} --> {"Link":"Remember this line for your next exercise","time":"00:32"} --> {"Link":"You should now have a good understanding of the Oyster solution","time":"00:41"} --> {"Link":"Just some more generic text","time":"00:51"} --> {"Link":"You are still watching this video","time":"01:01"} --> {"Link":"You have watched 01 minute and 10 seconds of the video.","time":"01:12"}';
   const WistiaHeaders = { Authorization: "Bearer YOUR_API_KEY" };
   const options = {
     headers: {
@@ -214,13 +224,12 @@
     divElement.style.width = "1000px";
     doc.html(divElement, {
       callback: function (doc) {
-        doc.save(`${type}.pdf`);
+        doc.save(type + ".pdf");
       },
       x: 12,
       y: 12,
     });
   }
-
   function timecodeToSeconds(timecode) {
     const parts = timecode.split(":");
     const hours = parseInt(parts[0], 10);
@@ -260,13 +269,9 @@
       };
     });
     previousResult.map((elem) => (elem.style.color = "white"));
-    document.getElementById(
-      "searchNumOfNum"
-    ).innerHTML = `1 / ${result.length}`;
+    document.getElementById("searchNumOfNum").innerHTML =
+      "1 / " + result.length;
   };
-  // const prevSearch = () => {
-  //   result[++searchIndex].f
-  // }
   const nextAndPrevSearch = (type) => {
     if (type === "Next") {
       if (searchIndex < result.length) {
@@ -281,9 +286,8 @@
     }
     result[searchIndex - 1].focus();
     result[searchIndex - 1].scrollIntoView();
-    document.getElementById(
-      "searchNumOfNum"
-    ).innerHTML = `${searchIndex} / ${result.length}`;
+    document.getElementById("searchNumOfNum").innerHTML =
+      searchIndex + "/" + result.length;
   };
   fetch("https://api.wistia.com/v1/medias/roc17q5zlb/captions.json", options)
     .then((response) => response.json())
@@ -316,26 +320,14 @@
       time: "roc17q5zlb",
     },
     onReady: function (video) {
-      wistiaControl = video;
       video.playbackRate("{{playRate}}");
       video.bind("playbackratechange", function (playbackRate) {
         document.getElementById("playRate").value = playbackRate;
       });
-      video.bind("play", function () {
-      });
-      video.bind("pause", function () {
-       
-      });
-      video.bind("seek", function () {
-       
-      });
-      function timecodeToSeconds(timecode) {
-        const parts = timecode.split(":");
-        const hours = parseInt(parts[0], 10);
-        const minutes = parseInt(parts[1], 10);
-        const seconds = parseFloat(parts[2].replace(",", "."));
-        return hours * 3600 + minutes * 60 + seconds;
-      }
+      wistiaControl = video;
+      video.bind("play", function () {});
+      video.bind("pause", function () {});
+      video.bind("seek", function () {});
       function timeStringToSeconds(timeString) {
         const [minutes, seconds] = timeString.split(":");
         const totalSeconds = parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
@@ -343,7 +335,7 @@
       }
       function getUrlLink(str, time) {
         '<embed width="100%" height="500" src="' + str + '"></embed>';
-        return `<h2>Time: ${time} - ${str}</h2>`;
+        return "<p " + "id='" + time + "' >" + time + " - " + str + "</p>";
       }
       video.bind("timechange", function () {
         let element = document.getElementById("Transcript");
@@ -370,6 +362,13 @@
             urlLink,
             obj.time
           );
+          let allElements = document.getElementById("content").children;
+
+          for (let i = 0; i < allElements.length; i++) {
+            allElements[i].onclick = () => {
+              wistiaControl.time(allElements[i].id.split(":")[1]);
+            };
+          }
           indexValue++;
         }
       });
