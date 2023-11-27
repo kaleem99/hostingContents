@@ -1,19 +1,15 @@
 <div style="width: 100%; height: 100%; background-color: #212021">
   <div style="width: 100%; height: auto; background-color: #2f2f2f">
-    <h3 style="color: white; text-align: center; margin-top: 10px">
-      Wistia Video Heading
-    </h3>
+  <h3 style="color: white; text-align: center;margin-top: 10px;">Oyster Video Heading</h3>
   </div>
-  <div style="width: 100%; height: auto; display: flex">
-    <div
-      style="
-        height: 100%;
-        width: 100%;
-        background-color: #212021;
-        display: flex;
-        flex-direction: column;
-      "
-    >
+  <div
+    style="
+      width: 100%;
+      height: auto;
+      display: flex;
+    "
+  >
+    <div style="height: 100%; width: 100%; background-color: #212021; display: flex;flex-direction: column;">
       <div
         style="
           width: 90%;
@@ -82,9 +78,9 @@
       <div
         style="
           width: 90%;
-          height: calc(45vh - 80px);
+          height: 300px;
           background-color: #2f2f2f;
-          margin: 20px auto 10px auto;
+          margin: 20px auto;
           padding: 5px;
         "
       >
@@ -120,21 +116,21 @@
               <button onclick="nextAndPrevSearch('Next')">next</button>
             </div>
             <button
-              onclick="downloadHTMLasPDF('Transcript', 'captions')"
-              style="
-                height: 30px;
-                float: right;
-                background-color: white;
-                border: none;
-                color: black;
-                border-radius: 5px;
-                margin-left: auto;
-                margin-right: 0px;
-                cursor: pointer;
-              "
-            >
-              Download captions
-            </button>
+            onclick="downloadHTMLasPDF('Transcript', 'captions')"
+            style="
+              height: 30px;
+              float: right;
+              background-color: white;
+              border: none;
+              color: black;
+              border-radius: 5px;
+              margin-left: auto;
+              margin-right: 0px;
+              cursor: pointer;
+            "
+          >
+            Download captions
+          </button>
           </div>
         </div>
         <hr />
@@ -143,7 +139,7 @@
           style="
             width: 96%;
             margin: auto;
-            height: calc(45vh - 160px);
+            height: 200px;
             overflow: auto;
             background-color: #2f2f2f;
             color: white;
@@ -151,46 +147,42 @@
         ></div>
       </div>
     </div>
-    <div style="height: calc(100vh - 100px); width: 100%">
-      <div
-        style="
-          width: 90%;
-          height: 96%;
-          background-color: white;
-          margin: 2% auto;
-        "
-      >
-        <div style="width: 100%; height: 50px">
-          <h1 style="float: left; margin-left: 20px">Generic heading</h1>
-          <button
-            onclick="downloadHTMLasPDF('content', 'notes')"
+    
+        <div style="height: calc(90vh - 100px); width: 100%">
+          <div
             style="
-              height: 40px;
-              float: right;
-              margin-top: 20px;
-              margin-right: 20px;
-              background-color: #212021;
-              border: none;
-              color: white;
-              border-radius: 5px;
-              cursor: pointer;
-            "
+        width: 90%;
+        height: 96%;
+        background-color: white;
+        margin: 2% auto; /* padding: 20px; */
+      "
           >
-            Download Notes
-          </button>
-        </div>
-        <div
-          style="
-            width: 90%;
-            height: 80%;
-            padding: 10px 20px 10px 20px;
-            margin: auto;
-            overflow: auto;
+            <div style="width: 100%; height: 50px">
+              <h1 style="float: left; margin-left: 20px"></h1>
+              <button
+                onclick="downloadHTMLasPDF('content', 'notes')"
+                style="
+            height: 40px;
+            float: right;
+            margin-top: 20px;
+            margin-right: 20px;
+            background-color: #212021;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
           "
-          id="content"
-        ></div>
-      </div>
-    </div>
+              >
+                Download Notes
+              </button>
+            </div>
+            <div
+              style="width: 90%; height: 80%; padding: 20px; margin: auto"
+              id="content"
+            ></div>
+          </div>
+        </div>
+      
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -200,11 +192,13 @@
   let indexValue = 0;
   let searchIndex = 1;
   const result = [];
+  let transcriptContent = "";
   let wistiaControl = "";
   const WistiaURL = "roc17q5zlb";
-  const arrOfData =
-    '{"Link":"This is one of the faculty members for the course","time":"00:11"} --> {"Link":"We hope you are enjoying the content thus far","time":"00:22"} --> {"Link":"Remember this line for your next exercise","time":"00:32"} --> {"Link":"You should now have a good understanding of the Oyster solution","time":"00:41"} --> {"Link":"Just some more generic text","time":"00:51"} --> {"Link":"You are still watching this video","time":"01:01"} --> {"Link":"You have watched 01 minute and 10 seconds of the video.","time":"01:12"}';
-  const WistiaHeaders = { Authorization: "Bearer YOUR_API_KEY" };
+  const arrOfData = '{"Link":"This is one of the faculty members for the course","time":"00:11"} --> {"Link":"We hope you are enjoying the content thus far","time":"00:22"} --> {"Link":"Remember this line for your next exercise","time":"00:32"} --> {"Link":"You should now have a good understanding of the Oyster solution","time":"00:41"} --> {"Link":"Just some more generic text","time":"00:51"} --> {"Link":"You are still watching this video","time":"01:01"} --> {"Link":"You have watched 01 minute and 10 seconds of the video.","time":"01:12"}';
+  const WistiaHeaders = {
+    Authorization: "Bearer YOUR_API_KEY",
+  };
   const options = {
     headers: {
       Authorization:
@@ -221,15 +215,31 @@
       .querySelectorAll("p")
       .forEach((elem) => (elem.style.color = "black"));
     divElement.innerHTML = pdfjs.innerHTML;
+    if (type === "captions") {
+      divElement.innerHTML = "";
+      let transcriptContentArr = transcriptContent.split("\n\n");
+      transcriptContentArr.forEach((block, index) => {
+        const lines = block.split("\n");
+
+        const timestamp = lines[1];
+        const spokenLines = lines.slice(2);
+        const spokenText = spokenLines.join(" ");
+        const pElement = document.createElement("p");
+        divElement.innerHTML += '<b>' + lines[0] + '</b>';
+        divElement.innerHTML += '<p>' + timestamp + '</p>';
+        divElement.innerHTML += '<p>' + spokenText + '</p>';
+      });
+    }
     divElement.style.width = "1000px";
     doc.html(divElement, {
       callback: function (doc) {
-        doc.save(type + ".pdf");
+        doc.save(type + '.pdf');
       },
       x: 12,
       y: 12,
     });
   }
+
   function timecodeToSeconds(timecode) {
     const parts = timecode.split(":");
     const hours = parseInt(parts[0], 10);
@@ -269,9 +279,11 @@
       };
     });
     previousResult.map((elem) => (elem.style.color = "white"));
-    document.getElementById("searchNumOfNum").innerHTML =
-      "1 / " + result.length;
+    document.getElementById(
+      "searchNumOfNum"
+    ).innerHTML = '1 / ' + result.length;
   };
+
   const nextAndPrevSearch = (type) => {
     if (type === "Next") {
       if (searchIndex < result.length) {
@@ -286,17 +298,22 @@
     }
     result[searchIndex - 1].focus();
     result[searchIndex - 1].scrollIntoView();
-    document.getElementById("searchNumOfNum").innerHTML =
-      searchIndex + "/" + result.length;
+    document.getElementById(
+      "searchNumOfNum"
+    ).innerHTML = searchIndex +  '/' + result.length;
   };
   fetch("https://api.wistia.com/v1/medias/roc17q5zlb/captions.json", options)
     .then((response) => response.json())
     .then((data) => {
       document.getElementById("Transcript").innerHTML = "";
+      transcriptContent = data[0].text;
       const captionBlocks = data[0].text.split("\n\n");
+
       captionBlocks.forEach((block, index) => {
         const lines = block.split("\n");
+
         const timestamp = lines[1];
+
         const spokenLines = lines.slice(2);
         const spokenText = spokenLines.join(" ");
         const pElement = document.createElement("p");
@@ -316,7 +333,12 @@
   _wq.push({
     id: "roc17q5zlb",
     options: {
-      plugin: { "captions-v1": { onByDefault: true, language: "eng" } },
+      plugin: {
+        "captions-v1": {
+          onByDefault: true,
+          language: "eng",
+        },
+      },
       time: "roc17q5zlb",
     },
     onReady: function (video) {
@@ -325,9 +347,17 @@
         document.getElementById("playRate").value = playbackRate;
       });
       wistiaControl = video;
-      video.bind("play", function () {});
-      video.bind("pause", function () {});
-      video.bind("seek", function () {});
+      video.bind("play", function () {
+      });
+
+      video.bind("pause", function () {
+       
+      });
+
+      video.bind("seek", function () {
+       
+      });
+      
       function timeStringToSeconds(timeString) {
         const [minutes, seconds] = timeString.split(":");
         const totalSeconds = parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
@@ -335,7 +365,7 @@
       }
       function getUrlLink(str, time) {
         '<embed width="100%" height="500" src="' + str + '"></embed>';
-        return "<p " + "id='" + time + "' >" + time + " - " + str + "</p>";
+        return "<p>" + "<a href='#' " + "id='" + time + " '>" + time + "</a>" + " - " + str + "</p>";
       }
       video.bind("timechange", function () {
         let element = document.getElementById("Transcript");
@@ -347,6 +377,7 @@
           if (video.time() >= start && video.time() <= end) {
             allElements[i].focus();
             allElements[i].style.color = "#41B8E1";
+
             allElements[i].scrollIntoView();
           } else {
             allElements[i].blur();
@@ -362,11 +393,14 @@
             urlLink,
             obj.time
           );
+          console.log(358, 358);
           let allElements = document.getElementById("content").children;
+          console.log(document.getElementById("content").children);
 
           for (let i = 0; i < allElements.length; i++) {
+            console.log(allElements[i], 100);
             allElements[i].onclick = () => {
-              wistiaControl.time(allElements[i].id.split(":")[1]);
+              wistiaControl.time(allElements[i].childNodes[0].id.split(":")[1]);
             };
           }
           indexValue++;
