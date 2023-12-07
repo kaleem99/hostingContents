@@ -16,7 +16,7 @@
   "
 >
   <div style="width: 100%; height: auto; padding-top: 10px">
-    <h3 style="color: white; text-align: center; margin-top: 10px">
+    <h3 style="color: black; text-align: center; margin-top: 10px">
       Oyster Video Heading
     </h3>
   </div>
@@ -200,16 +200,11 @@
         <hr />
         <div
           id="Transcript"
-          style="
-            width: 96%;
-            margin: auto;
-            height: 25vh;
-            overflow: scroll;
-          "
+          style="width: 96%; margin: auto; height: 25vh; overflow: scroll"
         ></div>
       </div>
     </div>
-    
+
     <div style="height: calc(100vh - 100px); width: 100%">
       <div
         style="
@@ -240,12 +235,17 @@
           </button>
         </div>
         <div
-          style="width: 90%; height: 80%; padding: 20px; margin: auto"
+          style="
+            width: 90%;
+            height: 80%;
+            padding: 20px;
+            margin: auto;
+            overflow: auto;
+          "
           id="content"
         ></div>
       </div>
     </div>
-    
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -258,7 +258,84 @@
   let transcriptContent = "";
   let wistiaControl = "";
   const WistiaURL = "roc17q5zlb";
-  const arrOfData = '{"Link":"This is one of the faculty members for the course","time":"00:11"} --> {"Link":"We hope you are enjoying the content thus far","time":"00:22"} --> {"Link":"Remember this line for your next exercise","time":"00:32"} --> {"Link":"You should now have a good understanding of the Oyster solution","time":"00:41"} --> {"Link":"Just some more generic text","time":"00:51"} --> {"Link":"You are still watching this video","time":"01:01"} --> {"Link":"You have watched 01 minute and 10 seconds of the video.","time":"01:12"}';
+  const arrOfData = [
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Classical School</h3><ul><li>Combined and further refined Weber&apos;s and Taylor&apos;s work</li><li>More humanistic, less mechanical</li><li class="highlight">Organizations need departments</li></ul></div></div>',
+      time: "0:16",
+    },
+    {
+      Link: '<p><img src="https://corp-prod.s3.amazonaws.com/shared/static.publichealthonline.gwu.edu/MHA+Module+1/Week1/1.4/Buster-Keaton.png" alt width="710"></p>',
+      time: "0:33",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Classical School</h3><ul><li>Combined and further refined Weber&apos;s and Taylor&apos;s work</li><li class="highlight">More humanistic, less mechanical</li></ul></div></div>',
+      time: "0:48",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Classical School</h3><ul><li class="highlight">Combined and further refined Weber&apos;s and Taylor&apos;s work</li></ul></div></div>',
+      time: "1:4",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Classical School</h3></div></div>',
+      time: "1:18",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Scientific Management</h3><ul><li>Developed by Frederick Taylor</li><li>There&apos;s one best way to work; it&apos;s management&apos;s job to find it and teach it</li><li class="highlight">Supply chain management has its roots in this theory</li></ul></div></div>',
+      time: "2:9",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Scientific Management</h3><ul><li>Developed by Frederick Taylor</li><li class="highlight">There&apos;s one best way to work; it&apos;s management&apos;s job to find it and teach it</li></ul></div></div>',
+      time: "2:19",
+    },
+    {
+      Link: '<p><img src="https://corp-prod.s3.amazonaws.com/shared/static.publichealthonline.gwu.edu/MHA+Module+1/Week1/1.4/labcoats.png" alt width="710"></p>',
+      time: "2:32",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Scientific Management</h3><ul><li>Developed by Frederick Taylor</li><li class="highlight">There&apos;s one best way to work; it&apos;s management&apos;s job to find it and teach it</li></ul></div></div>',
+      time: "2:42",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Scientific Management</h3><ul><li class="highlight">Developed by Frederick Taylor</li></ul></div></div>',
+      time: "3:4",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Scientific Management</h3></div></div>',
+      time: "3:19",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Bureaucratic Theory (contd)</h3><ul><li>People hired on the basis of competence</li><li class="highlight">Duties carried out in impersonal manner</li></ul></div></div>',
+      time: "3:56",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Bureaucratic Theory (contd)</h3><ul><li class="highlight">People hired on the basis of competence</li></ul></div></div>',
+      time: "4:6",
+    },
+    {
+      Link: '<p><img src="https://corp-prod.s3.amazonaws.com/shared/static.publichealthonline.gwu.edu/MHA+Module+1/Week1/1.4/orgchart.png" alt="Example organizational chart. At the top level is Director, followed by Deputy Director, Senior Level Advisor and Administrative Assistant, Program Assistant, and the lower level shared by Communication, Planning, and Rule Making Branch and Environmental Impact Statement Branch." width="710" class="fr-fic fr-dii"></p>',
+      time: "4:14",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Bureaucratic Theory</h3><ul><li>Developed by Max Weber</li><li>The ideal bureaucracy has explicit procedures</li><li>Activities distributed among office holders (i.e., departments)</li><li class="highlight">Offices arranged in hierarchy</li></ul></div></div>',
+      time: "5:5",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Bureaucratic Theory</h3><ul><li>Developed by Max Weber</li><li>The ideal bureaucracy has explicit procedures</li><li class="highlight">Activities distributed among office holders (i.e., departments)</li></ul></div></div>',
+      time: "5:38",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Bureaucratic Theory</h3><ul><li>Developed by Max Weber</li><li class="highlight">The ideal bureaucracy has explicit procedures</li></ul></div></div>',
+      time: "6:25",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Bureaucratic Theory</h3><ul><li class="highlight">Developed by Max Weber</li></ul></div></div>',
+      time: "7:16",
+    },
+    {
+      Link: '<div class="outer-mono-text"><div class="inner-mono-text"><h3>Bureaucratic Theory</h3></div></div>',
+      time: "7:28",
+    },
+  ];
   const WistiaHeaders = {
     Authorization: "Bearer YOUR_API_KEY",
   };
@@ -355,7 +432,7 @@
         wistiaControl.time(elemTime);
       };
       elem.onmouseover = () => {
-        elem.style.border = "1px solid white";
+        elem.style.border = "1px solid";
         elem.style.cursor = "pointer";
       };
       elem.onmouseout = () => {
@@ -472,8 +549,8 @@
             allElements[i].style.color = "black";
           }
         }
-        const arr = arrOfData.split(" --> ");
-        const obj = JSON.parse(arr[indexValue]);
+        const arr = arrOfData;
+        const obj = arr[indexValue];
         const time = timeStringToSeconds(obj.time);
         const urlLink = obj.Link;
         if (parseInt(video.time()) >= time) {
