@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Mobile-Coffee-Shop/static/css/main.eab2ed17.css",
-    "main.js": "/Mobile-Coffee-Shop/static/js/main.d10adf7b.js",
-    "static/media/SACoffeePoured.png": "/Mobile-Coffee-Shop/static/media/SACoffeePoured.c9650291bf86bb853915.png",
-    "static/media/SACoffeeCompanyLandlords.jpeg": "/Mobile-Coffee-Shop/static/media/SACoffeeCompanyLandlords.7554142ee54e13bced95.jpeg",
-    "static/media/Coffee.png": "/Mobile-Coffee-Shop/static/media/Coffee.c9ca70e8f79dd3cb786d.png",
-    "static/media/SACoffeeCompany.jpeg": "/Mobile-Coffee-Shop/static/media/SACoffeeCompany.4cda76911e49a3619864.jpeg",
-    "static/media/StoryImg1.jpg": "/Mobile-Coffee-Shop/static/media/StoryImg1.fe252aa25640cca51d30.jpg",
-    "static/media/StoryImg3.jpg": "/Mobile-Coffee-Shop/static/media/StoryImg3.cd967d405e622c72c635.jpg",
-    "static/media/StoryImg2.jpg": "/Mobile-Coffee-Shop/static/media/StoryImg2.0095c97ca16fdaa187bc.jpg",
-    "static/media/StoryImg4.jpg": "/Mobile-Coffee-Shop/static/media/StoryImg4.60303483c0d21000575f.jpg",
-    "static/media/SACoffeeCompanyShop.jpeg": "/Mobile-Coffee-Shop/static/media/SACoffeeCompanyShop.c35151f0487a06f1940d.jpeg",
-    "static/media/SACoffeeCompanyLogo2.jpeg": "/Mobile-Coffee-Shop/static/media/SACoffeeCompanyLogo2.660498fceedea8c5c307.jpeg",
-    "static/media/coffee-beans2.png": "/Mobile-Coffee-Shop/static/media/coffee-beans2.91d3f87db2b7d200f27f.png",
-    "index.html": "/Mobile-Coffee-Shop/index.html",
-    "main.eab2ed17.css.map": "/Mobile-Coffee-Shop/static/css/main.eab2ed17.css.map",
-    "main.d10adf7b.js.map": "/Mobile-Coffee-Shop/static/js/main.d10adf7b.js.map"
+    "main.css": "/static/css/main.6101d4f2.css",
+    "main.js": "/static/js/main.9d1eefb9.js",
+    "static/media/SACoffeePoured.png": "/static/media/SACoffeePoured.c9650291bf86bb853915.png",
+    "static/media/SACoffeeCompanyLandlords.jpeg": "/static/media/SACoffeeCompanyLandlords.7554142ee54e13bced95.jpeg",
+    "static/media/Coffee.png": "/static/media/Coffee.c9ca70e8f79dd3cb786d.png",
+    "static/media/SACoffeeCompany.jpeg": "/static/media/SACoffeeCompany.4cda76911e49a3619864.jpeg",
+    "static/media/StoryImg1.jpg": "/static/media/StoryImg1.fe252aa25640cca51d30.jpg",
+    "static/media/StoryImg3.jpg": "/static/media/StoryImg3.cd967d405e622c72c635.jpg",
+    "static/media/StoryImg2.jpg": "/static/media/StoryImg2.0095c97ca16fdaa187bc.jpg",
+    "static/media/StoryImg4.jpg": "/static/media/StoryImg4.60303483c0d21000575f.jpg",
+    "static/media/SACoffeeCompanyShop.jpeg": "/static/media/SACoffeeCompanyShop.c35151f0487a06f1940d.jpeg",
+    "static/media/SACoffeeCompanyLogo2.jpeg": "/static/media/SACoffeeCompanyLogo2.660498fceedea8c5c307.jpeg",
+    "static/media/coffee-beans2.png": "/static/media/coffee-beans2.91d3f87db2b7d200f27f.png",
+    "index.html": "/index.html",
+    "main.6101d4f2.css.map": "/static/css/main.6101d4f2.css.map",
+    "main.9d1eefb9.js.map": "/static/js/main.9d1eefb9.js.map"
   },
   "entrypoints": [
-    "static/css/main.eab2ed17.css",
-    "static/js/main.d10adf7b.js"
+    "static/css/main.6101d4f2.css",
+    "static/js/main.9d1eefb9.js"
   ]
 }
